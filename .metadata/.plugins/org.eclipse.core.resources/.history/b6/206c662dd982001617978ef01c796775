@@ -1,0 +1,8 @@
+package navigation;
+
+public interface Movement {
+	private void moveLeft();
+	private void moveRight();
+	private void moveUp();
+	private void moveDown();
+}
