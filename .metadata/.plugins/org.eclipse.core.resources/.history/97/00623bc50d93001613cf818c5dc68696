@@ -1,0 +1,14 @@
+<Obstacle>
+	<door>
+		<x>	</x>
+	
+	
+	</door>
+	<charging> 
+		<x> 0 </x>
+		<y> 0 </y>
+	
+	</charging>
+
+
+</Obstacle>

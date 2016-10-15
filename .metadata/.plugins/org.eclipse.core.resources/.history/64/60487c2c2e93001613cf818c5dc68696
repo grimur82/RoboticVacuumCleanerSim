@@ -1,0 +1,18 @@
+package sensor;
+
+public class SurfaceFactory {
+	public static Surface getSurface(String type, int x, int y){
+		if(type.equals("bare")){
+			return SurfaceBareImpl(type,x,y);
+		}
+		if(type.equals("bare")){
+			return SurfaceBareImpl(type,x,y);
+		}
+		if(type.equals("bare")){
+			return SurfaceBareImpl(type,x,y);
+		}
+		return null;
+	}
+
+
+}

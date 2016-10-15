@@ -1,0 +1,30 @@
+<Obstacle>
+	<door>
+		<x>	0 </x>
+		<y> 7 </y>	
+		<x>	1 </x>
+		<y> 7 </y>
+	</door>
+	<door>
+		<x>	3 </x>
+		<y> 7 </y>	
+	</door>
+	<charging> 
+		<x> 0 </x>
+		<y> 0 </y>
+	</charging>
+	<stairs> 
+		<x> 4 </x>
+		<y> 0 </y>
+	</stairs>
+	<dirt>
+		<x> 1 </x>
+		<y> 2 </y>
+	</dirt>
+	<dirt>
+		<x> 2 </x>
+		<y> 1 </y>
+	</dirt>
+
+
+</Obstacle>

@@ -1,0 +1,34 @@
+<tiles>
+	<bathroom>
+	<fromx>2</fromx>
+	<tox>5</tox>
+	<fromy>2</fromy>
+	<toy>5</toy>
+	</bathroom>
+	<bathroom>
+	<fromx>5</fromx>
+	<tox>6</tox>
+	<fromy>2</fromy>
+	<toy>7</toy>
+	</bathroom>
+	<closet>
+	<x>1</x>
+	<y> 2 </y>
+	</closet>
+	<closet>
+	<x> 4</x>
+	<y> 6 </y>
+	</closet>
+	<bedroom>
+	<x> 10 </x>
+	<y> 5 </y>
+	</bedroom>
+	<bedroom>
+	<x> 7 </x>
+	<y> 3 </y>
+	</bedroom>
+	<hallway>
+		<x> 6 </x>
+		<y> 4 </y>
+	</hallway>
+</tiles>

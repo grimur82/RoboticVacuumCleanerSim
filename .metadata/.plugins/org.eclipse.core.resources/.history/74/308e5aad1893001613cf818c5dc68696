@@ -1,0 +1,32 @@
+<tiles>
+	<bathroom>
+	<x>2</x>
+	<y>2</y>
+	</bathroom>
+	<bathroom>
+	<x> 3 </x>
+	<y> 4 </y>
+	</bathroom>
+	<closet>
+	
+	
+	</closet>
+	<closet>
+	
+	
+	</closet>
+	<bedroom>
+	
+	</bedroom>
+	<bedroom>
+	
+	</bedroom>
+	<hallway>
+	
+	</hallway>
+
+
+
+
+
+</tiles>

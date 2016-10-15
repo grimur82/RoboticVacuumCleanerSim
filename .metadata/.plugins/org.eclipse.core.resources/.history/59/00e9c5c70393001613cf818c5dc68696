@@ -1,0 +1,27 @@
+package sensor;
+
+public class ObstacleFloorImpl implements Obstacle{
+	private int x;
+	private int y;
+	private String floor;
+	public ObstacleFloorImpl(int x, int y){
+		this.x = x;
+		this.y = y;
+		floor = "floor";
+	}
+	public int getX() {
+		// TODO Auto-generated method stub
+		return x;
+	}
+
+	public int getY() {
+		// TODO Auto-generated method stub
+		return y;
+	}
+
+	public String getType() {
+		// TODO Auto-generated method stub
+		return floor;
+	}
+
+}

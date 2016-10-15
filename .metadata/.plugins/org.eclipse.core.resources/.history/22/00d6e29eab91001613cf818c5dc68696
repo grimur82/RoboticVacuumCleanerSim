@@ -1,0 +1,8 @@
+package navigation;
+
+public interface CleanSweeper {
+	void moveLeft();
+	void moveRight();
+	void moveUp();
+	void moveDown();
+}

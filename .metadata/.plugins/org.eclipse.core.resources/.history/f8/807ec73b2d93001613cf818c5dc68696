@@ -1,0 +1,21 @@
+package sensor;
+
+public class SurfaceFloor{
+	private int x;
+	private int y;
+	private String type;
+	public SurfaceFloor(int x, int y, String t){
+		this.x = x;
+		this.y = y;
+		this.type = t;
+	}
+	public int getX() {
+		return x;
+	}
+	public int getY() {
+		return y;
+	}
+	public String getType() {
+		return type;
+	}
+}

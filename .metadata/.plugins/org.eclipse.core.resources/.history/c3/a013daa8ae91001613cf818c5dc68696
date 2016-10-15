@@ -1,0 +1,6 @@
+package navigation;
+
+public class ControlSystemLoader {
+	private Navigation navigaton = Navigation.getInstance();
+	private CleanSweeper cleanSweeper = CleanSweeper.getInstance();
+}

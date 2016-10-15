@@ -1,0 +1,10 @@
+package sensor;
+
+public class SensorFactory {
+	public static Obstacle getObstacle(String obstacle, int x, int y){
+		if(obstacle.equals("door")){
+			return new ObstacleDoorImpl(x,y);
+		}
+		return null;
+	}
+}

@@ -1,0 +1,24 @@
+package navigation;
+
+public class CleanSweeperImpl implements CleanSweeper{
+
+	private String dir;
+	private int capacity;
+	public CleanSweeperImpl(String direction, String cap){
+		this.dir = direction;
+		this.capacity = cap;
+	}
+	public int getCapacity() {
+		return capacity;
+	}
+
+	public String getDirection(String dir) {
+		return dir;
+	}
+
+	public void shutDown() {
+		// TODO Auto-generated method stub
+		
+	}
+
+}

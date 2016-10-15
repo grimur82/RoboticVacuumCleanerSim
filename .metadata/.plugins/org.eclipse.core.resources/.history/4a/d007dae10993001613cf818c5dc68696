@@ -1,0 +1,6 @@
+package sensor;
+
+public interface Tiling {
+	int getFromX();
+	int getToX();
+}

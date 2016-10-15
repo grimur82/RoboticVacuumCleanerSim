@@ -1,0 +1,7 @@
+package sensor;
+
+public class SensorLoader {
+	private String[][] floorPlant;
+	private XMLReader readFilePlan;
+	private ArrayList<Obstacle> obstacles;
+}

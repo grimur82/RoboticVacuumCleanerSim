@@ -1,0 +1,14 @@
+package navigation;
+
+public class ControlSystemLoader {
+	private Navigation navigation;
+	private CleanSweeper cleanSweeper;
+	private ControlSystemLoader(){
+		navigaton = Navigation.getInstance();
+		cleanSweeper = CleanSweeper.getInstance();
+	}
+	public setNavigation(int x, int y){
+		navigation.setX(x);
+		navigation.setY(y);
+	}
+}

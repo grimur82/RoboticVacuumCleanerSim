@@ -1,0 +1,21 @@
+package sensor;
+
+public class ObstacleFloor{
+	private int x;
+	private int y;
+	private String type;
+	public ObstacleFloor(int x, int y, Stirng t){
+		this.x = x;
+		this.y = y;
+		this.type = t;
+	}
+	public int getX() {
+		return x;
+	}
+	public int getY() {
+		return y;
+	}
+	public String getType() {
+		return type;
+	}
+}

@@ -1,0 +1,5 @@
+package sensor implements Tiling;
+
+public class TilingBedRoomImpl {
+
+}

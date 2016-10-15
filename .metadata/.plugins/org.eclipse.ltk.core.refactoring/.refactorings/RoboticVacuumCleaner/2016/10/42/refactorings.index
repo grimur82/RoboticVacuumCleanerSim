@@ -1,0 +1,18 @@
+1476407581811	Rename type 'NavigationService'
+1476407628763	Rename type 'Movement'
+1476407835212	Rename type 'RobotMovementImpl'
+1476408286562	Delete element
+1476408298096	Rename compilation unit 'CleanSweeperImpl.java'
+1476409373258	Delete element
+1476555638375	Rename compilation unit 'ObstacleStairImpl.java'
+1476558603234	Rename compilation unit 'TileHallwayImpl.java'
+1476559082128	Rename resource 'floorPlan.xml'
+1476559112220	Rename resource 'ObstaclesfloorPlan.xml'
+1476563549751	Rename type 'SensorFactory'
+1476564075326	Rename resource 'TilesFloorPlan'
+1476572880082	Rename compilation unit 'ObstacleFloorImpl.java'
+1476572971297	Rename type 'ObstacleFloor'
+1476573093920	Move file
+1476573316765	Rename type 'SurfaceFloor'
+1476573355193	Delete element
+1476574270364	Rename resource 'SurfaceType.xml'
