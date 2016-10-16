@@ -1,0 +1,24 @@
+package sensor;
+
+public class SensorServices {
+	private static SensorServices sensorServices = new SensorServices();
+	private SensorLoader sensorLoader;
+	private SensorServices(){
+		sensorLoader = new SensorLoader();
+	}
+	public static SensorServices getInstance(){
+		return sensorServices;
+	}
+	public Obstacle getStartPosition(){
+		return sensorLoader.getStartPosition();
+	}
+	public void generateObstacleFloor(){
+		return sensorLoader.ObstaclesFloorPlan();
+	}
+	public void generateTileFloor(){
+		return sensorLoader.tileFloorPlan();
+	}
+	public void generateSurfaceFloor(){
+		
+	}
+}

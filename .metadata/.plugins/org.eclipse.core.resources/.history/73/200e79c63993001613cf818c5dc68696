@@ -1,7 +1,5 @@
 package navigation;
 
-import sensor.Obstacle;
-
 public class ControlSystemLoader {
 	private Navigation navigation;
 	private CleanSweeper cleanSweeper;
@@ -14,8 +12,8 @@ public class ControlSystemLoader {
 		return controlSystemLoader;
 	}
 	public void setNavigation(Obstacle s){
-		navigation.setX(s.getX());
-		navigation.setY(s.getY());
+		navigation.setX(x);
+		navigation.setY(y);
 	}
 	public void setSweeperDirection(String direction){
 		cleanSweeper.setDirection(direction);

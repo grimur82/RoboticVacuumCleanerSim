@@ -15,9 +15,6 @@ public class ControlSystemService {
 		controlSystemLoader.setNavigation(s);
 	}
 	public void setSweeperDirection(String direction){
-		if(direction.equals("left")){
-			
-		}
 		controlSystemLoader.setSweeperDirection(direction);
 	}
 	public void shutdownSweeper(){

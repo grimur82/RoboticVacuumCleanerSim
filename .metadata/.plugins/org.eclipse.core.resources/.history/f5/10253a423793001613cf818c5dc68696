@@ -3,11 +3,9 @@ package sensor;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
-
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
-
 import org.w3c.dom.DOMException;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
@@ -126,17 +124,9 @@ public class SensorLoader {
 		return obstacleFloorPlan[x][y];
 	}
 	public Tiling checkTile(int x, int y){
-		return tileFloorPlan[x][y];
+		
 	}
 	public Surface checkSurface(int x, int y){
-		return surfaceFloorPlan[x][y];
-	}
-	public Obstacle getStartPosition(){
-		for(Obstacle o : obstacles){
-			if(o.getType().equals("chargingstation")){
-				return o;
-			}
-		}
-		return null;
+		
 	}
 }

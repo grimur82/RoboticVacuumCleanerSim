@@ -12,12 +12,9 @@ public class ControlSystemService {
 		return controlSystemService;
 	}
 	public void setNavigation(Obstacle s){
-		controlSystemLoader.setNavigation(s);
+		controlSystemLoader.setNavigation(s.getX(), s.getY());
 	}
 	public void setSweeperDirection(String direction){
-		if(direction.equals("left")){
-			
-		}
 		controlSystemLoader.setSweeperDirection(direction);
 	}
 	public void shutdownSweeper(){

@@ -131,7 +131,7 @@ public class SensorLoader {
 	public Surface checkSurface(int x, int y){
 		return surfaceFloorPlan[x][y];
 	}
-	public Obstacle getStartPosition(){
+	public ObstacleChargingStationImpl getStartPosition(){
 		for(Obstacle o : obstacles){
 			if(o.getType().equals("chargingstation")){
 				return o;

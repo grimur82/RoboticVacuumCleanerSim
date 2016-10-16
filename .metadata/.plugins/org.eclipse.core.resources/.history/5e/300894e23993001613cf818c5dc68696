@@ -1,7 +1,5 @@
 package navigation;
 
-import sensor.Obstacle;
-
 public class ControlSystemService {
 	private ControlSystemLoader controlSystemLoader;
 	private static ControlSystemService controlSystemService = new ControlSystemService();
@@ -11,13 +9,10 @@ public class ControlSystemService {
 	public static ControlSystemService getInstance(){
 		return controlSystemService;
 	}
-	public void setNavigation(Obstacle s){
-		controlSystemLoader.setNavigation(s);
+	public void setNavigation(int x, int y){
+		controlSystemLoader.setNavigation(x, y);
 	}
 	public void setSweeperDirection(String direction){
-		if(direction.equals("left")){
-			
-		}
 		controlSystemLoader.setSweeperDirection(direction);
 	}
 	public void shutdownSweeper(){

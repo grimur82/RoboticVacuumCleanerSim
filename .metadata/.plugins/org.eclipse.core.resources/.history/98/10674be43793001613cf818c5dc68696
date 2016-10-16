@@ -1,0 +1,11 @@
+package sensor;
+
+public class SensorServices {
+	private SensorServices sensorServices = new SensorServices();
+	private SensorServices(){
+		
+	}
+	public static SensorServices getInstance(){
+		return sensorServices;
+	}
+}

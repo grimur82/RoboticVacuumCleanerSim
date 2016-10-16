@@ -1,10 +1,6 @@
 package sensor;
 
-import java.io.IOException;
 
-import javax.xml.parsers.ParserConfigurationException;
-
-import org.xml.sax.SAXException;
 
 public class SensorServices {
 	private static SensorServices sensorServices = new SensorServices();

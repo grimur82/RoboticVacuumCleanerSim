@@ -20,7 +20,6 @@ public class Driver {
 		sL.generateObstacleFloor();
 		sL.generateSurfaceFloor();
 		sL.generateTileFloor();
-		cS.setNavigation(sL.getStartPosition());
 		
 	}
 
