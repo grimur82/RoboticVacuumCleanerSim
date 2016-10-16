@@ -1,8 +1,0 @@
-package navigation;
-
-public interface CleanSweeper {
-	final int capacity = 50;
-	void getCapacity();
-	String getDirection(String dir);
-	void shutDown(); 
-}

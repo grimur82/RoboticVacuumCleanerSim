@@ -1,8 +1,0 @@
-package navigation;
-
-public class Navigation {
-	private static Navigation navigation = new Navigation();
-	private Navigation(){
-		
-	}
-}

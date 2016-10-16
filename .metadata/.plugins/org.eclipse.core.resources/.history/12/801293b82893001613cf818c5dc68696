@@ -1,8 +1,0 @@
-package sensor;
-
-public class TilingFactory {
-	public static Tiling getTiling(String type, int fX, int fY, int toX, int toY){
-		return null;
-		
-	}
-}

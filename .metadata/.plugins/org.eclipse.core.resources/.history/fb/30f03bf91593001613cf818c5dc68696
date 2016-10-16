@@ -1,7 +1,0 @@
-package sensor;
-
-public class SensorFactory {
-	public Obstacle getObstacle(String obstacle, int x, int y){
-		
-	}
-}

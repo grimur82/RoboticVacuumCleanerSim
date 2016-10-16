@@ -1,8 +1,0 @@
-
-public class Driver {
-
-	public static void main(String[] args) {
-		SensorLoader sL = new SensorLoader();
-	}
-
-}
