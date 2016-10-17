@@ -1,24 +1,27 @@
 package navigation;
 
 public class Navigation {
-	private static Navigation navigation = new Navigation();
-	private int x;
-	private int y;
+	private static Navigation navigation;
+	private double x;
+	private double y;
 	private Navigation(){
 	}
 	public static Navigation getInstance(){
+		if (navigation == null)
+			navigation = new Navigation();
+
 		return navigation;
 	}
-	public void setX(int x){
+	public void setX(double x){
 		this.x = x;
 	}
-	public void setY(int y){
+	public void setY(double y){
 		this.y = y;
 	}
-	public int getX(){
+	public double getX(){
 		return x;
 	}
-	public int getY(){
+	public double getY(){
 		return y;
 	}
 }

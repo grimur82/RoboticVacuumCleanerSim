@@ -1,30 +1,28 @@
 package sensor;
 
-import java.io.IOException;
-
-import javax.xml.parsers.ParserConfigurationException;
-
+import floor.Coordinate;
 import org.xml.sax.SAXException;
 
+import javax.xml.parsers.ParserConfigurationException;
+import java.io.IOException;
+
 public class SensorServices {
-	private static SensorServices sensorServices = new SensorServices();
-	private SensorLoader sensorLoader;
-	private SensorServices(){
-		sensorLoader = new SensorLoader();
-	}
-	public static SensorServices getInstance(){
+
+	private static SensorServices sensorServices;
+	private static SensorLoader sensorLoader;
+
+	private SensorServices() throws ParserConfigurationException, SAXException, IOException {
+        sensorLoader = new SensorLoader();
+    }
+
+	public static SensorServices getInstance() throws ParserConfigurationException, SAXException, IOException {
+        if (sensorServices == null)
+            sensorServices = new SensorServices();
+
 		return sensorServices;
 	}
-	public Obstacle getStartPosition(){
+
+	public Coordinate getStartPosition(){
 		return sensorLoader.getStartPosition();
-	}
-	public void generateObstacleFloor() throws ParserConfigurationException, SAXException, IOException{
-		sensorLoader.ObstaclesFloorPlan();
-	}
-	public void generateTileFloor() throws ParserConfigurationException, SAXException, IOException{
-		sensorLoader.tileFloorPlan();
-	}
-	public void generateSurfaceFloor() throws ParserConfigurationException, SAXException, IOException{
-		sensorLoader.surfaceFloorPlan();
 	}
 }

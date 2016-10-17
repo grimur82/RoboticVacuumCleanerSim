@@ -7,9 +7,7 @@ import navigation.Navigation;
 
 import org.xml.sax.SAXException;
 
-import sensor.SensorLoader;
 import sensor.SensorServices;
-
 
 public class Driver {
 
@@ -17,11 +15,8 @@ public class Driver {
 		SensorServices sL = SensorServices.getInstance();
 		ControlSystemService cS = ControlSystemService.getInstance();
 		Navigation n = Navigation.getInstance();
-		sL.generateObstacleFloor();
-		sL.generateSurfaceFloor();
-		sL.generateTileFloor();
 		cS.setNavigation(sL.getStartPosition());
-		
+
 	}
 
 }
