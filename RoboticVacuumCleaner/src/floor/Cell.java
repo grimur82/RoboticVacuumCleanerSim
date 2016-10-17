@@ -10,6 +10,7 @@ public class Cell {
     private String name;
     private SurfaceType surfaceType;
     private EnumSet<Obstacle> obstacles;
+    private boolean dirt;
 
     // TODO: flag if charging station
     // TODO: flag if stairs?*
@@ -18,6 +19,7 @@ public class Cell {
 
     public Cell(SurfaceType surfaceType) {
         this.surfaceType = surfaceType;
+        dirt = true;
     }
 
     public SurfaceType getSurfaceType() {
