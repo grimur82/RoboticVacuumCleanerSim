@@ -34,36 +34,11 @@ public class SensorLoader {
     public SensorLoader() throws ParserConfigurationException, SAXException, IOException {
         doors = new ArrayList<>();
 
-        inputFloorPlan();
+        loadFloorPlan();
 	}
 
-    /* Asks and retrieves file. Once a new system to load the floor plan is in place,
-     * we can skip this step and directly call surfaceFloorPlan(). */
-    public void inputFloorPlan() throws ParserConfigurationException, SAXException, IOException {
-        Scanner scanner = new Scanner(System.in);
-
-        String filename;
-        File file;
-        do {
-            System.out.println("Input path to floor plan (Q - exit): ");
-            filename = scanner.nextLine();
-
-            if (filename.equalsIgnoreCase("q")) {
-                System.out.println("Quitting...");
-                System.exit(-1);
-            }
-
-            file = new File(filename);
-            if (!file.exists() || file.isDirectory()) {
-                System.out.println("Invalid file or file not found");
-                filename = "";
-            }
-        } while (filename.isEmpty());
-
-        loadFloorPlan(file);
-    }
-
-    public void loadFloorPlan(File file) throws ParserConfigurationException, SAXException, IOException {
+    public void loadFloorPlan() throws ParserConfigurationException, SAXException, IOException {
+        File file = new File("../test/PlanA.xml");
         DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
         DocumentBuilder db = dbf.newDocumentBuilder();
         Document parsing = db.parse(file);
