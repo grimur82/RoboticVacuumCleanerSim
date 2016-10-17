@@ -4,10 +4,12 @@
 
 In the `/RoboticVacuumCleaner` directory, run:
 
-```ant compile
+```
+ant compile
 ```
 
 To execute, go to the `/build` directory and run:
 
-```java Driver
+```
+java Driver
 ```
