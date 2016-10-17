@@ -52,5 +52,6 @@ local.properties
 
 .idea/
 *.iml
+build/
 
 .DS_Store
