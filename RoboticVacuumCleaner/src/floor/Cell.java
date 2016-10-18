@@ -1,5 +1,7 @@
 package floor;
 
+import util.Debugger;
+
 import java.util.EnumSet;
 
 /**
@@ -10,7 +12,6 @@ public class Cell {
     private String name;
     private SurfaceType surfaceType;
     private EnumSet<Obstacle> obstacles;
-    private boolean dirt;
 
     // TODO: flag if charging station
     // TODO: flag if stairs?*
@@ -19,7 +20,7 @@ public class Cell {
 
     public Cell(SurfaceType surfaceType) {
         this.surfaceType = surfaceType;
-        dirt = true;
+        this.obstacles = EnumSet.noneOf(Obstacle.class);
     }
 
     public SurfaceType getSurfaceType() {
@@ -34,19 +35,16 @@ public class Cell {
         return name;
     }
 
-    /**
-     * Sets an obstacle relative to this cell.
-     *
-     * TODO: When used by the navigator, make sure to set the obstacle from the other end/adjacent cell!
-     *
-     * @param obstacle
-     */
     public void setObstacle(String obstacle) {
         obstacles.add(Obstacle.valueOf(obstacle));
     }
 
-    public boolean isOpen(String dir) {
-        return obstacles.contains(Obstacle.valueOf(dir));
+    public boolean isOpen(Obstacle... obs) {
+        for (Obstacle o : obs)
+            if (!obstacles.contains(o))
+                return false;
+
+        return true;
     }
 
 }

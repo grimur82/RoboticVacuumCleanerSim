@@ -11,31 +11,33 @@ import javax.xml.parsers.ParserConfigurationException;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.NodeList;
+import org.w3c.dom.Node;
 import org.xml.sax.SAXException;
-
-import java.util.EnumSet;
-import java.util.Scanner;
 
 import floor.Coordinate;
 import floor.Cell;
 import floor.SurfaceType;
-import floor.Obstacle;
+import util.Debugger;
 
 /**
  * Preliminary sensor loading prep: retrieve and load the floor plan.
  */
-public class SensorLoader {
+public class FloorPlanLoader {
 
     private ArrayList<Coordinate> doors;
     private Cell[][] floorPlan;
 
     Coordinate startPos = new Coordinate();
 
-    public SensorLoader() throws ParserConfigurationException, SAXException, IOException {
+    public FloorPlanLoader() throws ParserConfigurationException, SAXException, IOException {
         doors = new ArrayList<>();
 
         loadFloorPlan();
-	}
+    }
+
+    public Cell[][] getFloorPlan() {
+        return floorPlan;
+    }
 
     public void loadFloorPlan() throws ParserConfigurationException, SAXException, IOException {
         File file = new File("../test/PlanA.xml");
@@ -44,24 +46,37 @@ public class SensorLoader {
         Document parsing = db.parse(file);
         parsing.getDocumentElement().normalize();
 
+        setDim(parsing);
         setStart(parsing);
         setDoors(parsing);
         setCells(parsing);
     }
 
-    public void setStart(Document doc) {
-        NodeList dimensions = doc.getElementsByTagName("start");
-        Element dimension = (Element) dimensions.item(0);
+    public void setDim(Document doc) {
+        NodeList start = doc.getElementsByTagName("dimensions");
+        Element s = (Element) start.item(0);
 
-        startPos.setX(Integer.parseInt(dimension.getAttribute("x")));
-        startPos.setY(Integer.parseInt(dimension.getAttribute("y")));
+        int x = Integer.parseInt(s.getAttribute("x"));
+        int y = Integer.parseInt(s.getAttribute("y"));
+
+        floorPlan = new Cell[x + 1][y + 1];
+    }
+
+    public void setStart(Document doc) {
+        NodeList start = doc.getElementsByTagName("start");
+        Element s = (Element) start.item(0);
+
+        startPos.setX(Integer.parseInt(s.getAttribute("x")));
+        startPos.setY(Integer.parseInt(s.getAttribute("y")));
     }
 
     public void setDoors(Document doc) {
         NodeList d = doc.getElementsByTagName("doors");
+        Element doorList = (Element) d.item(0);
+        NodeList eachDoor = doorList.getElementsByTagName("door");
 
-        for (int i = 0; i < d.getLength(); ++i) {
-            Element door = (Element) d.item(i);
+        for (int i = 0; i < eachDoor.getLength(); ++i) {
+            Element door = (Element) eachDoor.item(i);
 
             Double x = Double.valueOf(door.getAttribute("x"));
             Double y = Double.valueOf(door.getAttribute("y"));
@@ -73,28 +88,38 @@ public class SensorLoader {
 
     public void setCells(Document doc) {
         NodeList cells = doc.getElementsByTagName("cells");
+        Element cellList = (Element) cells.item(0);
+        NodeList eachCell = cellList.getElementsByTagName("cell");
 
-        for (int i = 0; i < cells.getLength(); ++i) {
-            Element cell = (Element) cells.item(i);
+        for (int i = 0; i < eachCell.getLength(); ++i) {
+            Element cell = (Element) eachCell.item(i);
 
+            Debugger.log("a");
             // Extract data
             int x = Integer.parseInt(cell.getElementsByTagName("x").item(0).getTextContent());
             int y = Integer.parseInt(cell.getElementsByTagName("y").item(0).getTextContent());
             String surface = cell.getElementsByTagName("surface").item(0).getTextContent();
             String name = cell.getAttribute("name");
+            Debugger.log("b");
 
             // Create cell
             Cell c = new Cell(SurfaceType.valueOf(surface));
 
+            Debugger.log("c");
             // Set name
             c.setName(name);
+            Debugger.log("d");
 
             // Set obstacles
-            EnumSet<Obstacle> obstacles = EnumSet.noneOf(Obstacle.class);
             NodeList obs = cell.getElementsByTagName("obstacles");
-            for (int j = 0; j < obs.getLength(); ++j) {
-                String obstacle = ((Element) obs.item(j)).getTextContent();
-                c.setObstacle(obstacle);
+            if (obs.getLength() > 0) {
+                Node obList = obs.item(0);
+                Element obsList = (Element) obList;
+                NodeList eachOb = obsList.getElementsByTagName("obstacle");
+                for (int j = 0; j < eachOb.getLength(); ++j) {
+                    String obstacle = ((Element) eachOb.item(j)).getTextContent();
+                    c.setObstacle(obstacle);
+                }
             }
 
             // Record cell
@@ -102,10 +127,10 @@ public class SensorLoader {
         }
     }
 
-	public Cell getCell(int x, int y){
-		return floorPlan[x][y];
-	}
-	public Coordinate getStartPosition() {
+    public Cell getCell(int x, int y){
+        return floorPlan[x][y];
+    }
+    public Coordinate getStartPosition() {
         return startPos;
-	}
+    }
 }

@@ -5,6 +5,11 @@ public class Coordinate {
     private double x = 0;
     private double y = 0;
 
+    public Coordinate(int x, int y) {
+        this.x = x;
+        this.y = y;
+    }
+
     public Coordinate(double x, double y) {
         this.x = x;
         this.y = y;
