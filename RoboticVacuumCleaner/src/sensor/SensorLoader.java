@@ -29,12 +29,11 @@ public class SensorLoader {
     private ArrayList<Coordinate> doors;
     private Cell[][] floorPlan;
 
-    Coordinate startPos = new Coordinate();
+    private Coordinate startPos = new Coordinate();
 
     public SensorLoader() throws ParserConfigurationException, SAXException, IOException {
-        doors = new ArrayList<>();
-
-        loadFloorPlan();
+        doors = new ArrayList<Coordinate>();
+        floorPlan = new Cell[1000][1000];
 	}
 
     public void loadFloorPlan() throws ParserConfigurationException, SAXException, IOException {
@@ -58,21 +57,19 @@ public class SensorLoader {
     }
 
     public void setDoors(Document doc) {
-        NodeList d = doc.getElementsByTagName("doors");
+        NodeList d = doc.getElementsByTagName("door");
 
         for (int i = 0; i < d.getLength(); ++i) {
             Element door = (Element) d.item(i);
-
             Double x = Double.valueOf(door.getAttribute("x"));
             Double y = Double.valueOf(door.getAttribute("y"));
-
             Coordinate coordinate = new Coordinate(x.doubleValue(), y.doubleValue());
             doors.add(coordinate);
         }
     }
 
     public void setCells(Document doc) {
-        NodeList cells = doc.getElementsByTagName("cells");
+        NodeList cells = doc.getElementsByTagName("cell");
 
         for (int i = 0; i < cells.getLength(); ++i) {
             Element cell = (Element) cells.item(i);
@@ -85,7 +82,7 @@ public class SensorLoader {
 
             // Create cell
             Cell c = new Cell(SurfaceType.valueOf(surface));
-
+        
             // Set name
             c.setName(name);
 
@@ -93,19 +90,66 @@ public class SensorLoader {
             EnumSet<Obstacle> obstacles = EnumSet.noneOf(Obstacle.class);
             NodeList obs = cell.getElementsByTagName("obstacles");
             for (int j = 0; j < obs.getLength(); ++j) {
-                String obstacle = ((Element) obs.item(j)).getTextContent();
-                c.setObstacle(obstacle);
+            	Element o = (Element) obs.item(j);
+            	String obstacle = o.getElementsByTagName("obstacle").item(j).getTextContent();
+            	c.setObstacle(obstacle);
             }
-
-            // Record cell
+            // Record cell 
             floorPlan[x][y] = c;
         }
     }
+
+
+
 
 	public Cell getCell(int x, int y){
 		return floorPlan[x][y];
 	}
 	public Coordinate getStartPosition() {
         return startPos;
+	}
+	public Coordinate getLeftPosition(Coordinate s){
+		if(s.getX() - 1.0 < 0.0){
+			return startPos;
+		}
+		else{
+			startPos.setX(s.getX() - 1.0);
+			startPos.setY(s.getY());
+			return startPos;
+		}
+		
+	}
+	public Coordinate getRightPosition(Coordinate s){
+		// Hardcoded for now.
+		if(s.getX() + 1.0 > 9.0){
+			return startPos;
+		}
+		else{
+			startPos.setX(s.getX() + 1.0);
+			startPos.setY(s.getY());
+			return startPos;
+		}
+	}
+	public Coordinate getDownPosition(Coordinate s){
+		if(s.getY() - 1.0 < 0){
+			return startPos;
+		}
+		else{
+			startPos.setX(s.getX());
+			startPos.setY(s.getY()-1);
+			return startPos;
+		}
+		
+	}
+	public Coordinate getUpPosition(Coordinate s){
+		// Hardcoded for now.
+		if(s.getY() + 1.0 > 9.0){
+			return startPos;
+		}
+		else{
+			startPos.setX(s.getX());
+			startPos.setY(s.getY()+ 1.0);
+			return startPos;
+		}
 	}
 }

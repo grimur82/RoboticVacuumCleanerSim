@@ -19,7 +19,19 @@ public class Cell {
 
     public Cell(SurfaceType surfaceType) {
         this.surfaceType = surfaceType;
+        obstacles = EnumSet.of(Obstacle.LEFT,Obstacle.RIGHT,Obstacle.BOTTOM,Obstacle.TOP);
         dirt = true;
+    }
+    public boolean checkDirtCondition(){
+    	if(dirt == true){
+    		System.out.println("Floor is dirty. Cleaning");
+    		dirt = false;
+    		return dirt;
+    	}
+    	else{
+    		System.out.println("Floor is clean. Moving on");
+    		return dirt;
+    	}
     }
 
     public SurfaceType getSurfaceType() {
@@ -42,7 +54,7 @@ public class Cell {
      * @param obstacle
      */
     public void setObstacle(String obstacle) {
-        obstacles.add(Obstacle.valueOf(obstacle));
+        obstacles.add(Obstacle.valueOf((obstacle.trim())));
     }
 
     public boolean isOpen(String dir) {

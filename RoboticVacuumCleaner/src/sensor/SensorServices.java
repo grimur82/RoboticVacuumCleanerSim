@@ -25,4 +25,22 @@ public class SensorServices {
 	public Coordinate getStartPosition(){
 		return sensorLoader.getStartPosition();
 	}
+	public Coordinate getLeftPosition(){
+		return sensorLoader.getLeftPosition(sensorLoader.getStartPosition());
+	}
+	public Coordinate getRightPosition(){
+		return sensorLoader.getRightPosition(sensorLoader.getStartPosition());
+	}
+	public Coordinate getDownPosition(){
+		return sensorLoader.getDownPosition(sensorLoader.getStartPosition());
+	}
+	public Coordinate getUpPosition(){
+		return sensorLoader.getUpPosition(sensorLoader.getStartPosition());
+	}
+	public void cleanDirt(int x, int y){
+		sensorLoader.getCell(x, y).checkDirtCondition();
+	}
+	public void loadFloorPlan() throws ParserConfigurationException, SAXException, IOException{
+		sensorLoader.loadFloorPlan();
+	}
 }

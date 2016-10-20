@@ -9,13 +9,14 @@ public enum SurfaceType {
     BARE(1),
     LOWPILE(2),
     HIGHPILE(3);
-    
+    private int type;
     private int powerUsed;
-    
-    Type(int powerUsed){
+    SurfaceType(int type){
+    	this.type = type;
+    }
+    public void Type(int powerUsed){
         this.powerUsed = powerUsed;
     }
-    
     public int getSurfaceType() {
         return powerUsed;
     }
