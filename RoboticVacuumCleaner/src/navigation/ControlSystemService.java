@@ -6,6 +6,7 @@ import sensor.SensorServices;
 import util.Debugger;
 
 import java.util.HashMap;
+import java.util.Random;
 
 public class ControlSystemService {
 
@@ -58,15 +59,29 @@ public class ControlSystemService {
 
             int x = (int) currentPos.getX();
             int y = (int) currentPos.getY();
-
-            Debugger.log("Cleaning cell (" + x + ", " + y + ")");
-            Debugger.log(checkDirt(x,y));
-            Cell cell = sensorService.getCell(x, y);
-            visited.put(currentPos, cell);
-
-            registerCells();
-
+           
+            if(x < 10 && y < 10){
+            	 RandomPosition randomDirection = new RandomPosition(x,y);
+                 Coordinate randomNr = randomDirection.getRandomCoordinate();
+                 Debugger.log("Cleaning cell (" + x + ", " + y + ")");
+            	Debugger.log(checkDirt(x,y));
+            	Cell cell = sensorService.getCell(x, y);
+                visited.put(currentPos, cell);
+                registerCells();
+                if(randomNr.getX() >=0 && randomNr.getY() >=0 && x < 10 && y < 10){
+                	currentPos.setX(randomNr.getX());
+                    currentPos.setY(randomNr.getY());
+                }
+                
+            }
+            
+            
+            
+            	
         } while (!unvisited.isEmpty());
+        		
+        		
+        	
 
     }
     private String checkDirt(int x, int y){
@@ -80,13 +95,15 @@ public class ControlSystemService {
 
         int x = (int) currentPos.getX();
         int y = (int) currentPos.getY();
-
         Cell cell = sensorService.getCell(x, y);
         visited.put(currentPos, cell);
 
         Coordinate topCoordinate = new Coordinate(x, y + 1);
         if (!visited.containsKey(topCoordinate))
-            unvisited.put(topCoordinate, sensorService.getCell(x, y + 1));
+        	if(topCoordinate.getY() < 10.0){
+        		unvisited.put(topCoordinate, sensorService.getCell(x, y + 1));
+        	}
+            
 
         Coordinate bottomCoordinate = new Coordinate(x, y - 1);
         if (!visited.containsKey(bottomCoordinate))
@@ -100,18 +117,17 @@ public class ControlSystemService {
 
         Coordinate leftCoordinate = new Coordinate(x - 1, y);
         if (!visited.containsKey(leftCoordinate))
-        	if(x - 1 < 0){
-        		//System.out.println("Outside floor plan");
-        	}
-        	else{
+        	if(x - 1 > 0){
         		unvisited.put(leftCoordinate, sensorService.getCell(x - 1, y));
         	}
             
 
         Coordinate rightCoordinate = new Coordinate(x + 1, y);
         if (!visited.containsKey(rightCoordinate))
-        	
-            unvisited.put(rightCoordinate, sensorService.getCell(x + 1, y));
+        	if(rightCoordinate.getX() < 10){
+        		unvisited.put(rightCoordinate, sensorService.getCell(x + 1, y));
+        	}
+            
 
     }
 

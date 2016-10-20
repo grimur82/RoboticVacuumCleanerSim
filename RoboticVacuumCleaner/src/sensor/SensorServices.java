@@ -35,4 +35,5 @@ public class SensorServices {
     public Coordinate getStartPosition() {
         return startPosition;
     }
+ 
 }
