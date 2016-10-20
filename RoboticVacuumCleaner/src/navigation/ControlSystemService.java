@@ -60,7 +60,7 @@ public class ControlSystemService {
             int y = (int) currentPos.getY();
 
             Debugger.log("Cleaning cell (" + x + ", " + y + ")");
-
+            Debugger.log(checkDirt(x,y));
             Cell cell = sensorService.getCell(x, y);
             visited.put(currentPos, cell);
 
@@ -68,6 +68,9 @@ public class ControlSystemService {
 
         } while (!unvisited.isEmpty());
 
+    }
+    private String checkDirt(int x, int y){
+    	return sensorService.getCell(x, y).checkDirt();
     }
 
     /**
@@ -87,14 +90,27 @@ public class ControlSystemService {
 
         Coordinate bottomCoordinate = new Coordinate(x, y - 1);
         if (!visited.containsKey(bottomCoordinate))
-            unvisited.put(bottomCoordinate, sensorService.getCell(x, y - 1));
+        	if(y - 1 >=0){
+        		unvisited.put(bottomCoordinate, sensorService.getCell(x, y - 1));
+        	}
+        	else{
+        		//System.out.println("Outside the floor plan");
+        	}
+            
 
         Coordinate leftCoordinate = new Coordinate(x - 1, y);
         if (!visited.containsKey(leftCoordinate))
-            unvisited.put(leftCoordinate, sensorService.getCell(x - 1, y));
+        	if(x - 1 < 0){
+        		//System.out.println("Outside floor plan");
+        	}
+        	else{
+        		unvisited.put(leftCoordinate, sensorService.getCell(x - 1, y));
+        	}
+            
 
         Coordinate rightCoordinate = new Coordinate(x + 1, y);
         if (!visited.containsKey(rightCoordinate))
+        	
             unvisited.put(rightCoordinate, sensorService.getCell(x + 1, y));
 
     }

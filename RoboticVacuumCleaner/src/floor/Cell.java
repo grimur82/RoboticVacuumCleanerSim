@@ -12,7 +12,7 @@ public class Cell {
     private String name;
     private SurfaceType surfaceType;
     private EnumSet<Obstacle> obstacles;
-
+    private boolean dirt;
     // TODO: flag if charging station
     // TODO: flag if stairs?*
     // (doc says to treat it as an obstacle. do we even need to differentiate
@@ -21,8 +21,17 @@ public class Cell {
     public Cell(SurfaceType surfaceType) {
         this.surfaceType = surfaceType;
         this.obstacles = EnumSet.noneOf(Obstacle.class);
+        this.dirt = true;
     }
-
+    public String checkDirt(){
+    	if(dirt == true){
+    		dirt = false;
+    		return "Floor Dirty: CleanSweeper cleans.";
+    	}
+    	else{
+    		return "Floor Clean: CleanSweeper moves on.";
+    	}
+    }
     public SurfaceType getSurfaceType() {
         return surfaceType;
     }
