@@ -43,9 +43,6 @@ public class ControlSystemService {
         return controlSystemService;
     }
 
-    private int unv = 0;
-    private int v = 0;
-
     /**
      * Set current position of sweeper.
      *
@@ -78,7 +75,6 @@ public class ControlSystemService {
             Coordinate randomNr = randomDirection.getRandomCoordinate();
             setPosition(randomNr);
 
-            /*
             // Delay for visualization
             if (Debugger.getMode()) {
                 try {
@@ -87,7 +83,6 @@ public class ControlSystemService {
                     Thread.currentThread().interrupt();
                 }
             }
-            */
 
         } while (!unvisited.isEmpty());
 
