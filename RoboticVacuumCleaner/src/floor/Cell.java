@@ -55,5 +55,9 @@ public class Cell {
 
         return true;
     }
+    
+    public Enumset<Obstacle> getObstacles(){
+    	return obstacles;
+    }
 
 }

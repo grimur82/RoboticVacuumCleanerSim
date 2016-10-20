@@ -85,6 +85,10 @@ public class FloorPlanLoader {
             doors.add(coordinate);
         }
     }
+    
+    public ArrayList<Coordinate> getDoors(){
+    	return doors;
+    }
 
     public void setCells(Document doc) {
         NodeList cells = doc.getElementsByTagName("cells");
