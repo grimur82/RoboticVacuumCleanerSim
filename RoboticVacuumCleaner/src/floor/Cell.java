@@ -23,14 +23,15 @@ public class Cell {
         this.obstacles = EnumSet.noneOf(Obstacle.class);
         this.dirt = true;
     }
-    public String checkDirt(){
-    	if(dirt == true){
+    public boolean checkDirt(){
+    	if(dirt){
     		dirt = false;
-    		return "Floor Dirty: CleanSweeper cleans.";
+    		Debugger.log("Floor Dirty: CleanSweeper cleans.");
     	}
     	else{
-    		return "Floor Clean: CleanSweeper moves on.";
+    		Debugger.log("Floor Clean: CleanSweeper moves on.");
     	}
+        return dirt;
     }
     public SurfaceType getSurfaceType() {
         return surfaceType;
@@ -49,9 +50,10 @@ public class Cell {
     }
 
     public boolean isOpen(Obstacle... obs) {
-        for (Obstacle o : obs)
-            if (!obstacles.contains(o))
+        for (Obstacle o : obs) {
+            if (obstacles.contains(o))
                 return false;
+        }
 
         return true;
     }
