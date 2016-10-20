@@ -1,5 +1,7 @@
 package floor;
 
+import util.Debugger;
+
 public class Coordinate {
 
     private double x = 0;

@@ -64,8 +64,6 @@ public class ControlSystemService {
             int y = (int) currentPos.getY();
             Cell cell = sensorService.getCell(x, y);
 
-            Debugger.log("VISITED: " + v + "\tUNVISITED: " + unv);
-
             Debugger.log("Cleaning cell (" + x + ", " + y + ")");
             Debugger.log("Dirt: " + cell.checkDirt());
 
@@ -78,9 +76,9 @@ public class ControlSystemService {
             // Set next cell
             RandomPosition randomDirection = new RandomPosition(x, y);
             Coordinate randomNr = randomDirection.getRandomCoordinate();
-            currentPos.setX(randomNr.getX());
-            currentPos.setY(randomNr.getY());
+            setPosition(randomNr);
 
+            /*
             // Delay for visualization
             if (Debugger.getMode()) {
                 try {
@@ -89,6 +87,7 @@ public class ControlSystemService {
                     Thread.currentThread().interrupt();
                 }
             }
+            */
 
         } while (!unvisited.isEmpty());
 

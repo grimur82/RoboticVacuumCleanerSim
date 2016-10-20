@@ -4,7 +4,7 @@
         Maps out the Sample Floor Plan from project document.
     </description>
 
-    <dimensions x="2" y="2" />
+    <dimensions x="3" y="3" />
     <start x="0" y="0" />
 
     <doors />
