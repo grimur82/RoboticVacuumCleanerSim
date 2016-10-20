@@ -1,3 +1,5 @@
+package util;
+
 public class Debugger {
 
     // TODO: a better on/off switch system
