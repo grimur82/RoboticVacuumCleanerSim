@@ -6,7 +6,6 @@ import sensor.SensorServices;
 import util.Debugger;
 
 import java.util.HashMap;
-import java.util.Random;
 
 public class ControlSystemService {
 
@@ -62,12 +61,19 @@ public class ControlSystemService {
             RandomPosition randomDirection = new RandomPosition(x,y);
             Coordinate randomNr = randomDirection.getRandomCoordinate();
             Debugger.log("Cleaning cell (" + x + ", " + y + ")");
-            Debugger.log(checkDirt(x,y));
+            Debugger.log(checkDirt(x, y));
             Cell cell = sensorService.getCell(x, y);
             visited.put(currentPos, cell);
             registerCells();
             currentPos.setX(randomNr.getX());
-            currentPos.setY(randomNr.getY());	
+            currentPos.setY(randomNr.getY());
+
+            try {
+                Thread.sleep(1000);
+            } catch (InterruptedException e) {
+                Thread.currentThread().interrupt();
+            }
+
         } while (!unvisited.isEmpty());
     }
     private String checkDirt(int x, int y){
