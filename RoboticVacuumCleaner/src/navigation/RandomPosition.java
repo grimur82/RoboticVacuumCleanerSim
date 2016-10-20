@@ -32,7 +32,7 @@ public class RandomPosition {
 		Random r = new Random();
 		int getNumber = r.nextInt(4);
 		while(direction.get(getNumber).getX() < 0 || direction.get(getNumber).getX()
-				>= 10 || direction.get(getNumber).getY() < 0 || 
+				>= 10 || direction.get(getNumber).getY() < 0 ||
 				direction.get(getNumber).getY() >= 10){
 			getNumber = r.nextInt(4);
 		}

@@ -25,7 +25,6 @@ public class Cell {
     }
     public boolean checkDirt(){
     	if(dirt){
-    		dirt = false;
     		Debugger.log("Floor Dirty: CleanSweeper cleans.");
     	}
     	else{
@@ -33,6 +32,11 @@ public class Cell {
     	}
         return dirt;
     }
+
+    public void clean() {
+        dirt = false;
+    }
+
     public SurfaceType getSurfaceType() {
         return surfaceType;
     }
@@ -49,11 +53,10 @@ public class Cell {
         obstacles.add(Obstacle.valueOf(obstacle));
     }
 
-    public boolean isOpen(Obstacle... obs) {
-        for (Obstacle o : obs) {
-            if (obstacles.contains(o))
+    public boolean blocked(Obstacle... obs) {
+        for (Obstacle o : obs)
+            if (!obstacles.contains(o))
                 return false;
-        }
 
         return true;
     }

@@ -33,4 +33,41 @@ public class Coordinate {
         this.y = y;
     }
 
+    /**
+     * Compares two coordinates.
+     *
+     * @param c Coordinate.
+     * @return  1 if above c.x and c.y
+     *         -1 if below c.x and c.y
+     *          0 if equals to c.x and c.y
+     *         -2 if none of the above
+     */
+    public int compareTo(Coordinate c) {
+        if (x > c.getX() && y > c.getY())
+            return 1;
+        if (x < c.getX() && y < c.getY())
+            return -1;
+        if (x == c.getX() && y == c.getY())
+            return 0;
+        return -2;
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        hash = 31 * hash + (int)x;
+        hash = 31 * hash + (int)y;
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object c) {
+        if (c == null
+                || getClass() != c.getClass()
+                || !(c instanceof Coordinate))
+            return false;
+
+        return x == ((Coordinate)c).getX() && y == ((Coordinate)c).getY();
+    }
+
 }

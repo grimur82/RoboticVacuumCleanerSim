@@ -2,6 +2,7 @@ package navigation;
 
 import floor.Cell;
 import floor.Coordinate;
+import floor.Obstacle;
 import sensor.SensorServices;
 import util.Debugger;
 
@@ -12,8 +13,8 @@ public class ControlSystemService {
     private Coordinate currentPos;
 
     private static ControlSystemService controlSystemService;
-    private HashMap<Coordinate, Cell> visited = new HashMap<Coordinate, Cell>();
-    private HashMap<Coordinate, Cell> unvisited = new HashMap<Coordinate, Cell>();
+    private HashMap<Coordinate, Cell> visited = new HashMap<>();
+    private HashMap<Coordinate, Cell> unvisited = new HashMap<>();
     private SensorServices sensorService;
 
     /**
@@ -42,6 +43,9 @@ public class ControlSystemService {
         return controlSystemService;
     }
 
+    private int unv = 0;
+    private int v = 0;
+
     /**
      * Set current position of sweeper.
      *
@@ -58,66 +62,75 @@ public class ControlSystemService {
 
             int x = (int) currentPos.getX();
             int y = (int) currentPos.getY();
-            RandomPosition randomDirection = new RandomPosition(x,y);
-            Coordinate randomNr = randomDirection.getRandomCoordinate();
-            Debugger.log("Cleaning cell (" + x + ", " + y + ")");
-            Debugger.log(checkDirt(x, y));
             Cell cell = sensorService.getCell(x, y);
-            visited.put(currentPos, cell);
+
+            Debugger.log("VISITED: " + v + "\tUNVISITED: " + unv);
+
+            Debugger.log("Cleaning cell (" + x + ", " + y + ")");
+            Debugger.log("Dirt: " + cell.checkDirt());
+
+            // Clean if dirt
+            cell.clean();
+
+            // Update visited and unvisited cells
             registerCells();
+
+            // Set next cell
+            RandomPosition randomDirection = new RandomPosition(x, y);
+            Coordinate randomNr = randomDirection.getRandomCoordinate();
             currentPos.setX(randomNr.getX());
             currentPos.setY(randomNr.getY());
 
-            try {
-                Thread.sleep(1000);
-            } catch (InterruptedException e) {
-                Thread.currentThread().interrupt();
+            // Delay for visualization
+            if (Debugger.getMode()) {
+                try {
+                    Thread.sleep(1000);
+                } catch (InterruptedException e) {
+                    Thread.currentThread().interrupt();
+                }
             }
 
         } while (!unvisited.isEmpty());
+
+        Debugger.log("Cleaning done!");
     }
-    private String checkDirt(int x, int y){
+    private boolean checkDirt(int x, int y){
     	return sensorService.getCell(x, y).checkDirt();
     }
 
     /**
+     * Document this and surrounding cells as visited or unvisited.
      *
+     * TODO: Conflict with dirt levels. Assumes visited = clean, unvisited = dirty.
      */
     private void registerCells() {
         int x = (int) currentPos.getX();
         int y = (int) currentPos.getY();
+
+        // Current cell
         Cell cell = sensorService.getCell(x, y);
         visited.put(currentPos, cell);
+        unvisited.remove(currentPos);
+
+        // Top cell
         Coordinate topCoordinate = new Coordinate(x, y + 1);
-        if (!visited.containsKey(topCoordinate))
-        	if(topCoordinate.getY() < 10.0){
-        		unvisited.put(topCoordinate, sensorService.getCell(x, y + 1));
-        	}
-            
+        if (!visited.containsKey(topCoordinate) && !cell.blocked(Obstacle.TOP))
+                unvisited.put(topCoordinate, sensorService.getCell(x, y + 1));
 
+        // Bottom cell
         Coordinate bottomCoordinate = new Coordinate(x, y - 1);
-        if (!visited.containsKey(bottomCoordinate))
-        	if(y - 1 >=0){
-        		unvisited.put(bottomCoordinate, sensorService.getCell(x, y - 1));
-        	}
-        	else{
-        		//System.out.println("Outside the floor plan");
-        	}
-            
+        if (!visited.containsKey(bottomCoordinate) && !cell.blocked(Obstacle.BOTTOM))
+                unvisited.put(bottomCoordinate, sensorService.getCell(x, y - 1));
 
+        // Left cell
         Coordinate leftCoordinate = new Coordinate(x - 1, y);
-        if (!visited.containsKey(leftCoordinate))
-        	if(x - 1 > 0){
-        		unvisited.put(leftCoordinate, sensorService.getCell(x - 1, y));
-        	}
-            
+        if (!visited.containsKey(leftCoordinate) && !cell.blocked(Obstacle.LEFT))
+                unvisited.put(leftCoordinate, sensorService.getCell(x - 1, y));
 
+        // Right cell
         Coordinate rightCoordinate = new Coordinate(x + 1, y);
-        if (!visited.containsKey(rightCoordinate))
-        	if(rightCoordinate.getX() < 10){
-        		unvisited.put(rightCoordinate, sensorService.getCell(x + 1, y));
-        	}
-            
+        if (!visited.containsKey(rightCoordinate) && !cell.blocked(Obstacle.RIGHT))
+                unvisited.put(rightCoordinate, sensorService.getCell(x + 1, y));
 
     }
 
