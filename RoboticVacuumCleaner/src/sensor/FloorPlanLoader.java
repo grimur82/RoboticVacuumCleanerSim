@@ -94,21 +94,17 @@ public class FloorPlanLoader {
         for (int i = 0; i < eachCell.getLength(); ++i) {
             Element cell = (Element) eachCell.item(i);
 
-            Debugger.log("a");
             // Extract data
             int x = Integer.parseInt(cell.getElementsByTagName("x").item(0).getTextContent());
             int y = Integer.parseInt(cell.getElementsByTagName("y").item(0).getTextContent());
             String surface = cell.getElementsByTagName("surface").item(0).getTextContent();
             String name = cell.getAttribute("name");
-            Debugger.log("b");
 
             // Create cell
             Cell c = new Cell(SurfaceType.valueOf(surface));
 
-            Debugger.log("c");
             // Set name
             c.setName(name);
-            Debugger.log("d");
 
             // Set obstacles
             NodeList obs = cell.getElementsByTagName("obstacles");
