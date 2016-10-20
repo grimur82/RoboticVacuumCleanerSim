@@ -2,10 +2,14 @@ package util;
 
 public class Debugger {
 
-    // TODO: a better on/off switch system
+    private static boolean mode = true;
+
+    public static boolean getMode() {
+        return mode;
+    }
 
     public static void log(Object o) {
-        if (true)
+        if (mode)
             System.out.println(o.toString());
     }
 
