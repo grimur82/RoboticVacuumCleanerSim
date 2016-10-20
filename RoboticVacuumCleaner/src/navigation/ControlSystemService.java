@@ -59,30 +59,16 @@ public class ControlSystemService {
 
             int x = (int) currentPos.getX();
             int y = (int) currentPos.getY();
-           
-            if(x < 10 && y < 10){
-            	 RandomPosition randomDirection = new RandomPosition(x,y);
-                 Coordinate randomNr = randomDirection.getRandomCoordinate();
-                 Debugger.log("Cleaning cell (" + x + ", " + y + ")");
-            	Debugger.log(checkDirt(x,y));
-            	Cell cell = sensorService.getCell(x, y);
-                visited.put(currentPos, cell);
-                registerCells();
-                if(randomNr.getX() >=0 && randomNr.getY() >=0 && x < 10 && y < 10){
-                	currentPos.setX(randomNr.getX());
-                    currentPos.setY(randomNr.getY());
-                }
-                
-            }
-            
-            
-            
-            	
+            RandomPosition randomDirection = new RandomPosition(x,y);
+            Coordinate randomNr = randomDirection.getRandomCoordinate();
+            Debugger.log("Cleaning cell (" + x + ", " + y + ")");
+            Debugger.log(checkDirt(x,y));
+            Cell cell = sensorService.getCell(x, y);
+            visited.put(currentPos, cell);
+            registerCells();
+            currentPos.setX(randomNr.getX());
+            currentPos.setY(randomNr.getY());	
         } while (!unvisited.isEmpty());
-        		
-        		
-        	
-
     }
     private String checkDirt(int x, int y){
     	return sensorService.getCell(x, y).checkDirt();
@@ -92,12 +78,10 @@ public class ControlSystemService {
      *
      */
     private void registerCells() {
-
         int x = (int) currentPos.getX();
         int y = (int) currentPos.getY();
         Cell cell = sensorService.getCell(x, y);
         visited.put(currentPos, cell);
-
         Coordinate topCoordinate = new Coordinate(x, y + 1);
         if (!visited.containsKey(topCoordinate))
         	if(topCoordinate.getY() < 10.0){

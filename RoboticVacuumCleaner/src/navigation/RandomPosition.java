@@ -27,9 +27,15 @@ public class RandomPosition {
 		direction.add(top);
 		direction.add(bottom);
 	}
+	
 	public Coordinate getRandomCoordinate(){
 		Random r = new Random();
 		int getNumber = r.nextInt(4);
+		while(direction.get(getNumber).getX() < 0 || direction.get(getNumber).getX()
+				>= 10 || direction.get(getNumber).getY() < 0 || 
+				direction.get(getNumber).getY() >= 10){
+			getNumber = r.nextInt(4);
+		}
 		return direction.get(getNumber);
 	}
 }
