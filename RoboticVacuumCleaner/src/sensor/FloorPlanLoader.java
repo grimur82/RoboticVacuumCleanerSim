@@ -30,7 +30,7 @@ public class FloorPlanLoader {
     Coordinate startPos = new Coordinate();
 
     public FloorPlanLoader() throws ParserConfigurationException, SAXException, IOException {
-        doors = new ArrayList<Coordinate>();
+        doors = new ArrayList<>();
 
         loadFloorPlan();
     }
