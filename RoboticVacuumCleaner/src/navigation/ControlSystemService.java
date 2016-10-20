@@ -85,11 +85,11 @@ public class ControlSystemService {
         visited.put(currentPos, cell);
 
         Coordinate topCoordinate = new Coordinate(x, y + 1);
-        if (!visited.containsKey(topCoordinate))
+        if (!visited.containsKey(topCoordinate) || senseObstacleTop(cell))
             unvisited.put(topCoordinate, sensorService.getCell(x, y + 1));
 
         Coordinate bottomCoordinate = new Coordinate(x, y - 1);
-        if (!visited.containsKey(bottomCoordinate))
+        if (!visited.containsKey(bottomCoordinate) || senseObstacleBottom(cell))
         	if(y - 1 >=0){
         		unvisited.put(bottomCoordinate, sensorService.getCell(x, y - 1));
         	}
@@ -99,7 +99,7 @@ public class ControlSystemService {
             
 
         Coordinate leftCoordinate = new Coordinate(x - 1, y);
-        if (!visited.containsKey(leftCoordinate))
+        if (!visited.containsKey(leftCoordinate) || senseObstacleLeft(cell))
         	if(x - 1 < 0){
         		//System.out.println("Outside floor plan");
         	}
@@ -109,7 +109,7 @@ public class ControlSystemService {
             
 
         Coordinate rightCoordinate = new Coordinate(x + 1, y);
-        if (!visited.containsKey(rightCoordinate))
+        if (!visited.containsKey(rightCoordinate) || senseObstacleRight(cell))
         	
             unvisited.put(rightCoordinate, sensorService.getCell(x + 1, y));
 
