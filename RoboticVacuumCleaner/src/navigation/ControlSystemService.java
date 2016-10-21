@@ -69,6 +69,15 @@ public class ControlSystemService {
     public int checkSweepDirtCapacity(){
     	return sweeper.checkDirtCapacity();
     }
+    
+    //calculate average of current cell power and next cell
+    public int powerConsumption(int currentPower, int nextPower){
+    	return (currentPower + nextPower)/2;
+    }
+    
+    
+    
+    
     private void clean() throws ParserConfigurationException, SAXException, IOException {
         setPosition(sensorService.getStartPosition());
        
@@ -77,14 +86,22 @@ public class ControlSystemService {
             int x = (int) currentPos.getX();
             int y = (int) currentPos.getY();
             Cell cell = sensorService.getCell(x, y);
+            int currentPower = cell.getSurfaceType().getPowerUsed();
+            
 
+            
             Debugger.log("Cleaning cell (" + x + ", " + y + ")");
             Debugger.log("Dirt: " + cell.checkDirt());
-            if(Sweeper.getInstance().checkDirtCapacity() == 0){
+            Debugger.log("Surface type is "+ cell.getSurfaceType()+" .");
+            if(Sweeper.getInstance().checkDirtCapacity() == 0 || Sweeper.getInstance().checkPowerCapacity() == 0){
             	break;
             }
             // Clean if dirt
+            // 
+            
             cell.clean();
+           
+            
 
             // Update visited and unvisited cells
             registerCells();
@@ -93,6 +110,16 @@ public class ControlSystemService {
             RandomPosition randomDirection = new RandomPosition(x, y);
             Coordinate randomNr = randomDirection.getRandomCoordinate();
             setPosition(randomNr);
+            int a = (int) currentPos.getX();
+            int b = (int) currentPos.getY();
+            Cell nextCell = sensorService.getCell(a,b);
+            int nextPower = nextCell.getSurfaceType().getPowerUsed();
+            
+            //Decrease power capacity
+            int Total = powerConsumption(currentPower, nextPower);
+            Sweeper.getInstance().decreasePowerCapacity(Total);
+          
+        
 
             // Delay for visualization
             if (Debugger.getMode()) {
