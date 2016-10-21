@@ -93,6 +93,7 @@ public class ControlSystemService {
     }
 
     /**
+<<<<<<< HEAD
      * Document this and surrounding cells as visited or unvisited.
      *
      * TODO: Conflict with dirt levels. Assumes visited = clean, unvisited = dirty.
@@ -108,22 +109,22 @@ public class ControlSystemService {
 
         // Top cell
         Coordinate topCoordinate = new Coordinate(x, y + 1);
-        if (!visited.containsKey(topCoordinate) && !cell.blocked(Obstacle.TOP))
+        if (!visited.containsKey(topCoordinate) || sensorService.senseObstacleTop(cell))
                 unvisited.put(topCoordinate, sensorService.getCell(x, y + 1));
 
         // Bottom cell
         Coordinate bottomCoordinate = new Coordinate(x, y - 1);
-        if (!visited.containsKey(bottomCoordinate) && !cell.blocked(Obstacle.BOTTOM))
+        if (!visited.containsKey(bottomCoordinate) || sensorService.senseObstacleBottom(cell))
                 unvisited.put(bottomCoordinate, sensorService.getCell(x, y - 1));
 
         // Left cell
         Coordinate leftCoordinate = new Coordinate(x - 1, y);
-        if (!visited.containsKey(leftCoordinate) && !cell.blocked(Obstacle.LEFT))
+        if (!visited.containsKey(leftCoordinate) || sensorService.senseObstacleLeft(cell))
                 unvisited.put(leftCoordinate, sensorService.getCell(x - 1, y));
 
         // Right cell
         Coordinate rightCoordinate = new Coordinate(x + 1, y);
-        if (!visited.containsKey(rightCoordinate) && !cell.blocked(Obstacle.RIGHT))
+        if (!visited.containsKey(rightCoordinate) || sensorService.senseObstacleRight(cell))
                 unvisited.put(rightCoordinate, sensorService.getCell(x + 1, y));
 
     }

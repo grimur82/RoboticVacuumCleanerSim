@@ -36,7 +36,6 @@ public class Cell {
     public void clean() {
         dirt = false;
     }
-
     public SurfaceType getSurfaceType() {
         return surfaceType;
     }
@@ -59,6 +58,10 @@ public class Cell {
                 return false;
 
         return true;
+    }
+    
+    public EnumSet<Obstacle> getObstacles(){
+    	return obstacles;
     }
 
 }
