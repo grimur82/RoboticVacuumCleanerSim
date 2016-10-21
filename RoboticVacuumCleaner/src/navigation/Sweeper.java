@@ -24,7 +24,8 @@ public class Sweeper{
 	}
 	
 	public double decreasePowerCapacity(double powerConsumed){
-		return powerCapacity - powerConsumed;
+		powerCapacity =  powerCapacity - powerConsumed;
+		return powerCapacity;
 	}
 	
 	

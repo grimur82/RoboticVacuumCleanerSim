@@ -70,12 +70,26 @@ public class ControlSystemService {
     	return sweeper.checkDirtCapacity();
     }
     
-    //calculate average of current cell power and next cell
-    public double powerConsumption(int currentPower, int nextPower){
-    	return (currentPower + nextPower)/2;
+    
+    public double movementCharge(Cell cellA, Cell cellB){
+    	double chargeA = cellA.getSurfaceType().getPowerUsed();
+    	double chargeB = cellB.getSurfaceType().getPowerUsed();
+    	return (chargeA+chargeB)/2;  	
+    }
+    
+    public void decreasePowerMove(double total){
+    	sweeper.decreasePowerCapacity(total);
     }
     
     
+    public void decreasePowerClean(Cell cell){
+    	double currentCellCharge = cell.getSurfaceType().getPowerUsed();
+    	sweeper.decreasePowerCapacity(currentCellCharge);
+    }
+    
+    public double checkPowerCapacity(){
+    	return sweeper.checkPowerCapacity();
+    }
     
     
     private void clean() throws ParserConfigurationException, SAXException, IOException {
@@ -86,16 +100,18 @@ public class ControlSystemService {
             int x = (int) currentPos.getX();
             int y = (int) currentPos.getY();
             Cell cell = sensorService.getCell(x, y);
-            int currentPower = cell.getSurfaceType().getPowerUsed();
-            
-
-            //shuts down when dirt and power capacity is 0 for now
-            Debugger.log("Cleaning cell (" + x + ", " + y + ")");
-            Debugger.log("Dirt: " + cell.checkDirt());
-            Debugger.log("Surface type is "+ cell.getSurfaceType()+".");
-            if(Sweeper.getInstance().checkDirtCapacity() == 0 || Sweeper.getInstance().checkPowerCapacity() == 0){
+           
+            if(Sweeper.getInstance().checkDirtCapacity() == 0 || Sweeper.getInstance().checkPowerCapacity() <= 0.0){
             	break;
             }
+           
+            //shuts down when dirt and power capacity is 0 for now
+            Debugger.log("Cleaning cell (" + x + ", " + y + ")");
+            
+            Debugger.log("Surface type: "+ cell.getSurfaceType());
+            cell.checkDirt();
+            
+            
             // Clean if dirt
             // 
             
@@ -113,11 +129,10 @@ public class ControlSystemService {
             int a = (int) currentPos.getX();
             int b = (int) currentPos.getY();
             Cell nextCell = sensorService.getCell(a,b);
-            int nextPower = nextCell.getSurfaceType().getPowerUsed();
             
-            //Decrease power capacity
-            double Total = powerConsumption(currentPower, nextPower);
-            Sweeper.getInstance().decreasePowerCapacity(Total);
+            decreasePowerMove(movementCharge(cell, nextCell));
+            Debugger.log("Power for movement from current cell to next cell: "+ movementCharge(cell, nextCell));
+        	Debugger.log("New power capacity will be: "+ checkPowerCapacity());
           
         
 

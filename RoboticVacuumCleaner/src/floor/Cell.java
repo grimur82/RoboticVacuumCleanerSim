@@ -37,6 +37,10 @@ public class Cell {
     		Debugger.log("Floor Dirty: CleanSweeper cleans.");
     		Sweeper.getInstance().decreaseDirtCapacity();
     		Debugger.log("Dirt Capacity: " + Sweeper.getInstance().checkDirtCapacity());
+        	Debugger.log("Power consumed from cleaning: "+ getSurfaceType().getPowerUsed());
+        	Sweeper.getInstance().decreasePowerCapacity(getSurfaceType().getPowerUsed());
+        	Debugger.log("Power capacity: "+ Sweeper.getInstance().checkPowerCapacity());
+        	
     	}
     	else{
     		Debugger.log("Floor Clean: CleanSweeper moves on.");

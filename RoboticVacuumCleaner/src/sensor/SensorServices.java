@@ -45,26 +45,34 @@ public class SensorServices {
     }
 
 	public boolean senseObstacleTop(Cell cell) {
-		if (cell.getObstacles().contains(Obstacle.TOP))
+		if (cell.getObstacles().contains(Obstacle.TOP)){
+			Debugger.log("Path to TOP cell is obstructed");
 			return true;
+		}
 		return false;
 	}
 
 	public boolean senseObstacleBottom(Cell cell) {
-		if (cell.getObstacles().contains(Obstacle.BOTTOM))
+		if (cell.getObstacles().contains(Obstacle.BOTTOM)){
+			Debugger.log("Path to BOTTOM cell is obstructed");
 			return true;
+		}
 		return false;
 	}
 
 	public boolean senseObstacleLeft(Cell cell) {
-		if (cell.getObstacles().contains(Obstacle.LEFT))
+		if (cell.getObstacles().contains(Obstacle.LEFT)){
+			Debugger.log("Path to LEFT cell is obstructed");
 			return true;
+		}
 		return false;
 	}
 
 	public boolean senseObstacleRight(Cell cell) {
-		if (cell.getObstacles().contains(Obstacle.RIGHT))
+		if (cell.getObstacles().contains(Obstacle.RIGHT)){
+			Debugger.log("Path to RIGHT is obstructed");
 			return true;
+		}
 		return false;
 	}
 }
