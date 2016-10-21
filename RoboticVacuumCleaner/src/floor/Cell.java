@@ -1,8 +1,17 @@
 package floor;
 
+import sensor.SensorServices;
 import util.Debugger;
 
+import java.io.IOException;
 import java.util.EnumSet;
+
+import javax.xml.parsers.ParserConfigurationException;
+
+import org.xml.sax.SAXException;
+
+import navigation.ControlSystemService;
+import navigation.Sweeper;
 
 /**
  * A cell object.
@@ -23,9 +32,11 @@ public class Cell {
         this.obstacles = EnumSet.noneOf(Obstacle.class);
         this.dirt = true;
     }
-    public boolean checkDirt(){
+    public boolean checkDirt() throws ParserConfigurationException, SAXException, IOException{
     	if(dirt){
     		Debugger.log("Floor Dirty: CleanSweeper cleans.");
+    		Sweeper.getInstance().decreaseDirtCapacity();
+    		Debugger.log("Dirt Capacity: " + Sweeper.getInstance().checkDirtCapacity());
     	}
     	else{
     		Debugger.log("Floor Clean: CleanSweeper moves on.");

@@ -6,7 +6,12 @@ import floor.Obstacle;
 import sensor.SensorServices;
 import util.Debugger;
 
+import java.io.IOException;
 import java.util.HashMap;
+
+import javax.xml.parsers.ParserConfigurationException;
+
+import org.xml.sax.SAXException;
 
 public class ControlSystemService {
 
@@ -16,18 +21,22 @@ public class ControlSystemService {
     private HashMap<Coordinate, Cell> visited = new HashMap<>();
     private HashMap<Coordinate, Cell> unvisited = new HashMap<>();
     private SensorServices sensorService;
-
+    private Sweeper sweeper = Sweeper.getInstance(); 
+    // initialise Sweeper.class
+    // dirt capacity
+    // dirt space available
     /**
      * The control system.
      *
      * @param sensorService Reference to sensor/simulator.
+     * @throws IOException 
+     * @throws SAXException 
+     * @throws ParserConfigurationException 
      */
-    private ControlSystemService(SensorServices sensorService) {
+    private ControlSystemService(SensorServices sensorService) throws ParserConfigurationException, SAXException, IOException {
         Debugger.log("Starting control system");
-
         this.sensorService = sensorService;
-
-        clean();
+        	clean();
     }
 
     /**
@@ -35,8 +44,11 @@ public class ControlSystemService {
      *
      * @param sL Reference to sensor/simulator.
      * @return instance
+     * @throws IOException 
+     * @throws SAXException 
+     * @throws ParserConfigurationException 
      */
-    public static ControlSystemService getInstance(SensorServices sL) {
+    public static ControlSystemService getInstance(SensorServices sL) throws ParserConfigurationException, SAXException, IOException {
         if (controlSystemService == null)
             controlSystemService = new ControlSystemService(sL);
 
@@ -51,10 +63,15 @@ public class ControlSystemService {
     public void setPosition(Coordinate currentPos) {
         this.currentPos = currentPos;
     }
-
-    private void clean() {
+    public void decreaseSweepDirtCapacity(){
+    	sweeper.decreaseDirtCapacity();
+    }
+    public int checkSweepDirtCapacity(){
+    	return sweeper.checkDirtCapacity();
+    }
+    private void clean() throws ParserConfigurationException, SAXException, IOException {
         setPosition(sensorService.getStartPosition());
-
+       
         do {
 
             int x = (int) currentPos.getX();
@@ -63,7 +80,9 @@ public class ControlSystemService {
 
             Debugger.log("Cleaning cell (" + x + ", " + y + ")");
             Debugger.log("Dirt: " + cell.checkDirt());
-
+            if(Sweeper.getInstance().checkDirtCapacity() == 0){
+            	break;
+            }
             // Clean if dirt
             cell.clean();
 
@@ -85,13 +104,15 @@ public class ControlSystemService {
             }
 
         } while (!unvisited.isEmpty());
-
         Debugger.log("Cleaning done!");
     }
-    private boolean checkDirt(int x, int y){
+    private boolean checkDirt(int x, int y) throws ParserConfigurationException, SAXException, IOException{
     	return sensorService.getCell(x, y).checkDirt();
     }
-
+    public void shutDownSweeper(){
+    	System.out.println("Sweeper is full: Stopped");
+    	return;
+    }
     /**
      * Document this and surrounding cells as visited or unvisited.
      *
