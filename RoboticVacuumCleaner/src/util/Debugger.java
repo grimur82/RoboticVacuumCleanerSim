@@ -2,15 +2,15 @@ package util;
 
 public class Debugger {
 
-    private static boolean status = false;
+    private static boolean mode = true;
 
     public static void log(Object o) {
-        if (status)
+        if (mode)
             System.out.println(o.toString());
     }
 
     public static boolean getMode() {
-        return status;
+        return mode;
     }
 
 }
