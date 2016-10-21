@@ -71,7 +71,7 @@ public class ControlSystemService {
     }
     
     //calculate average of current cell power and next cell
-    public int powerConsumption(int currentPower, int nextPower){
+    public double powerConsumption(int currentPower, int nextPower){
     	return (currentPower + nextPower)/2;
     }
     
@@ -89,10 +89,10 @@ public class ControlSystemService {
             int currentPower = cell.getSurfaceType().getPowerUsed();
             
 
-            
+            //shuts down when dirt and power capacity is 0 for now
             Debugger.log("Cleaning cell (" + x + ", " + y + ")");
             Debugger.log("Dirt: " + cell.checkDirt());
-            Debugger.log("Surface type is "+ cell.getSurfaceType()+" .");
+            Debugger.log("Surface type is "+ cell.getSurfaceType()+".");
             if(Sweeper.getInstance().checkDirtCapacity() == 0 || Sweeper.getInstance().checkPowerCapacity() == 0){
             	break;
             }
@@ -116,7 +116,7 @@ public class ControlSystemService {
             int nextPower = nextCell.getSurfaceType().getPowerUsed();
             
             //Decrease power capacity
-            int Total = powerConsumption(currentPower, nextPower);
+            double Total = powerConsumption(currentPower, nextPower);
             Sweeper.getInstance().decreasePowerCapacity(Total);
           
         
