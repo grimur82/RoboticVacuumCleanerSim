@@ -1,6 +1,4 @@
-package navigation;
-
-import util.Debugger;
+package control;
 
 public class Sweeper{
 	public static Sweeper sweeper = new Sweeper();

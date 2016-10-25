@@ -1,6 +1,5 @@
 package floor;
 
-import sensor.SensorServices;
 import util.Debugger;
 
 import java.io.IOException;
@@ -10,8 +9,7 @@ import javax.xml.parsers.ParserConfigurationException;
 
 import org.xml.sax.SAXException;
 
-import navigation.ControlSystemService;
-import navigation.Sweeper;
+import control.Sweeper;
 
 /**
  * A cell object.

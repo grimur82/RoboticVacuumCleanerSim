@@ -1,8 +1,7 @@
-package navigation;
+package control;
 
 import floor.Cell;
 import floor.Coordinate;
-import floor.Obstacle;
 import sensor.SensorServices;
 import util.Debugger;
 
