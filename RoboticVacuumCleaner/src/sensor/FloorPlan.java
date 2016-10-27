@@ -2,7 +2,6 @@ package sensor;
 
 import floor.Cell;
 import floor.Coordinate;
-import util.Debugger;
 
 /**
  * Read floor plan object.
@@ -13,10 +12,10 @@ public class FloorPlan {
 	private static FloorPlan instance = null;
 
 	// Known floor plan
-	private static Cell[][] floorPlan;
+	private Cell[][] floorPlan;
 
 	// Current position
-	private static Coordinate startPosition;
+	private Coordinate startPosition;
 
 	/**
 	 * Initialize.
@@ -43,7 +42,7 @@ public class FloorPlan {
 	 *
 	 * @return Floor plan.
 	 */
-	public static Cell[][] getFloorPlan() {
+	public Cell[][] getFloorPlan() {
 		return floorPlan;
 	}
 
@@ -52,7 +51,7 @@ public class FloorPlan {
 	 *
 	 * @return Current position.
 	 */
-	public static Coordinate getStartPosition() {
+	public Coordinate getStartPosition() {
 		return startPosition;
 	}
 
@@ -63,7 +62,7 @@ public class FloorPlan {
 	 * @param y Y coordinate.
 	 * @return Cell.
 	 */
-	public static Cell getCell(int x, int y) {
+	public Cell getCell(int x, int y) {
 		return (floorPlan.length <= x || floorPlan[0].length <= y)
 				? null : floorPlan[x][y];
 	}

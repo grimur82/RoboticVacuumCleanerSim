@@ -15,9 +15,9 @@ import java.util.ArrayList;
 public class SensorServices {
 
     private static SensorServices sensorServices;
-    private static ArrayList<Coordinate> doorList;
+    private ArrayList<Coordinate> doorList;
 
-	private static FloorPlan floorPlan;
+	private FloorPlan floorPlan;
 
     private SensorServices() throws ParserConfigurationException, SAXException, IOException {
         Debugger.log("Starting sensor simulator");
@@ -32,11 +32,11 @@ public class SensorServices {
     }
 
     public Cell getCell(int x, int y) {
-        return FloorPlan.getCell(x, y);
+        return floorPlan.getCell(x, y);
     }
 
     public Coordinate getStartPosition() {
-        return FloorPlan.getStartPosition();
+        return floorPlan.getStartPosition();
     }
 
 	public boolean senseObstacleTop(Cell cell) {

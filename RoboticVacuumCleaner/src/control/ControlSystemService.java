@@ -20,7 +20,7 @@ public class ControlSystemService {
     private static ControlSystemService controlSystemService;
     private HashMap<Coordinate, Cell> visited = new HashMap<>();
     private HashMap<Coordinate, Cell> unvisited = new HashMap<>();
-    private static SensorServices sensorService;
+    private SensorServices sensorService;
     private Sweeper sweeper = Sweeper.getInstance(); 
     // initialise Sweeper.class
     // dirt capacity
@@ -99,7 +99,7 @@ public class ControlSystemService {
             int y = (int) currentPos.getY();
             Cell cell = sensorService.getCell(x, y);
 
-			Visualizer.print();
+			Visualizer.getInstance().print(visited);
 
             if(Sweeper.getInstance().checkDirtCapacity() == 0 || Sweeper.getInstance().checkPowerCapacity() <= 0.0){
             	break;

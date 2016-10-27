@@ -6,16 +6,33 @@ import floor.Coordinate;
 import floor.Obstacle;
 import sensor.FloorPlan;
 
+import java.util.HashMap;
+
 public class Visualizer {
 
-	private static FloorPlan floorPlan = FloorPlan.getInstance();
-	private static ControlSystemService control = ControlSystemService.getInstance();
+	private FloorPlan floorPlan;
+	private ControlSystemService control;
 
-	public static final String ANSI_RESET = "\u001B[0m";
-	public static final String ANSI_GREEN = "\u001B[32m";
+	private static Visualizer instance = null;
+	public final String ANSI_RESET = "\u001B[0m";
+	public final String ANSI_SWEEPER = "\u001B[32m";
+	public final String ANSI_DIRTY = "\u001B[31m";
 
-	public static void print() {
+	private Visualizer() {
+		floorPlan = FloorPlan.getInstance();
+		control = ControlSystemService.getInstance();
+	}
+
+	public static Visualizer getInstance() {
+		if (instance == null)
+			instance = new Visualizer();
+		return instance;
+	}
+
+	public void print(HashMap<Coordinate, Cell> visited) {
+
 		Cell[][] plan = floorPlan.getFloorPlan();
+		Coordinate pos = control.getCurrentPos();
 
 		if (plan.length == 0 || plan[0].length == 0)
 			return;
@@ -38,11 +55,13 @@ public class Visualizer {
 								? "| " : "  "
 				);
 
-				Coordinate pos = control.getCurrentPos();
-				System.out.print(
-						(pos.getX() == i && pos.getY() == j)
-								? ANSI_GREEN + "o" + ANSI_RESET : " "
-				);
+				if (pos.getX() == i && pos.getY() == j) {
+					System.out.print(ANSI_SWEEPER + "o" + ANSI_RESET);
+				} else if (visited.containsKey(new Coordinate(i, j))) {
+					System.out.print(" ");
+				} else {
+					System.out.print(ANSI_DIRTY + "x" + ANSI_RESET);
+				}
 
 				System.out.print(
 						plan[i][j].blocked(Obstacle.RIGHT)
