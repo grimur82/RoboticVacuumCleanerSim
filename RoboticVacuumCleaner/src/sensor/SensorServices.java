@@ -19,12 +19,12 @@ public class SensorServices {
 
 	private FloorPlan floorPlan;
 
-    private SensorServices() throws ParserConfigurationException, SAXException, IOException {
+    private SensorServices() {
         Debugger.log("Starting sensor simulator");
 		floorPlan = FloorPlan.getInstance();
     }
 
-    public static SensorServices getInstance() throws ParserConfigurationException, SAXException, IOException {
+    public static SensorServices getInstance() {
         if (sensorServices == null)
             sensorServices = new SensorServices();
 
