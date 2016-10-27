@@ -30,7 +30,7 @@ public class Cell {
         this.obstacles = EnumSet.noneOf(Obstacle.class);
         this.dirt = true;
     }
-    public boolean checkDirt() throws ParserConfigurationException, SAXException, IOException{
+    public boolean checkDirt() {
     	if(dirt){
     		Debugger.log("Floor Dirty: CleanSweeper cleans.");
     		Sweeper.getInstance().decreaseDirtCapacity();
@@ -38,7 +38,7 @@ public class Cell {
         	Debugger.log("Power consumed from cleaning: "+ getSurfaceType().getPowerUsed());
         	Sweeper.getInstance().decreasePowerCapacity(getSurfaceType().getPowerUsed());
         	Debugger.log("Power capacity: "+ Sweeper.getInstance().checkPowerCapacity());
-        	
+
     	}
     	else{
     		Debugger.log("Floor Clean: CleanSweeper moves on.");

@@ -8,22 +8,22 @@
     <start x="0" y="0" />
 
     <doors>
-        <door x="0.5" y="6.7" />
-        <door x="1.5" y="4.5" />
-        <door x="3.5" y="7" />
-        <door x="3.5" y="3" />
-        <door x="3.5" y="6" />
-        <door x="4.5" y="7.5" />
-        <door x="5.5" y="7" />
-        <door x="6.5" y="8.5" />
-        <door x="7.5" y="8" />
+        <door y="0.5" x="6.7" />
+        <door y="1.5" x="4.5" />
+        <door y="3.5" x="7" />
+        <door y="3.5" x="3" />
+        <door y="3.5" x="6" />
+        <door y="4.5" x="7.5" />
+        <door y="5.5" x="7" />
+        <door y="6.5" x="8.5" />
+        <door y="7.5" x="8" />
     </doors>
 
     <cells>
 
         <cell name="Guest Bedroom A">
-            <x>0</x>
             <y>0</y>
+            <x>0</x>
             <surface>LOWPILE</surface>
             <obstacles>
                 <obstacle>LEFT</obstacle>
@@ -34,32 +34,32 @@
             </flags>
         </cell>
         <cell name="Guest Bedroom A">
-            <x>0</x>
-            <y>1</y>
+            <y>0</y>
+            <x>1</x>
             <surface>LOWPILE</surface>
             <obstacles>
                 <obstacle>LEFT</obstacle>
             </obstacles>
         </cell>
         <cell name="Guest Bedroom A">
-            <x>0</x>
-            <y>2</y>
+            <y>0</y>
+            <x>2</x>
             <surface>LOWPILE</surface>
             <obstacles>
                 <obstacle>LEFT</obstacle>
             </obstacles>
         </cell>
         <cell name="Guest Bedroom A">
-            <x>0</x>
-            <y>3</y>
+            <y>0</y>
+            <x>3</x>
             <surface>LOWPILE</surface>
             <obstacles>
                 <obstacle>LEFT</obstacle>
             </obstacles>
         </cell>
         <cell name="Guest Bedroom A">
-            <x>0</x>
-            <y>4</y>
+            <y>0</y>
+            <x>4</x>
             <surface>LOWPILE</surface>
             <obstacles>
                 <obstacle>TOP</obstacle>
@@ -67,8 +67,8 @@
             </obstacles>
         </cell>
         <cell name="Closet A">
-            <x>0</x>
-            <y>5</y>
+            <y>0</y>
+            <x>5</x>
             <surface>BARE</surface>
             <obstacles>
                 <obstacle>TOP</obstacle>
@@ -77,8 +77,8 @@
             </obstacles>
         </cell>
         <cell name="Closet B">
-            <x>0</x>
-            <y>6</y>
+            <y>0</y>
+            <x>6</x>
             <surface>BARE</surface>
             <obstacles>
                 <obstacle>TOP</obstacle>
@@ -87,8 +87,8 @@
             </obstacles>
         </cell>
         <cell name="Guest Bedroom B">
-            <x>0</x>
-            <y>7</y>
+            <y>0</y>
+            <x>7</x>
             <surface>LOWPILE</surface>
             <obstacles>
                 <obstacle>LEFT</obstacle>
@@ -96,16 +96,16 @@
             </obstacles>
         </cell>
         <cell name="Guest Bedroom B">
-            <x>0</x>
-            <y>8</y>
+            <y>0</y>
+            <x>8</x>
             <surface>LOWPILE</surface>
             <obstacles>
                 <obstacle>LEFT</obstacle>
             </obstacles>
         </cell>
         <cell name="Guest Bedroom B">
-            <x>0</x>
-            <y>9</y>
+            <y>0</y>
+            <x>9</x>
             <surface>LOWPILE</surface>
             <obstacles>
                 <obstacle>TOP</obstacle>
@@ -114,39 +114,39 @@
         </cell>
 
         <cell name="Guest Bedroom A">
-            <x>1</x>
-            <y>0</y>
+            <y>1</y>
+            <x>0</x>
             <surface>LOWPILE</surface>
             <obstacles>
                 <obstacle>BOTTOM</obstacle>
             </obstacles>
         </cell>
         <cell name="Guest Bedroom A">
-            <x>1</x>
             <y>1</y>
+            <x>1</x>
             <surface>LOWPILE</surface>
         </cell>
         <cell name="Guest Bedroom A">
-            <x>1</x>
-            <y>2</y>
+            <y>1</y>
+            <x>2</x>
             <surface>LOWPILE</surface>
         </cell>
         <cell name="Guest Bedroom A">
-            <x>1</x>
-            <y>3</y>
+            <y>1</y>
+            <x>3</x>
             <surface>LOWPILE</surface>
         </cell>
         <cell name="Guest Bedroom A">
-            <x>1</x>
-            <y>4</y>
+            <y>1</y>
+            <x>4</x>
             <surface>LOWPILE</surface>
             <obstacles>
                 <obstacle>TOP</obstacle>
             </obstacles>
         </cell>
         <cell name="Closet A">
-            <x>1</x>
-            <y>5</y>
+            <y>1</y>
+            <x>5</x>
             <surface>BARE</surface>
             <obstacles>
                 <obstacle>TOP</obstacle>
@@ -154,8 +154,8 @@
             </obstacles>
         </cell>
         <cell name="Closet B">
-            <x>1</x>
-            <y>6</y>
+            <y>1</y>
+            <x>6</x>
             <surface>BARE</surface>
             <obstacles>
                 <obstacle>TOP</obstacle>
@@ -164,21 +164,21 @@
             </obstacles>
         </cell>
         <cell name="Guest Bedroom B">
-            <x>1</x>
-            <y>7</y>
+            <y>1</y>
+            <x>7</x>
             <surface>LOWPILE</surface>
             <obstacles>
                 <obstacle>BOTTOM</obstacle>
             </obstacles>
         </cell>
         <cell name="Guest Bedroom B">
-            <x>1</x>
-            <y>8</y>
+            <y>1</y>
+            <x>8</x>
             <surface>LOWPILE</surface>
         </cell>
         <cell name="Guest Bedroom B">
-            <x>1</x>
-            <y>9</y>
+            <y>1</y>
+            <x>9</x>
             <surface>LOWPILE</surface>
             <obstacles>
                 <obstacle>TOP</obstacle>
@@ -186,39 +186,39 @@
         </cell>
 
         <cell name="Guest Bedroom A">
-            <x>2</x>
-            <y>0</y>
+            <y>2</y>
+            <x>0</x>
             <surface>LOWPILE</surface>
             <obstacles>
                 <obstacle>BOTTOM</obstacle>
             </obstacles>
         </cell>
         <cell name="Guest Bedroom A">
-            <x>2</x>
-            <y>1</y>
-            <surface>LOWPILE</surface>
-        </cell>
-        <cell name="Guest Bedroom A">
-            <x>2</x>
             <y>2</y>
+            <x>1</x>
             <surface>LOWPILE</surface>
         </cell>
         <cell name="Guest Bedroom A">
+            <y>2</y>
             <x>2</x>
-            <y>3</y>
             <surface>LOWPILE</surface>
         </cell>
         <cell name="Guest Bedroom A">
-            <x>2</x>
-            <y>4</y>
+            <y>2</y>
+            <x>3</x>
+            <surface>LOWPILE</surface>
+        </cell>
+        <cell name="Guest Bedroom A">
+            <y>2</y>
+            <x>4</x>
             <surface>LOWPILE</surface>
             <obstacles>
                 <obstacle>TOP</obstacle>
             </obstacles>
         </cell>
         <cell name="Closet A">
-            <x>2</x>
-            <y>5</y>
+            <y>2</y>
+            <x>5</x>
             <surface>BARE</surface>
             <obstacles>
                 <obstacle>TOP</obstacle>
@@ -226,8 +226,8 @@
             </obstacles>
         </cell>
         <cell name="Closet C">
-            <x>2</x>
-            <y>6</y>
+            <y>2</y>
+            <x>6</x>
             <surface>BARE</surface>
             <obstacles>
                 <obstacle>TOP</obstacle>
@@ -236,21 +236,21 @@
             </obstacles>
         </cell>
         <cell name="Guest Bedroom B">
-            <x>2</x>
-            <y>7</y>
+            <y>2</y>
+            <x>7</x>
             <surface>LOWPILE</surface>
             <obstacles>
                 <obstacle>BOTTOM</obstacle>
             </obstacles>
         </cell>
         <cell name="Guest Bedroom B">
-            <x>2</x>
-            <y>8</y>
+            <y>2</y>
+            <x>8</x>
             <surface>LOWPILE</surface>
         </cell>
         <cell name="Guest Bedroom B">
-            <x>2</x>
-            <y>9</y>
+            <y>2</y>
+            <x>9</x>
             <surface>LOWPILE</surface>
             <obstacles>
                 <obstacle>TOP</obstacle>
@@ -258,8 +258,8 @@
         </cell>
 
         <cell name="Guest Bedroom A">
-            <x>3</x>
-            <y>0</y>
+            <y>3</y>
+            <x>0</x>
             <surface>LOWPILE</surface>
             <obstacles>
                 <obstacle>BOTTOM</obstacle>
@@ -267,32 +267,32 @@
             </obstacles>
         </cell>
         <cell name="Guest Bedroom A">
-            <x>3</x>
-            <y>1</y>
-            <surface>LOWPILE</surface>
-            <obstacles>
-                <obstacle>RIGHT</obstacle>
-            </obstacles>
-        </cell>
-        <cell name="Guest Bedroom A">
-            <x>3</x>
-            <y>2</y>
-            <surface>LOWPILE</surface>
-            <obstacles>
-                <obstacle>RIGHT</obstacle>
-            </obstacles>
-        </cell>
-        <cell name="Guest Bedroom A">
-            <x>3</x>
             <y>3</y>
+            <x>1</x>
             <surface>LOWPILE</surface>
             <obstacles>
                 <obstacle>RIGHT</obstacle>
             </obstacles>
         </cell>
         <cell name="Guest Bedroom A">
+            <y>3</y>
+            <x>2</x>
+            <surface>LOWPILE</surface>
+            <obstacles>
+                <obstacle>RIGHT</obstacle>
+            </obstacles>
+        </cell>
+        <cell name="Guest Bedroom A">
+            <y>3</y>
             <x>3</x>
-            <y>4</y>
+            <surface>LOWPILE</surface>
+            <obstacles>
+                <obstacle>RIGHT</obstacle>
+            </obstacles>
+        </cell>
+        <cell name="Guest Bedroom A">
+            <y>3</y>
+            <x>4</x>
             <surface>LOWPILE</surface>
             <obstacles>
                 <obstacle>TOP</obstacle>
@@ -300,8 +300,8 @@
             </obstacles>
         </cell>
         <cell name="Closet A">
-            <x>3</x>
-            <y>5</y>
+            <y>3</y>
+            <x>5</x>
             <surface>BARE</surface>
             <obstacles>
                 <obstacle>TOP</obstacle>
@@ -310,8 +310,8 @@
             </obstacles>
         </cell>
         <cell name="Closet C">
-            <x>3</x>
-            <y>6</y>
+            <y>3</y>
+            <x>6</x>
             <surface>BARE</surface>
             <obstacles>
                 <obstacle>TOP</obstacle>
@@ -320,8 +320,8 @@
             </obstacles>
         </cell>
         <cell name="Guest Bedroom B">
-            <x>3</x>
-            <y>7</y>
+            <y>3</y>
+            <x>7</x>
             <surface>LOWPILE</surface>
             <obstacles>
                 <obstacle>BOTTOM</obstacle>
@@ -329,16 +329,16 @@
             </obstacles>
         </cell>
         <cell name="Guest Bedroom B">
-            <x>3</x>
-            <y>8</y>
+            <y>3</y>
+            <x>8</x>
             <surface>LOWPILE</surface>
             <obstacles>
                 <obstacle>RIGHT</obstacle>
             </obstacles>
         </cell>
         <cell name="Guest Bedroom B">
-            <x>3</x>
-            <y>9</y>
+            <y>3</y>
+            <x>9</x>
             <surface>LOWPILE</surface>
             <obstacles>
                 <obstacle>TOP</obstacle>
@@ -347,8 +347,8 @@
         </cell>
 
         <cell name="Hallway">
-            <x>4</x>
-            <y>0</y>
+            <y>4</y>
+            <x>0</x>
             <surface>BARE</surface>
             <obstacles>
                 <obstacle>LEFT</obstacle>
@@ -359,56 +359,56 @@
             </flags>
         </cell>
         <cell name="Hallway">
-            <x>4</x>
-            <y>1</y>
-            <surface>BARE</surface>
-            <obstacles>
-                <obstacle>LEFT</obstacle>
-            </obstacles>
-        </cell>
-        <cell name="Hallway">
-            <x>4</x>
-            <y>2</y>
-            <surface>BARE</surface>
-            <obstacles>
-                <obstacle>LEFT</obstacle>
-            </obstacles>
-        </cell>
-        <cell name="Hallway">
-            <x>4</x>
-            <y>3</y>
-            <surface>BARE</surface>
-            <obstacles>
-                <obstacle>LEFT</obstacle>
-            </obstacles>
-        </cell>
-        <cell name="Hallway">
-            <x>4</x>
             <y>4</y>
+            <x>1</x>
             <surface>BARE</surface>
             <obstacles>
                 <obstacle>LEFT</obstacle>
             </obstacles>
         </cell>
         <cell name="Hallway">
-            <x>4</x>
-            <y>5</y>
+            <y>4</y>
+            <x>2</x>
             <surface>BARE</surface>
             <obstacles>
                 <obstacle>LEFT</obstacle>
             </obstacles>
         </cell>
         <cell name="Hallway">
-            <x>4</x>
-            <y>6</y>
+            <y>4</y>
+            <x>3</x>
             <surface>BARE</surface>
             <obstacles>
                 <obstacle>LEFT</obstacle>
             </obstacles>
         </cell>
         <cell name="Hallway">
+            <y>4</y>
             <x>4</x>
-            <y>7</y>
+            <surface>BARE</surface>
+            <obstacles>
+                <obstacle>LEFT</obstacle>
+            </obstacles>
+        </cell>
+        <cell name="Hallway">
+            <y>4</y>
+            <x>5</x>
+            <surface>BARE</surface>
+            <obstacles>
+                <obstacle>LEFT</obstacle>
+            </obstacles>
+        </cell>
+        <cell name="Hallway">
+            <y>4</y>
+            <x>6</x>
+            <surface>BARE</surface>
+            <obstacles>
+                <obstacle>LEFT</obstacle>
+            </obstacles>
+        </cell>
+        <cell name="Hallway">
+            <y>4</y>
+            <x>7</x>
             <surface>BARE</surface>
             <obstacles>
                 <obstacle>LEFT</obstacle>
@@ -416,8 +416,8 @@
             </obstacles>
         </cell>
         <cell name="Bathroom A">
-            <x>4</x>
-            <y>8</y>
+            <y>4</y>
+            <x>8</x>
             <surface>BARE</surface>
             <obstacles>
                 <obstacle>LEFT</obstacle>
@@ -426,8 +426,8 @@
             </obstacles>
         </cell>
         <cell name="Bathroom B">
-            <x>4</x>
-            <y>9</y>
+            <y>4</y>
+            <x>9</x>
             <surface>BARE</surface>
             <obstacles>
                 <obstacle>TOP</obstacle>
@@ -437,8 +437,8 @@
         </cell>
 
         <cell name="Hallway">
-            <x>5</x>
-            <y>0</y>
+            <y>5</y>
+            <x>0</x>
             <surface>BARE</surface>
             <obstacles>
                 <obstacle>RIGHT</obstacle>
@@ -446,56 +446,56 @@
             </obstacles>
         </cell>
         <cell name="Hallway">
-            <x>5</x>
-            <y>1</y>
-            <surface>BARE</surface>
-            <obstacles>
-                <obstacle>RIGHT</obstacle>
-            </obstacles>
-        </cell>
-        <cell name="Hallway">
-            <x>5</x>
-            <y>2</y>
-            <surface>BARE</surface>
-            <obstacles>
-                <obstacle>RIGHT</obstacle>
-            </obstacles>
-        </cell>
-        <cell name="Hallway">
-            <x>5</x>
-            <y>3</y>
-            <surface>BARE</surface>
-            <obstacles>
-                <obstacle>RIGHT</obstacle>
-            </obstacles>
-        </cell>
-        <cell name="Hallway">
-            <x>5</x>
-            <y>4</y>
-            <surface>BARE</surface>
-            <obstacles>
-                <obstacle>RIGHT</obstacle>
-            </obstacles>
-        </cell>
-        <cell name="Hallway">
-            <x>5</x>
             <y>5</y>
+            <x>1</x>
             <surface>BARE</surface>
             <obstacles>
                 <obstacle>RIGHT</obstacle>
             </obstacles>
         </cell>
         <cell name="Hallway">
-            <x>5</x>
-            <y>6</y>
+            <y>5</y>
+            <x>2</x>
             <surface>BARE</surface>
             <obstacles>
                 <obstacle>RIGHT</obstacle>
             </obstacles>
         </cell>
         <cell name="Hallway">
+            <y>5</y>
+            <x>3</x>
+            <surface>BARE</surface>
+            <obstacles>
+                <obstacle>RIGHT</obstacle>
+            </obstacles>
+        </cell>
+        <cell name="Hallway">
+            <y>5</y>
+            <x>4</x>
+            <surface>BARE</surface>
+            <obstacles>
+                <obstacle>RIGHT</obstacle>
+            </obstacles>
+        </cell>
+        <cell name="Hallway">
+            <y>5</y>
             <x>5</x>
-            <y>7</y>
+            <surface>BARE</surface>
+            <obstacles>
+                <obstacle>RIGHT</obstacle>
+            </obstacles>
+        </cell>
+        <cell name="Hallway">
+            <y>5</y>
+            <x>6</x>
+            <surface>BARE</surface>
+            <obstacles>
+                <obstacle>RIGHT</obstacle>
+            </obstacles>
+        </cell>
+        <cell name="Hallway">
+            <y>5</y>
+            <x>7</x>
             <surface>BARE</surface>
             <obstacles>
                 <obstacle>RIGHT</obstacle>
@@ -503,158 +503,158 @@
             </obstacles>
         </cell>
         <cell name="Bathroom A">
+            <y>5</y>
+            <x>8</x>
+            <surface>BARE</surface>
+            <obstacles>
+                <obstacle>RIGHT</obstacle>
+                <obstacle>TOP</obstacle>
+                <obstacle>BOTTOM</obstacle>
+            </obstacles>
+        </cell>
+        <cell name="Bathroom B">
+            <y>5</y>
+            <x>9</x>
+            <surface>BARE</surface>
+            <obstacles>
+                <obstacle>TOP</obstacle>
+                <obstacle>BOTTOM</obstacle>
+            </obstacles>
+        </cell>
+
+        <cell name="Master Bedroom">
+            <y>6</y>
+            <x>0</x>
+            <surface>BARE</surface>
+            <obstacles>
+                <obstacle>LEFT</obstacle>
+                <obstacle>BOTTOM</obstacle>
+            </obstacles>
+        </cell>
+        <cell name="Master Bedroom">
+            <y>6</y>
+            <x>1</x>
+            <surface>BARE</surface>
+            <obstacles>
+                <obstacle>LEFT</obstacle>
+            </obstacles>
+        </cell>
+        <cell name="Master Bedroom">
+            <y>6</y>
+            <x>2</x>
+            <surface>BARE</surface>
+            <obstacles>
+                <obstacle>LEFT</obstacle>
+            </obstacles>
+        </cell>
+        <cell name="Master Bedroom">
+            <y>6</y>
+            <x>3</x>
+            <surface>BARE</surface>
+            <obstacles>
+                <obstacle>LEFT</obstacle>
+            </obstacles>
+        </cell>
+        <cell name="Master Bedroom">
+            <y>6</y>
+            <x>4</x>
+            <surface>BARE</surface>
+            <obstacles>
+                <obstacle>LEFT</obstacle>
+            </obstacles>
+        </cell>
+        <cell name="Master Bedroom">
+            <y>6</y>
             <x>5</x>
-            <y>8</y>
             <surface>BARE</surface>
             <obstacles>
-                <obstacle>RIGHT</obstacle>
+                <obstacle>LEFT</obstacle>
+            </obstacles>
+        </cell>
+        <cell name="Master Bedroom">
+            <y>6</y>
+            <x>6</x>
+            <surface>BARE</surface>
+            <obstacles>
+                <obstacle>LEFT</obstacle>
+            </obstacles>
+        </cell>
+        <cell name="Master Bedroom">
+            <y>6</y>
+            <x>7</x>
+            <surface>BARE</surface>
+            <obstacles>
+                <obstacle>LEFT</obstacle>
+            </obstacles>
+        </cell>
+        <cell name="Master Bedroom">
+            <y>6</y>
+            <x>8</x>
+            <surface>BARE</surface>
+            <obstacles>
+                <obstacle>LEFT</obstacle>
+                <obstacle>TOP</obstacle>
+            </obstacles>
+        </cell>
+        <cell name="Bathroom B">
+            <y>6</y>
+            <x>9</x>
+            <surface>BARE</surface>
+            <obstacles>
                 <obstacle>TOP</obstacle>
                 <obstacle>BOTTOM</obstacle>
             </obstacles>
         </cell>
-        <cell name="Bathroom B">
+
+        <cell name="Master Bedroom">
+            <y>7</y>
+            <x>0</x>
+            <surface>BARE</surface>
+            <obstacles>
+                <obstacle>BOTTOM</obstacle>
+            </obstacles>
+        </cell>
+        <cell name="Master Bedroom">
+            <y>7</y>
+            <x>1</x>
+            <surface>HIGHPILE</surface>
+        </cell>
+        <cell name="Master Bedroom">
+            <y>7</y>
+            <x>2</x>
+            <surface>HIGHPILE</surface>
+        </cell>
+        <cell name="Master Bedroom">
+            <y>7</y>
+            <x>3</x>
+            <surface>HIGHPILE</surface>
+        </cell>
+        <cell name="Master Bedroom">
+            <y>7</y>
+            <x>4</x>
+            <surface>HIGHPILE</surface>
+        </cell>
+        <cell name="Master Bedroom">
+            <y>7</y>
             <x>5</x>
-            <y>9</y>
-            <surface>BARE</surface>
-            <obstacles>
-                <obstacle>TOP</obstacle>
-                <obstacle>BOTTOM</obstacle>
-            </obstacles>
-        </cell>
-
-        <cell name="Master Bedroom">
-            <x>6</x>
-            <y>0</y>
-            <surface>BARE</surface>
-            <obstacles>
-                <obstacle>LEFT</obstacle>
-                <obstacle>BOTTOM</obstacle>
-            </obstacles>
+            <surface>HIGHPILE</surface>
         </cell>
         <cell name="Master Bedroom">
-            <x>6</x>
-            <y>1</y>
-            <surface>BARE</surface>
-            <obstacles>
-                <obstacle>LEFT</obstacle>
-            </obstacles>
-        </cell>
-        <cell name="Master Bedroom">
-            <x>6</x>
-            <y>2</y>
-            <surface>BARE</surface>
-            <obstacles>
-                <obstacle>LEFT</obstacle>
-            </obstacles>
-        </cell>
-        <cell name="Master Bedroom">
-            <x>6</x>
-            <y>3</y>
-            <surface>BARE</surface>
-            <obstacles>
-                <obstacle>LEFT</obstacle>
-            </obstacles>
-        </cell>
-        <cell name="Master Bedroom">
-            <x>6</x>
-            <y>4</y>
-            <surface>BARE</surface>
-            <obstacles>
-                <obstacle>LEFT</obstacle>
-            </obstacles>
-        </cell>
-        <cell name="Master Bedroom">
-            <x>6</x>
-            <y>5</y>
-            <surface>BARE</surface>
-            <obstacles>
-                <obstacle>LEFT</obstacle>
-            </obstacles>
-        </cell>
-        <cell name="Master Bedroom">
-            <x>6</x>
-            <y>6</y>
-            <surface>BARE</surface>
-            <obstacles>
-                <obstacle>LEFT</obstacle>
-            </obstacles>
-        </cell>
-        <cell name="Master Bedroom">
-            <x>6</x>
             <y>7</y>
-            <surface>BARE</surface>
-            <obstacles>
-                <obstacle>LEFT</obstacle>
-            </obstacles>
-        </cell>
-        <cell name="Master Bedroom">
             <x>6</x>
-            <y>8</y>
-            <surface>BARE</surface>
-            <obstacles>
-                <obstacle>LEFT</obstacle>
-                <obstacle>TOP</obstacle>
-            </obstacles>
-        </cell>
-        <cell name="Bathroom B">
-            <x>6</x>
-            <y>9</y>
-            <surface>BARE</surface>
-            <obstacles>
-                <obstacle>TOP</obstacle>
-                <obstacle>BOTTOM</obstacle>
-            </obstacles>
-        </cell>
-
-        <cell name="Master Bedroom">
-            <x>7</x>
-            <y>0</y>
-            <surface>BARE</surface>
-            <obstacles>
-                <obstacle>BOTTOM</obstacle>
-            </obstacles>
-        </cell>
-        <cell name="Master Bedroom">
-            <x>7</x>
-            <y>1</y>
-            <surface>HIGHPILE</surface>
-        </cell>
-        <cell name="Master Bedroom">
-            <x>7</x>
-            <y>2</y>
-            <surface>HIGHPILE</surface>
-        </cell>
-        <cell name="Master Bedroom">
-            <x>7</x>
-            <y>3</y>
-            <surface>HIGHPILE</surface>
-        </cell>
-        <cell name="Master Bedroom">
-            <x>7</x>
-            <y>4</y>
-            <surface>HIGHPILE</surface>
-        </cell>
-        <cell name="Master Bedroom">
-            <x>7</x>
-            <y>5</y>
-            <surface>HIGHPILE</surface>
-        </cell>
-        <cell name="Master Bedroom">
-            <x>7</x>
-            <y>6</y>
             <surface>BARE</surface>
         </cell>
         <cell name="Master Bedroom">
-            <x>7</x>
             <y>7</y>
+            <x>7</x>
             <surface>BARE</surface>
             <obstacles>
                 <obstacle>RIGHT</obstacle>
             </obstacles>
         </cell>
         <cell name="Master Bedroom">
-            <x>7</x>
-            <y>8</y>
+            <y>7</y>
+            <x>8</x>
             <surface>BARE</surface>
             <obstacles>
                 <obstacle>RIGHT</obstacle>
@@ -662,60 +662,60 @@
             </obstacles>
         </cell>
         <cell name="Bathroom B">
+            <y>7</y>
+            <x>9</x>
+            <surface>BARE</surface>
+            <obstacles>
+                <obstacle>TOP</obstacle>
+                <obstacle>RIGHT</obstacle>
+                <obstacle>BOTTOM</obstacle>
+            </obstacles>
+        </cell>
+
+        <cell name="Master Bedroom">
+            <y>8</y>
+            <x>0</x>
+            <surface>BARE</surface>
+            <obstacles>
+                <obstacle>BOTTOM</obstacle>
+            </obstacles>
+        </cell>
+        <cell name="Master Bedroom">
+            <y>8</y>
+            <x>1</x>
+            <surface>HIGHPILE</surface>
+        </cell>
+        <cell name="Master Bedroom">
+            <y>8</y>
+            <x>2</x>
+            <surface>HIGHPILE</surface>
+        </cell>
+        <cell name="Master Bedroom">
+            <y>8</y>
+            <x>3</x>
+            <surface>HIGHPILE</surface>
+        </cell>
+        <cell name="Master Bedroom">
+            <y>8</y>
+            <x>4</x>
+            <surface>HIGHPILE</surface>
+        </cell>
+        <cell name="Master Bedroom">
+            <y>8</y>
+            <x>5</x>
+            <surface>HIGHPILE</surface>
+        </cell>
+        <cell name="Master Bedroom">
+            <y>8</y>
+            <x>6</x>
+            <surface>BARE</surface>
+            <obstacles>
+                <obstacle>TOP</obstacle>
+            </obstacles>
+        </cell>
+        <cell name="Closet C">
+            <y>8</y>
             <x>7</x>
-            <y>9</y>
-            <surface>BARE</surface>
-            <obstacles>
-                <obstacle>TOP</obstacle>
-                <obstacle>RIGHT</obstacle>
-                <obstacle>BOTTOM</obstacle>
-            </obstacles>
-        </cell>
-
-        <cell name="Master Bedroom">
-            <x>8</x>
-            <y>0</y>
-            <surface>BARE</surface>
-            <obstacles>
-                <obstacle>BOTTOM</obstacle>
-            </obstacles>
-        </cell>
-        <cell name="Master Bedroom">
-            <x>8</x>
-            <y>1</y>
-            <surface>HIGHPILE</surface>
-        </cell>
-        <cell name="Master Bedroom">
-            <x>8</x>
-            <y>2</y>
-            <surface>HIGHPILE</surface>
-        </cell>
-        <cell name="Master Bedroom">
-            <x>8</x>
-            <y>3</y>
-            <surface>HIGHPILE</surface>
-        </cell>
-        <cell name="Master Bedroom">
-            <x>8</x>
-            <y>4</y>
-            <surface>HIGHPILE</surface>
-        </cell>
-        <cell name="Master Bedroom">
-            <x>8</x>
-            <y>5</y>
-            <surface>HIGHPILE</surface>
-        </cell>
-        <cell name="Master Bedroom">
-            <x>8</x>
-            <y>6</y>
-            <surface>BARE</surface>
-            <obstacles>
-                <obstacle>TOP</obstacle>
-            </obstacles>
-        </cell>
-        <cell name="Closet C">
-            <x>8</x>
-            <y>7</y>
             <surface>BARE</surface>
             <obstacles>
                 <obstacle>LEFT</obstacle>
@@ -723,16 +723,16 @@
             </obstacles>
         </cell>
         <cell name="Closet C">
-            <x>8</x>
             <y>8</y>
+            <x>8</x>
             <surface>BARE</surface>
             <obstacles>
                 <obstacle>LEFT</obstacle>
             </obstacles>
         </cell>
         <cell name="Closet C">
-            <x>8</x>
-            <y>9</y>
+            <y>8</y>
+            <x>9</x>
             <surface>BARE</surface>
             <obstacles>
                 <obstacle>TOP</obstacle>
@@ -741,8 +741,8 @@
         </cell>
 
         <cell name="Master Bedroom">
-            <x>9</x>
-            <y>0</y>
+            <y>9</y>
+            <x>0</x>
             <surface>BARE</surface>
             <obstacles>
                 <obstacle>BOTTOM</obstacle>
@@ -750,48 +750,48 @@
             </obstacles>
         </cell>
         <cell name="Master Bedroom">
-            <x>9</x>
-            <y>1</y>
+            <y>9</y>
+            <x>1</x>
             <surface>BARE</surface>
             <obstacles>
                 <obstacle>RIGHT</obstacle>
             </obstacles>
         </cell>
         <cell name="Master Bedroom">
-            <x>9</x>
-            <y>2</y>
+            <y>9</y>
+            <x>2</x>
             <surface>BARE</surface>
             <obstacles>
                 <obstacle>RIGHT</obstacle>
             </obstacles>
         </cell>
         <cell name="Master Bedroom">
-            <x>9</x>
-            <y>3</y>
+            <y>9</y>
+            <x>3</x>
             <surface>BARE</surface>
             <obstacles>
                 <obstacle>RIGHT</obstacle>
             </obstacles>
         </cell>
         <cell name="Master Bedroom">
-            <x>9</x>
-            <y>4</y>
+            <y>9</y>
+            <x>4</x>
             <surface>BARE</surface>
             <obstacles>
                 <obstacle>RIGHT</obstacle>
             </obstacles>
         </cell>
         <cell name="Master Bedroom">
-            <x>9</x>
-            <y>5</y>
+            <y>9</y>
+            <x>5</x>
             <surface>BARE</surface>
             <obstacles>
                 <obstacle>RIGHT</obstacle>
             </obstacles>
         </cell>
         <cell name="Master Bedroom">
-            <x>9</x>
-            <y>6</y>
+            <y>9</y>
+            <x>6</x>
             <surface>BARE</surface>
             <obstacles>
                 <obstacle>TOP</obstacle>
@@ -799,8 +799,8 @@
             </obstacles>
         </cell>
         <cell name="Closet C">
-            <x>9</x>
-            <y>7</y>
+            <y>9</y>
+            <x>7</x>
             <surface>BARE</surface>
             <obstacles>
                 <obstacle>RIGHT</obstacle>
@@ -808,16 +808,16 @@
             </obstacles>
         </cell>
         <cell name="Closet C">
-            <x>9</x>
-            <y>8</y>
+            <y>9</y>
+            <x>8</x>
             <surface>BARE</surface>
             <obstacles>
                 <obstacle>RIGHT</obstacle>
             </obstacles>
         </cell>
         <cell name="Closet C">
-            <x>9</x>
             <y>9</y>
+            <x>9</x>
             <surface>BARE</surface>
             <obstacles>
                 <obstacle>TOP</obstacle>

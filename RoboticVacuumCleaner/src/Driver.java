@@ -12,6 +12,8 @@ public class Driver {
 
 	public static void main(String[] args) throws ParserConfigurationException, SAXException, IOException {
 		SensorServices sL = SensorServices.getInstance();
-		ControlSystemService.getInstance(sL);
+		ControlSystemService control = ControlSystemService.getInstance();
+		control.setSensor(sL);
+		control.clean();
 	}
 }

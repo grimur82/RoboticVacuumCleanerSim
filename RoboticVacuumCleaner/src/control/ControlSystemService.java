@@ -11,6 +11,7 @@ import java.util.HashMap;
 import javax.xml.parsers.ParserConfigurationException;
 
 import org.xml.sax.SAXException;
+import util.Visualizer;
 
 public class ControlSystemService {
 
@@ -19,40 +20,38 @@ public class ControlSystemService {
     private static ControlSystemService controlSystemService;
     private HashMap<Coordinate, Cell> visited = new HashMap<>();
     private HashMap<Coordinate, Cell> unvisited = new HashMap<>();
-    private SensorServices sensorService;
+    private static SensorServices sensorService;
     private Sweeper sweeper = Sweeper.getInstance(); 
     // initialise Sweeper.class
     // dirt capacity
     // dirt space available
     /**
      * The control system.
-     *
-     * @param sensorService Reference to sensor/simulator.
-     * @throws IOException 
-     * @throws SAXException 
-     * @throws ParserConfigurationException 
      */
-    private ControlSystemService(SensorServices sensorService) throws ParserConfigurationException, SAXException, IOException {
+	private ControlSystemService() {
         Debugger.log("Starting control system");
-        this.sensorService = sensorService;
-        	clean();
     }
 
     /**
      * Singleton.
      *
-     * @param sL Reference to sensor/simulator.
      * @return instance
-     * @throws IOException 
-     * @throws SAXException 
-     * @throws ParserConfigurationException 
      */
-    public static ControlSystemService getInstance(SensorServices sL) throws ParserConfigurationException, SAXException, IOException {
+	public static ControlSystemService getInstance() {
         if (controlSystemService == null)
-            controlSystemService = new ControlSystemService(sL);
+            controlSystemService = new ControlSystemService();
 
         return controlSystemService;
     }
+
+	/**
+	 * Sets sensor.
+	 *
+	 * @param sL Sensor.
+	 */
+	public void setSensor(SensorServices sL) {
+		sensorService = sL;
+	}
 
     /**
      * Set current position of sweeper.
@@ -91,15 +90,17 @@ public class ControlSystemService {
     }
     
     
-    private void clean() throws ParserConfigurationException, SAXException, IOException {
+    public void clean() {
         setPosition(sensorService.getStartPosition());
-       
+
         do {
 
             int x = (int) currentPos.getX();
             int y = (int) currentPos.getY();
             Cell cell = sensorService.getCell(x, y);
-           
+
+			Visualizer.print();
+
             if(Sweeper.getInstance().checkDirtCapacity() == 0 || Sweeper.getInstance().checkPowerCapacity() <= 0.0){
             	break;
             }
@@ -109,7 +110,7 @@ public class ControlSystemService {
 
             Debugger.log("Surface type: "+ cell.getSurfaceType());
             cell.checkDirt();
-            
+
             
             // Clean if dirt
             //
@@ -160,34 +161,42 @@ public class ControlSystemService {
      * TODO: Conflict with dirt levels. Assumes visited = clean, unvisited = dirty.
      */
     private void registerCells() {
-        int x = (int) currentPos.getX();
-        int y = (int) currentPos.getY();
+		int x = (int) currentPos.getX();
+		int y = (int) currentPos.getY();
 
-        // Current cell
-        Cell cell = sensorService.getCell(x, y);
-        visited.put(currentPos, cell);
-        unvisited.remove(currentPos);
+		// Current cell
+		Cell cell = sensorService.getCell(x, y);
+		visited.put(currentPos, cell);
+		unvisited.remove(currentPos);
 
-        // Top cell
-        Coordinate topCoordinate = new Coordinate(x, y + 1);
-        if (!visited.containsKey(topCoordinate) && !sensorService.senseObstacleTop(cell))
-                unvisited.put(topCoordinate, sensorService.getCell(x, y + 1));
+		// Top cell
+		Coordinate topCoordinate = new Coordinate(x + 1, y);
+		if (!visited.containsKey(topCoordinate) && !sensorService.senseObstacleTop(cell))
+		        unvisited.put(topCoordinate, sensorService.getCell(x + 1, y));
 
-        // Bottom cell
-        Coordinate bottomCoordinate = new Coordinate(x, y - 1);
-        if (!visited.containsKey(bottomCoordinate) && !sensorService.senseObstacleBottom(cell))
-                unvisited.put(bottomCoordinate, sensorService.getCell(x, y - 1));
+		// Bottom cell
+		Coordinate bottomCoordinate = new Coordinate(x - 1, y);
+		if (!visited.containsKey(bottomCoordinate) && !sensorService.senseObstacleBottom(cell))
+		        unvisited.put(bottomCoordinate, sensorService.getCell(x - 1, y));
 
         // Left cell
-        Coordinate leftCoordinate = new Coordinate(x - 1, y);
+        Coordinate leftCoordinate = new Coordinate(x, y - 1);
         if (!visited.containsKey(leftCoordinate) && !sensorService.senseObstacleLeft(cell))
-                unvisited.put(leftCoordinate, sensorService.getCell(x - 1, y));
+                unvisited.put(leftCoordinate, sensorService.getCell(x, y - 1));
 
         // Right cell
-        Coordinate rightCoordinate = new Coordinate(x + 1, y);
+        Coordinate rightCoordinate = new Coordinate(x, y + 1);
         if (!visited.containsKey(rightCoordinate) && !sensorService.senseObstacleRight(cell))
-                unvisited.put(rightCoordinate, sensorService.getCell(x + 1, y));
-
+                unvisited.put(rightCoordinate, sensorService.getCell(x, y + 1));
     }
+
+	/**
+	 * Get current position.
+	 *
+	 * @return Current position.
+	 */
+	public Coordinate getCurrentPos() {
+		return currentPos;
+	}
 
 }
