@@ -106,14 +106,14 @@ public class ControlSystemService {
            
             //shuts down when dirt and power capacity is 0 for now
             Debugger.log("Cleaning cell (" + x + ", " + y + ")");
-            
+
             Debugger.log("Surface type: "+ cell.getSurfaceType());
             cell.checkDirt();
             
             
             // Clean if dirt
-            // 
-            
+            //
+
             cell.clean();
            
             

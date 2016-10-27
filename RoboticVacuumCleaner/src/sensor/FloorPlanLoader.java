@@ -24,16 +24,20 @@ import util.Debugger;
  */
 public class FloorPlanLoader {
 
-    private ArrayList<Coordinate> doors;
-    private Cell[][] floorPlan;
+	private ArrayList<Coordinate> doors = new ArrayList<>();
+	private Cell[][] floorPlan = null;
 
-    Coordinate startPos = new Coordinate();
+	private Coordinate startPos = new Coordinate();
 
-    public FloorPlanLoader() throws ParserConfigurationException, SAXException, IOException {
-        doors = new ArrayList<>();
-
-        loadFloorPlan();
-    }
+	public FloorPlanLoader() {
+		try {
+			loadFloorPlan();
+		} catch (ParserConfigurationException | SAXException | IOException e) {
+			Debugger.log("Error loading floor plan");
+			e.printStackTrace();
+			System.exit(-1);
+		}
+	}
 
     public Cell[][] getFloorPlan() {
         return floorPlan;
