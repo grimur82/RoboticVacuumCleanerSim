@@ -135,7 +135,7 @@ public class ControlSystemService {
             registerCells();
 
             // Set next cell
-            RandomPosition randomDirection = new RandomPosition(x, y);
+            RandomPosition randomDirection = new RandomPosition(currentPos);
             Coordinate randomNr = randomDirection.getRandomCoordinate();
             setPosition(randomNr);
             int a = (int) currentPos.getX();

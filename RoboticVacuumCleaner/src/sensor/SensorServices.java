@@ -35,6 +35,16 @@ public class SensorServices {
         return floorPlan.getCell(x, y);
     }
 
+	/**
+	 * Get cell by Coordinate object.
+	 *
+	 * @param c Coordinate.
+	 * @return cell
+	 */
+	public Cell getCell(Coordinate c) {
+		return floorPlan.getCell((int) c.getX(), (int) c.getY());
+	}
+
     public Coordinate getStartPosition() {
         return floorPlan.getStartPosition();
     }
