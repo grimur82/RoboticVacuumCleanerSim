@@ -3,11 +3,13 @@ package sensor;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
 
+import floor.DoorStatus;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.NodeList;
@@ -24,7 +26,7 @@ import util.Debugger;
  */
 public class FloorPlanLoader {
 
-	private ArrayList<Coordinate> doors = new ArrayList<>();
+	private HashMap<Coordinate, DoorStatus> doors = new HashMap<>();
 	private Cell[][] floorPlan = null;
 
 	private Coordinate startPos = new Coordinate();
@@ -84,13 +86,14 @@ public class FloorPlanLoader {
 
             Double x = Double.valueOf(door.getAttribute("x"));
             Double y = Double.valueOf(door.getAttribute("y"));
+			DoorStatus status = DoorStatus.valueOf(door.getAttribute("status"));
 
             Coordinate coordinate = new Coordinate(x.doubleValue(), y.doubleValue());
-            doors.add(coordinate);
+            doors.put(coordinate, status);
         }
     }
 
-    public ArrayList<Coordinate> getDoors(){
+    public HashMap<Coordinate, DoorStatus> getDoors(){
     	return doors;
     }
 
