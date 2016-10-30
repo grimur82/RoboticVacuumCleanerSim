@@ -39,6 +39,7 @@ public class SweeperServices {
 			if(temp.getX() == SensorServices.getInstance().getStartPosition().getX()
 					&& temp.getY() == SensorServices.getInstance().getStartPosition().getY()){
 				Debugger.log("Found the base: Recharging");
+				Sweeper.getInstance().reCharged();
 				break;
 			}
 			for(Coordinate s : temp.getParents()){
