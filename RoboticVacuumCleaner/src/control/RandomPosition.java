@@ -1,58 +1,42 @@
 package control;
 
-import java.util.Random;
 
 import floor.Coordinate;
 import floor.Obstacle;
-import sensor.SensorServices;
+import util.Debugger;
+
+import java.util.EnumSet;
+import java.util.Random;
 
 public class RandomPosition {
 
-	// Current position of sweeper
-	private Coordinate currentPos;
+	public static Coordinate generate(Coordinate currentPos, EnumSet<Obstacle> free) {
 
-	public RandomPosition(Coordinate currentPos){
-		this.currentPos = currentPos;
-	}
-
-	/**
-	 * Select a random surrounding coordinate within bounds.
-	 *
-	 * @return Random surrounding coordinate.
-	 */
-	public Coordinate getRandomCoordinate(){
-		SensorServices sensor = SensorServices.getInstance();
+		int x = (int) currentPos.getX();
+		int y = (int) currentPos.getY();
 
 		Random r = new Random();
-		Coordinate chosenCell;
-		Obstacle chosenDir;
+		int i = r.nextInt(free.size());
+		Coordinate chosenCoord;
 
-		double x = currentPos.getX();
-		double y = currentPos.getY();
+		switch ((Obstacle)free.toArray()[i]) {
+			case TOP:
+				chosenCoord = new Coordinate(x + 1, y);
+				break;
+			case BOTTOM:
+				chosenCoord = new Coordinate(x - 1, y);
+				break;
+			case LEFT:
+				chosenCoord = new Coordinate(x, y - 1);
+				break;
+			case RIGHT:
+			default:
+				chosenCoord = new Coordinate(x, y + 1);
+				break;
+		}
 
-		do {
+		return chosenCoord;
 
-			switch (r.nextInt(4)) {
-				case 1:
-					chosenCell = new Coordinate(x - 1, y);
-					chosenDir = Obstacle.BOTTOM;
-					break;
-				case 2:
-					chosenCell = new Coordinate(x + 1, y);
-					chosenDir = Obstacle.TOP;
-					break;
-				case 3:
-					chosenCell = new Coordinate(x, y - 1);
-					chosenDir = Obstacle.LEFT;
-					break;
-				default:
-					chosenCell = new Coordinate(x, y + 1);
-					chosenDir = Obstacle.RIGHT;
-					break;
-			}
-
-		} while (sensor.getCell(currentPos).blocked(chosenDir));
-
-		return chosenCell;
 	}
+
 }

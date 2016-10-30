@@ -2,12 +2,12 @@ package control;
 
 import floor.Cell;
 import floor.Coordinate;
+import floor.Obstacle;
 import sensor.SensorServices;
 import util.Debugger;
 
 import java.io.IOException;
-import java.util.HashMap;
-import java.util.Set;
+import java.util.*;
 
 import javax.xml.parsers.ParserConfigurationException;
 
@@ -128,19 +128,23 @@ public class ControlSystemService {
             //
 
             cell.clean();
-           
-            
+
+			// Dynamically find obstacles
+			EnumSet<Obstacle> obstacles = ObstacleDetector.generate(currentPos);
+
+			// Get free directions
+			EnumSet<Obstacle> free = EnumSet.allOf(Obstacle.class);
+			free.removeAll(obstacles);
 
             // Update visited and unvisited cells
-            registerCells();
+            registerCells(free);
 
-            // Set next cell
-            RandomPosition randomDirection = new RandomPosition(currentPos);
-            Coordinate randomNr = randomDirection.getRandomCoordinate();
-            setPosition(randomNr);
-            int a = (int) currentPos.getX();
-            int b = (int) currentPos.getY();
-            Cell nextCell = sensorService.getCell(a,b);
+            // Choose next random cell
+			Coordinate chosenCoord = RandomPosition.generate(currentPos, free);
+
+			// Set next cell
+			setPosition(chosenCoord);
+			Cell nextCell = sensorService.getCell(chosenCoord);
             
             decreasePowerMove(movementCharge(cell, nextCell));
             Debugger.log("Power for movement from current cell to next cell: "+ movementCharge(cell, nextCell));
@@ -172,7 +176,13 @@ public class ControlSystemService {
      *
      * TODO: Conflict with dirt levels. Assumes visited = clean, unvisited = dirty.
      */
-    private void registerCells() {
+
+	/**
+	 * Document this and surrounding cells as visited or unvisited.
+	 *
+	 * @param free Available directions.
+	 */
+    private void registerCells(EnumSet<Obstacle> free) {
 		int x = (int) currentPos.getX();
 		int y = (int) currentPos.getY();
 
@@ -181,25 +191,38 @@ public class ControlSystemService {
 		visited.put(currentPos, cell);
 		unvisited.remove(currentPos);
 
-		// Top cell
-		Coordinate topCoordinate = new Coordinate(x + 1, y);
-		if (!visited.containsKey(topCoordinate) && !sensorService.senseObstacleTop(cell))
-		        unvisited.put(topCoordinate, sensorService.getCell(x + 1, y));
+		// Register surrounding cells
+		for (Obstacle o : free) {
 
-		// Bottom cell
-		Coordinate bottomCoordinate = new Coordinate(x - 1, y);
-		if (!visited.containsKey(bottomCoordinate) && !sensorService.senseObstacleBottom(cell))
-		        unvisited.put(bottomCoordinate, sensorService.getCell(x - 1, y));
+			switch (o) {
 
-        // Left cell
-        Coordinate leftCoordinate = new Coordinate(x, y - 1);
-        if (!visited.containsKey(leftCoordinate) && !sensorService.senseObstacleLeft(cell))
-                unvisited.put(leftCoordinate, sensorService.getCell(x, y - 1));
+				case TOP:
+					Coordinate topCoordinate = new Coordinate(x + 1, y);
+					if (!visited.containsKey(topCoordinate))
+						unvisited.put(topCoordinate, sensorService.getCell(x + 1, y));
+					break;
 
-        // Right cell
-        Coordinate rightCoordinate = new Coordinate(x, y + 1);
-        if (!visited.containsKey(rightCoordinate) && !sensorService.senseObstacleRight(cell))
-                unvisited.put(rightCoordinate, sensorService.getCell(x, y + 1));
+				case BOTTOM:
+					Coordinate bottomCoordinate = new Coordinate(x - 1, y);
+					if (!visited.containsKey(bottomCoordinate))
+						unvisited.put(bottomCoordinate, sensorService.getCell(x - 1, y));
+					break;
+
+				case LEFT:
+					Coordinate leftCoordinate = new Coordinate(x, y - 1);
+					if (!visited.containsKey(leftCoordinate))
+						unvisited.put(leftCoordinate, sensorService.getCell(x, y - 1));
+					break;
+
+				case RIGHT:
+				default:
+					Coordinate rightCoordinate = new Coordinate(x, y + 1);
+					if (!visited.containsKey(rightCoordinate))
+						unvisited.put(rightCoordinate, sensorService.getCell(x, y + 1));
+					break;
+
+			}
+		}
     }
 
 	/**

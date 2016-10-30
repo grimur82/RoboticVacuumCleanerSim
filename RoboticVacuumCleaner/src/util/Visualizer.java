@@ -3,6 +3,7 @@ package util;
 import control.ControlSystemService;
 import floor.Cell;
 import floor.Coordinate;
+import floor.DoorStatus;
 import floor.Obstacle;
 import sensor.FloorPlan;
 
@@ -33,6 +34,7 @@ public class Visualizer {
 
 		Cell[][] plan = floorPlan.getFloorPlan();
 		Coordinate pos = control.getCurrentPos();
+		HashMap<Coordinate, DoorStatus> doorList = floorPlan.getDoorList();
 
 		if (plan.length == 0 || plan[0].length == 0)
 			return;

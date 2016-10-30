@@ -5,15 +5,15 @@
     </description>
 
     <dimensions x="9" y="9" />
-    <start x="0" y="0" />
+    <start x="7" y="4" />
 
     <doors>
         <door y="0.5" x="6.7" status="OPEN" />
-        <door y="1.5" x="4.5" status="CLOSED" />
+        <door y="1.5" x="4.5" status="OPEN" />
         <door y="3.5" x="7" status="OPEN" />
-        <door y="3.5" x="3" status="CLOSED" />
+        <door y="3.5" x="3" status="OPEN" />
         <door y="3.5" x="6" status="OPEN" />
-        <door y="4.5" x="7.5" status="CLOSED" />
+        <door y="4.5" x="7.5" status="OPEN" />
         <door y="5.5" x="7" status="OPEN" />
         <door y="6.5" x="8.5" status="OPEN" />
         <door y="7.5" x="8" status="OPEN" />

@@ -2,6 +2,9 @@ package sensor;
 
 import floor.Cell;
 import floor.Coordinate;
+import floor.DoorStatus;
+
+import java.util.HashMap;
 
 /**
  * Read floor plan object.
@@ -14,6 +17,9 @@ public class FloorPlan {
 	// Known floor plan
 	private Cell[][] floorPlan;
 
+	// Known doors
+	private HashMap<Coordinate, DoorStatus> doorList;
+
 	// Current position
 	private Coordinate startPosition;
 
@@ -24,6 +30,7 @@ public class FloorPlan {
 		FloorPlanLoader loader = new FloorPlanLoader();
 		floorPlan = loader.getFloorPlan();
 		startPosition = loader.getStartPosition();
+		doorList = loader.getDoorList();
 	}
 
 	/**
@@ -44,6 +51,15 @@ public class FloorPlan {
 	 */
 	public Cell[][] getFloorPlan() {
 		return floorPlan;
+	}
+
+	/**
+	 * Get door list.
+	 *
+	 * @return Door list.
+	 */
+	public HashMap<Coordinate, DoorStatus> getDoorList() {
+		return doorList;
 	}
 
 	/**

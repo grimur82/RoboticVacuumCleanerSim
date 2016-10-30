@@ -92,7 +92,7 @@ public class FloorPlanLoader {
         }
     }
 
-    public HashMap<Coordinate, DoorStatus> getDoors(){
+    public HashMap<Coordinate, DoorStatus> getDoorList() {
     	return doors;
     }
 

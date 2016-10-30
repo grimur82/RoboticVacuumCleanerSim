@@ -2,6 +2,7 @@ package sensor;
 
 import floor.Cell;
 import floor.Coordinate;
+import floor.DoorStatus;
 import floor.Obstacle;
 
 import org.xml.sax.SAXException;
@@ -11,13 +12,14 @@ import javax.xml.parsers.ParserConfigurationException;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class SensorServices {
 
     private static SensorServices sensorServices;
-    private ArrayList<Coordinate> doorList;
 
 	private FloorPlan floorPlan;
+	private HashMap<Coordinate, DoorStatus> doorList;
 
     private SensorServices() {
         Debugger.log("Starting sensor simulator");
@@ -51,6 +53,10 @@ public class SensorServices {
     public Cell[][] getFloorPlan(){
     	return floorPlan.getFloorPlan();
     }
+
+	public HashMap<Coordinate, DoorStatus> getDoorList() {
+		return floorPlan.getDoorList();
+	}
 
 	public boolean senseObstacleTop(Cell cell) {
 		if (cell.getObstacles().contains(Obstacle.TOP)){
