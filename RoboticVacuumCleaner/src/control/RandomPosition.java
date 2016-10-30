@@ -51,11 +51,7 @@ public class RandomPosition {
 					break;
 			}
 
-		} while (chosenCell.getX() < 0
-				|| chosenCell.getX() >= 10
-				|| chosenCell.getY() < 0
-				|| chosenCell.getY() >= 10
-				|| sensor.getCell(currentPos).blocked(chosenDir));
+		} while (sensor.getCell(currentPos).blocked(chosenDir));
 
 		return chosenCell;
 	}
