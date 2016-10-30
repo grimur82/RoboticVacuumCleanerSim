@@ -8,15 +8,15 @@
     <start x="0" y="0" />
 
     <doors>
-        <door y="0.5" x="6.7" />
-        <door y="1.5" x="4.5" />
-        <door y="3.5" x="7" />
-        <door y="3.5" x="3" />
-        <door y="3.5" x="6" />
-        <door y="4.5" x="7.5" />
-        <door y="5.5" x="7" />
-        <door y="6.5" x="8.5" />
-        <door y="7.5" x="8" />
+        <door y="0.5" x="6.7" status="OPEN" />
+        <door y="1.5" x="4.5" status="CLOSED" />
+        <door y="3.5" x="7" status="OPEN" />
+        <door y="3.5" x="3" status="CLOSED" />
+        <door y="3.5" x="6" status="OPEN" />
+        <door y="4.5" x="7.5" status="CLOSED" />
+        <door y="5.5" x="7" status="OPEN" />
+        <door y="6.5" x="8.5" status="OPEN" />
+        <door y="7.5" x="8" status="OPEN" />
     </doors>
 
     <cells>
