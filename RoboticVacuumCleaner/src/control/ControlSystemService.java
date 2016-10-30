@@ -104,7 +104,7 @@ public class ControlSystemService {
             int y = (int) currentPos.getY();
             //currentPos.setDistance(-1);
             Cell cell = sensorService.getCell(x, y);
-            currentPos.setParents();
+           // currentPos.setParents();
 			Visualizer.getInstance().print(visited);
 
             if(Sweeper.getInstance().checkDirtCapacity() == 0 || Sweeper.getInstance().checkPowerCapacity() <= 0.0){

@@ -31,7 +31,7 @@ public class SweeperServices {
 		Cell[][] floor = SensorServices.getInstance().getFloorPlan();
 		
 		ArrayList<Coordinate> q = new ArrayList<Coordinate>();
-		//ControlSystemService.getInstance().getCurrentPos().setDistance(0);
+		ControlSystemService.getInstance().getCurrentPos().setDistance(0);
 		q.add(ControlSystemService.getInstance().getCurrentPos());
 		while(!q.isEmpty()){
 			Coordinate temp = q.remove(0);

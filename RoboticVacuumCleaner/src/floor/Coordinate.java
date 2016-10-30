@@ -18,6 +18,7 @@ public class Coordinate {
         distance = -1;
         parents = null;
         neighbor = null;
+        setParents();
     }
     public void setDistance(int distance){
     	this.distance = distance;
