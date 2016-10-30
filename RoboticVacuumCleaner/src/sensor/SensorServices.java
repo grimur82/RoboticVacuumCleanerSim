@@ -49,7 +49,7 @@ public class SensorServices {
         return floorPlan.getStartPosition();
     }
     public Cell[][] getFloorPlan(){
-    	return floorPlan.getInstance().getFloorPlan();
+    	return floorPlan.getFloorPlan();
     }
 
 	public boolean senseObstacleTop(Cell cell) {
