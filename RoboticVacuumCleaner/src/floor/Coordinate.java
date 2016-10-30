@@ -10,18 +10,26 @@ public class Coordinate {
     private double x = 0;
     private double y = 0;
     private int distance = -1;
+    private Coordinate neighbor;
     private ArrayList<Coordinate> parents;
     public Coordinate(int x, int y) {
         this.x = x;
         this.y = y;
         distance = -1;
         parents = null;
+        neighbor = null;
     }
     public void setDistance(int distance){
     	this.distance = distance;
     }
     public int getDistance(){
     	return distance;
+    }
+    public void setNeighbor(Coordinate c){
+    	neighbor = c;
+    }
+    public Coordinate getNeighbor(){
+    	return neighbor;
     }
     public ArrayList<Coordinate> getParents(){
     	if(parents == null){

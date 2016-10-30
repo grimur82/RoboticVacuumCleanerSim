@@ -46,7 +46,8 @@ public class SweeperServices {
 				
 				if(s.getDistance() == -1){
 					s.setDistance(temp.getDistance() + 1);
-					s.setParentsFromOther(temp.getParents());
+					s.setNeighbor(temp);
+					//s.setParentsFromOther(temp.getParents());
 					q.add(s);
 				}
 			}
