@@ -2,19 +2,20 @@ package floor;
 
 import java.util.ArrayList;
 
+import sensor.SensorServices;
 import util.Debugger;
 
 public class Coordinate {
 
     private double x = 0;
     private double y = 0;
-    private int distance;
+    private int distance = -1;
     private ArrayList<Coordinate> parents;
     public Coordinate(int x, int y) {
         this.x = x;
         this.y = y;
-        this.distance = -1;
-        this.parents = new ArrayList<Coordinate>();
+        distance = -1;
+        parents = null;
     }
     public void setDistance(int distance){
     	this.distance = distance;
@@ -28,9 +29,71 @@ public class Coordinate {
     	}
     	return parents;
     }
-    public void setParents(ArrayList<Coordinate> c){
-    	
+    public void setParentsFromOther(ArrayList<Coordinate> c){
     	parents = c;
+    }
+    public void setParents(){
+    	if(parents == null){
+    		parents = new ArrayList<Coordinate>();
+    	}
+    	// Corners:
+    	if(x == 0 && y ==0){
+    		
+    		
+    		parents.add(new Coordinate(x,y+1));
+    		parents.add(new Coordinate(x+1,y));
+    		return;
+    	}
+    	if(x == SensorServices.getInstance().getFloorPlan().length-1 && y == 0){
+    		parents.add(new Coordinate(x,y+1));
+    		parents.add(new Coordinate(x-1,y));
+    		return;
+    	}
+    	if(x == 0 && y ==SensorServices.getInstance().getFloorPlan().length-1){
+    		parents.add(new Coordinate(x+1,y));
+    		parents.add(new Coordinate(x,y-1));
+    		return;
+    	}
+    	if(x == SensorServices.getInstance().getFloorPlan().length-1 && y ==SensorServices.getInstance().getFloorPlan().length-1){
+    		parents.add(new Coordinate(x-1,y));
+			parents.add(new Coordinate(x,y-1));
+    	  	return;
+    	}
+    	// Sides:
+    	if(x >0 && x < SensorServices.getInstance().getFloorPlan().length-1 && y ==0){
+    		parents.add(new Coordinate(x,y+1));
+    		parents.add(new Coordinate(x-1,y));
+    		parents.add(new Coordinate(x+1,y));
+    		return;
+    	}
+    	if(x ==0 && x > 0 && y < SensorServices.getInstance().getFloorPlan().length-1){
+    		parents.add(new Coordinate(x,y+1));
+    		parents.add(new Coordinate(x,y-1));
+    		parents.add(new Coordinate(x+1,y));
+    		return;
+    	}
+    	if(x >0 && x < SensorServices.getInstance().getFloorPlan().length-1 && y == SensorServices.getInstance().getFloorPlan().length-1){
+    		parents.add(new Coordinate(x+1,y));
+    		parents.add(new Coordinate(x,y-1));
+    		parents.add(new Coordinate(x-1,y));
+    		return;
+    	}
+    	if(x == SensorServices.getInstance().getFloorPlan().length-1 && y > 0 && y < SensorServices.getInstance().getFloorPlan().length-1){
+    		parents.add(new Coordinate(x-1,y));
+    		parents.add(new Coordinate(x,y+1));
+    		parents.add(new Coordinate(x,y-1));
+    		return;
+    	}
+    	// Else:
+    	else{
+    		if(x > 0 && x < SensorServices.getInstance().getFloorPlan().length-1 && y >0 && y < SensorServices.getInstance().getFloorPlan().length-1){
+    			parents.add(new Coordinate(x,y-1));
+        		parents.add(new Coordinate(x,y+1));
+        		parents.add(new Coordinate(x+1,y));
+        		parents.add(new Coordinate(x-1,y));
+        		return;	
+    		}		 
+    	}
     }
     public Coordinate(double x, double y) {
         this.x = x;

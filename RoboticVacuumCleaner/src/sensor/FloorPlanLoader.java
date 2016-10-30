@@ -127,6 +127,7 @@ public class FloorPlanLoader {
             }
 
             // Record cell
+            
             floorPlan[x][y] = c;
         }
     }

@@ -7,10 +7,12 @@ import util.Debugger;
 
 import java.io.IOException;
 import java.util.HashMap;
+import java.util.Set;
 
 import javax.xml.parsers.ParserConfigurationException;
 
 import org.xml.sax.SAXException;
+
 import util.Visualizer;
 
 public class ControlSystemService {
@@ -37,6 +39,9 @@ public class ControlSystemService {
      *
      * @return instance
      */
+	public Set<Coordinate> getVisitedFloorPlan(){
+		return visited.keySet();
+	}
 	public static ControlSystemService getInstance() {
         if (controlSystemService == null)
             controlSystemService = new ControlSystemService();
@@ -97,8 +102,9 @@ public class ControlSystemService {
 
             int x = (int) currentPos.getX();
             int y = (int) currentPos.getY();
+            //currentPos.setDistance(-1);
             Cell cell = sensorService.getCell(x, y);
-
+            currentPos.setParents();
 			Visualizer.getInstance().print(visited);
 
             if(Sweeper.getInstance().checkDirtCapacity() == 0 || Sweeper.getInstance().checkPowerCapacity() <= 0.0){
