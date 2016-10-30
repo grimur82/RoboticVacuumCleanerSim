@@ -89,7 +89,7 @@ public class FloorPlanLoader {
             doors.add(coordinate);
         }
     }
-    
+
     public ArrayList<Coordinate> getDoors(){
     	return doors;
     }
@@ -132,9 +132,6 @@ public class FloorPlanLoader {
         }
     }
 
-    public Cell getCell(int x, int y){
-        return floorPlan[x][y];
-    }
     public Coordinate getStartPosition() {
         return startPos;
     }
