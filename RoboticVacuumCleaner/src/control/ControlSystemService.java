@@ -90,7 +90,7 @@ public class ControlSystemService {
     }
     
     
-    public void clean() {
+    public void clean() throws ParserConfigurationException, SAXException, IOException {
         setPosition(sensorService.getStartPosition());
 
         do {
@@ -102,6 +102,8 @@ public class ControlSystemService {
 			Visualizer.getInstance().print(visited);
 
             if(Sweeper.getInstance().checkDirtCapacity() == 0 || Sweeper.getInstance().checkPowerCapacity() <= 0.0){
+            	Debugger.log("Sweeper needs to go back to charge at base");
+            	SweeperServices.getInstance().backToBase();
             	break;
             }
            

@@ -38,6 +38,9 @@ public class SensorServices {
     public Coordinate getStartPosition() {
         return floorPlan.getStartPosition();
     }
+    public Cell[][] getFloorPlan(){
+    	return floorPlan.getInstance().getFloorPlan();
+    }
 
 	public boolean senseObstacleTop(Cell cell) {
 		if (cell.getObstacles().contains(Obstacle.TOP)){

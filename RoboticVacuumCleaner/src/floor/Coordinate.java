@@ -1,17 +1,37 @@
 package floor;
 
+import java.util.ArrayList;
+
 import util.Debugger;
 
 public class Coordinate {
 
     private double x = 0;
     private double y = 0;
-
+    private int distance;
+    private ArrayList<Coordinate> parents;
     public Coordinate(int x, int y) {
         this.x = x;
         this.y = y;
+        this.distance = -1;
+        this.parents = new ArrayList<Coordinate>();
     }
-
+    public void setDistance(int distance){
+    	this.distance = distance;
+    }
+    public int getDistance(){
+    	return distance;
+    }
+    public ArrayList<Coordinate> getParents(){
+    	if(parents == null){
+    		parents = new ArrayList<Coordinate>();
+    	}
+    	return parents;
+    }
+    public void setParents(ArrayList<Coordinate> c){
+    	
+    	parents = c;
+    }
     public Coordinate(double x, double y) {
         this.x = x;
         this.y = y;

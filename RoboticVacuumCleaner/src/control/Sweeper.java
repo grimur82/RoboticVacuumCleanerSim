@@ -5,8 +5,10 @@ public class Sweeper{
 	private int dirtCapacity;
 	private double powerCapacity;
 	private Sweeper(){
-		dirtCapacity = 50;
-		powerCapacity = 100.0;
+		dirtCapacity = 10;
+		powerCapacity = 10.0;
+		//dirtCapacity = 50;
+		//powerCapacity = 100.0;
 	}
 	public static Sweeper getInstance(){
 		return sweeper;
