@@ -16,9 +16,8 @@ public class Coordinate {
         this.x = x;
         this.y = y;
         distance = -1;
-        parents = null;
+        parents = new ArrayList<Coordinate>();
         neighbor = null;
-        setParents();
     }
     public void setDistance(int distance){
     	this.distance = distance;
@@ -38,17 +37,12 @@ public class Coordinate {
     	}
     	return parents;
     }
-    public void setParentsFromOther(ArrayList<Coordinate> c){
-    	parents = c;
-    }
     public void setParents(){
     	if(parents == null){
     		parents = new ArrayList<Coordinate>();
     	}
     	// Corners:
-    	if(x == 0 && y ==0){
-    		
-    		
+    	if(x == 0 && y ==0){		
     		parents.add(new Coordinate(x,y+1));
     		parents.add(new Coordinate(x+1,y));
     		return;

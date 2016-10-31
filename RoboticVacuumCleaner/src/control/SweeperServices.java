@@ -3,8 +3,10 @@ package control;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.LinkedList;
 import java.util.Map;
 import java.util.PriorityQueue;
+import java.util.Queue;
 
 import javax.xml.parsers.ParserConfigurationException;
 
@@ -30,14 +32,23 @@ public class SweeperServices {
 		
 		Cell[][] floor = SensorServices.getInstance().getFloorPlan();
 		
-		ArrayList<Coordinate> q = new ArrayList<Coordinate>();
+		//ArrayList<Coordinate> q = new ArrayList<Coordinate>();
+		LinkedList<Coordinate> q = new LinkedList<Coordinate>();
 		ControlSystemService.getInstance().getCurrentPos().setDistance(0);
 		q.add(ControlSystemService.getInstance().getCurrentPos());
+		double startX = 0.0;
+		double startY = 0.0;
 		while(!q.isEmpty()){
-			Coordinate temp = q.remove(0);
+			Coordinate temp = q.remove();
+			if(temp.getParents().isEmpty()){
+				temp.setParents();
+			}
+			
 			System.out.println("X: " + temp.getX() + " Y: " + temp.getY());
-			if(temp.getX() == SensorServices.getInstance().getStartPosition().getX()
-					&& temp.getY() == SensorServices.getInstance().getStartPosition().getY()){
+			if(temp.getX() == startX
+					&& temp.getY() == startY){
+				System.out.println("Start Position " + " X: " + SensorServices.getInstance().getStartPosition().getX()
+				+ " Y: " + SensorServices.getInstance().getStartPosition().getY());
 				Debugger.log("Found the base: Recharging");
 				Sweeper.getInstance().reCharged();
 				break;

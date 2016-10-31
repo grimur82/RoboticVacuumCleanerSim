@@ -102,9 +102,7 @@ public class ControlSystemService {
 
             int x = (int) currentPos.getX();
             int y = (int) currentPos.getY();
-            //currentPos.setDistance(-1);
             Cell cell = sensorService.getCell(x, y);
-           // currentPos.setParents();
 			Visualizer.getInstance().print(visited);
 
             if(Sweeper.getInstance().checkDirtCapacity() == 0 || Sweeper.getInstance().checkPowerCapacity() <= 0.0){
@@ -114,7 +112,7 @@ public class ControlSystemService {
             	x = (int) currentPos.getX();
                 y = (int) currentPos.getY();
                 cell = sensorService.getCell(x, y);
-            	//break;
+            	break;
             }
            
             //shuts down when dirt and power capacity is 0 for now
