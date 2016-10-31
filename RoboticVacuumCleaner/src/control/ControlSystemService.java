@@ -108,7 +108,6 @@ public class ControlSystemService {
             if(Sweeper.getInstance().checkDirtCapacity() == 0 || Sweeper.getInstance().checkPowerCapacity() <= 0.0){
             	Debugger.log("Sweeper needs to go back to charge at base");
             	SweeperServices.getInstance().backToBase();
-            	currentPos = sensorService.getStartPosition();
             	x = (int) currentPos.getX();
                 y = (int) currentPos.getY();
                 cell = sensorService.getCell(x, y);
