@@ -18,6 +18,7 @@ public class Visualizer {
 	public final String ANSI_RESET = "\u001B[0m";
 	public final String ANSI_SWEEPER = "\u001B[32m";
 	public final String ANSI_DIRTY = "\u001B[31m";
+	public final String ANSI_STAIRS = "\u001B[35m";
 
 	private Visualizer() {
 		floorPlan = FloorPlan.getInstance();
@@ -57,8 +58,10 @@ public class Visualizer {
 								? "| " : "  "
 				);
 
-				if (pos.getX() == i && pos.getY() == j) {
-					System.out.print(ANSI_SWEEPER + "o" + ANSI_RESET);
+				if (plan[i][j].hasStairs()) {
+					System.out.print(ANSI_STAIRS + "S" + ANSI_RESET);
+				} else if (pos.getX() == i && pos.getY() == j) {
+					System.out.print(ANSI_SWEEPER + "O" + ANSI_RESET);
 				} else if (visited.containsKey(new Coordinate(i, j))) {
 					System.out.print(" ");
 				} else {

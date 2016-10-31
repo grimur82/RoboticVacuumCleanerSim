@@ -123,10 +123,26 @@ public class FloorPlanLoader {
                 Element obsList = (Element) obList;
                 NodeList eachOb = obsList.getElementsByTagName("obstacle");
                 for (int j = 0; j < eachOb.getLength(); ++j) {
-                    String obstacle = ((Element) eachOb.item(j)).getTextContent();
+                    String obstacle = (eachOb.item(j)).getTextContent();
                     c.setObstacle(obstacle);
                 }
             }
+
+			// Set flags
+			NodeList flags = cell.getElementsByTagName("flags");
+			if (flags.getLength() > 0) {
+
+				Node flagList = flags.item(0);
+				Element flatsList = (Element) flagList;
+				NodeList eachFlag = flatsList.getElementsByTagName("flag");
+
+				for (int j = 0; j < eachFlag.getLength(); ++j) {
+					String content = (eachFlag.item(j)).getTextContent();
+
+					if (content.equals("STAIRS"))
+						c.setStairs(true);
+				}
+			}
 
             // Record cell
             

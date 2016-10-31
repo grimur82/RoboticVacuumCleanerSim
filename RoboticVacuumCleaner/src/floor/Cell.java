@@ -20,15 +20,13 @@ public class Cell {
     private SurfaceType surfaceType;
     private EnumSet<Obstacle> obstacles;
     private boolean dirt;
-    // TODO: flag if charging station
-    // TODO: flag if stairs?*
-    // (doc says to treat it as an obstacle. do we even need to differentiate
-    // stairs from an obstacle?)
+	private boolean stairs;
 
     public Cell(SurfaceType surfaceType) {
         this.surfaceType = surfaceType;
         this.obstacles = EnumSet.noneOf(Obstacle.class);
         this.dirt = true;
+		this.stairs = false;
     }
     public boolean checkDirt() {
     	if(dirt){
@@ -45,6 +43,27 @@ public class Cell {
     	}
         return dirt;
     }
+
+	/**
+	 * Sets whether this cell has stairs.
+	 *
+	 * @param stairs Presence of stairs.
+	 */
+	public void setStairs(boolean stairs) {
+		if (stairs) {
+			Debugger.log("stairs set");
+		}
+		this.stairs = stairs;
+	}
+
+	/**
+	 * Whether this cell has stairs.
+	 *
+	 * @return Presence of stairs.
+	 */
+	public boolean hasStairs() {
+		return stairs;
+	}
 
     public void clean() {
         dirt = false;
