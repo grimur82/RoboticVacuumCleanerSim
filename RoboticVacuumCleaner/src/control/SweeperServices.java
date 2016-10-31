@@ -7,6 +7,7 @@ import java.util.LinkedList;
 import java.util.Map;
 import java.util.PriorityQueue;
 import java.util.Queue;
+import java.util.Set;
 
 import javax.xml.parsers.ParserConfigurationException;
 
@@ -27,45 +28,64 @@ public class SweeperServices {
 	public static SweeperServices getInstance(){
 		return sweeperServices;
 	}
+	public void reCharge(){
+		sweeper.getInstance().reCharged();
+	}
 	public void backToBase() throws ParserConfigurationException, SAXException, IOException{
 		// path from current to startPosition
+		MinPriorityQueue pqUnvisited = new MinPriorityQueue();
+		MinPriorityQueue pqVisited = new MinPriorityQueue();
+		ArrayList<Coordinate> test = new ArrayList<Coordinate>();
 		
-		Cell[][] floor = SensorServices.getInstance().getFloorPlan();
-		
-		//ArrayList<Coordinate> q = new ArrayList<Coordinate>();
-		LinkedList<Coordinate> q = new LinkedList<Coordinate>();
-		ControlSystemService.getInstance().getCurrentPos().setDistance(0);
-		q.add(ControlSystemService.getInstance().getCurrentPos());
-		double startX = 0.0;
-		double startY = 0.0;
-		while(!q.isEmpty()){
-			Coordinate temp = q.remove();
-			if(temp.getParents().isEmpty()){
-				temp.setParents();
-			}
-			
-			System.out.println("X: " + temp.getX() + " Y: " + temp.getY());
-			if(temp.getX() == startX
-					&& temp.getY() == startY){
-				System.out.println("Start Position " + " X: " + SensorServices.getInstance().getStartPosition().getX()
-				+ " Y: " + SensorServices.getInstance().getStartPosition().getY());
-				Debugger.log("Found the base: Recharging");
-				Sweeper.getInstance().reCharged();
-				break;
-			}
-			for(Coordinate s : temp.getParents()){
+		for(int i =0; i < SensorServices.getInstance().getFloorPlan().length-1; i++){
+			for(int j =0; j < SensorServices.getInstance().getFloorPlan().length-1; j++){
+				if(SensorServices.getInstance().getCell(i, j).getParents() == null){
+					SensorServices.getInstance().getCell(i, j).setParents();
+				}
+				SensorServices.getInstance().getCell(i, j).getCoordinate().setDistance(-1);
+				if(SensorServices.getInstance().getCell(i,j).getCoordinate().getNeighbor() == null){
+					SensorServices.getInstance().getCell(i,j).getCoordinate().setNeighbor(null);
+				}
 				
-				if(s.getDistance() == -1){
-					s.setDistance(temp.getDistance() + 1);
-					s.setNeighbor(temp);
-					q.add(s);
+			
+		}
+		SensorServices.getInstance().getCell((int)ControlSystemService.getInstance().getCurrentPos().getX(), 
+		(int)ControlSystemService.getInstance().getCurrentPos().getY()).setParents();
+		Coordinate c = SensorServices.getInstance().getCell((int)ControlSystemService.getInstance().getCurrentPos().getX(), 
+				(int)ControlSystemService.getInstance().getCurrentPos().getY()).getCoordinate();
+		c.setDistance(0);
+		pqUnvisited.addPQ(c);
+		
+		while(pqUnvisited.checkSize() != 0){
+			Coordinate temp = pqUnvisited.getMin();
+			pqVisited.addPQ(temp);
+			if(SensorServices.getInstance().getCell((int)temp.getX(), 
+						(int)temp.getY()).getParents() == null){
+				SensorServices.getInstance().getCell((int)temp.getX(), 
+						(int)temp.getY()).setParents();
+			}
+			for(Coordinate parent : 
+				SensorServices.getInstance().getCell((int)temp.getX(), 
+						(int)temp.getY()).getParents()){
+				if(!pqVisited.getPq().contains(parent)){
+					parent.setDistance(0);
+					parent.setNeighbor(temp);
+					pqUnvisited.addPQ(parent);
 				}
 			}
 		}
-		
-		
-		
-		//ControlSystemService.getInstance().currentPosition();
+		Coordinate toPath = SensorServices.getInstance().getCell(0, 0).getCoordinate();
+		Coordinate fromPath = SensorServices.getInstance().getCell((int)ControlSystemService.getInstance().getCurrentPos().getX(), 
+				(int)ControlSystemService.getInstance().getCurrentPos().getY()).getCoordinate();
+		while(toPath != fromPath){
+			System.out.println("x: " + toPath.getX() + " Y: " + toPath.getY());
+			toPath = toPath.getNeighbor();
+		}
+		if(toPath == fromPath){
+			System.out.println("Found Base");
+		}
 	}
 	
+
+	}
 }

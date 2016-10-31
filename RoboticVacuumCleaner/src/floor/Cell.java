@@ -1,8 +1,11 @@
 package floor;
 
+import sensor.FloorPlan;
+import sensor.SensorServices;
 import util.Debugger;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.EnumSet;
 
 import javax.xml.parsers.ParserConfigurationException;
@@ -21,13 +24,85 @@ public class Cell {
     private EnumSet<Obstacle> obstacles;
     private boolean dirt;
 	private boolean stairs;
-
+	private Coordinate c;
+    private ArrayList<Coordinate> parents;
     public Cell(SurfaceType surfaceType) {
         this.surfaceType = surfaceType;
         this.obstacles = EnumSet.noneOf(Obstacle.class);
         this.dirt = true;
 		this.stairs = false;
     }
+    public void setCoordinate(double x, double y){
+    	c = new Coordinate(x,y);
+    }
+    public Coordinate getCoordinate(){
+    	return c;
+    }
+    public ArrayList<Coordinate> getParents(){
+    	
+    	return parents;
+    }
+    public void setParents(){
+    	if(parents == null){
+    		parents = new ArrayList<Coordinate>();
+    	}
+    	// Corners:
+    	if(c.getX() == 0 && c.getY() ==0){		
+    		parents.add(FloorPlan.getInstance().getCellCordinates(c.getX(), c.getY()+1));
+    		parents.add(FloorPlan.getInstance().getCellCordinates(c.getX()+1, c.getY()));
+    		return;
+    	}
+    	if(c.getX() == SensorServices.getInstance().getFloorPlan().length-1 && c.getY() == 0){
+    		parents.add(FloorPlan.getInstance().getCellCordinates(c.getX(), c.getY()+1));
+    		parents.add(FloorPlan.getInstance().getCellCordinates(c.getX()-1, c.getY()));
+    		return;
+    	}
+    	if(c.getX() == 0 && c.getY() ==SensorServices.getInstance().getFloorPlan().length-1){
+    		parents.add(FloorPlan.getInstance().getCellCordinates(c.getX()+1, c.getY()));
+    		parents.add(FloorPlan.getInstance().getCellCordinates(c.getX(), c.getY()-1));
+    		return;
+    	}
+    	if(c.getX() == SensorServices.getInstance().getFloorPlan().length-1 && c.getY() ==SensorServices.getInstance().getFloorPlan().length-1){
+    		parents.add(FloorPlan.getInstance().getCellCordinates(c.getX()-1, c.getY()));
+    		parents.add(FloorPlan.getInstance().getCellCordinates(c.getX(), c.getY()-1));
+    	  	return;
+    	}
+    	// Sides:
+    	if(c.getX() >0 && c.getX() < SensorServices.getInstance().getFloorPlan().length-1 && c.getY() ==0){
+    		parents.add(FloorPlan.getInstance().getCellCordinates(c.getX(), c.getY()+1));
+    		parents.add(FloorPlan.getInstance().getCellCordinates(c.getX()-1, c.getY()));
+    		parents.add(FloorPlan.getInstance().getCellCordinates(c.getX()+1, c.getY()));
+    		return;
+    	}
+    	if(c.getX() ==0 && c.getX() > 0 && c.getY() < SensorServices.getInstance().getFloorPlan().length-1){
+    		parents.add(FloorPlan.getInstance().getCellCordinates(c.getX(), c.getY()+1));
+    		parents.add(FloorPlan.getInstance().getCellCordinates(c.getX(), c.getY()-1));
+    		parents.add(FloorPlan.getInstance().getCellCordinates(c.getX()+1, c.getY()));
+    		return;
+    	}
+    	if(c.getX() >0 && c.getX() < SensorServices.getInstance().getFloorPlan().length-1 && c.getY() == SensorServices.getInstance().getFloorPlan().length-1){
+    		parents.add(FloorPlan.getInstance().getCellCordinates(c.getX()+1, c.getY()));
+    		parents.add(FloorPlan.getInstance().getCellCordinates(c.getX(), c.getY()-1));
+    		parents.add(FloorPlan.getInstance().getCellCordinates(c.getX()-1, c.getY()));
+    		return;
+    	}
+    	if(c.getX() == SensorServices.getInstance().getFloorPlan().length-1 && c.getY() > 0 && c.getY() < SensorServices.getInstance().getFloorPlan().length-1){
+    		parents.add(FloorPlan.getInstance().getCellCordinates(c.getX()-1, c.getY()));
+    		parents.add(FloorPlan.getInstance().getCellCordinates(c.getX(), c.getY()+1));
+    		parents.add(FloorPlan.getInstance().getCellCordinates(c.getX(), c.getY()-1));
+    		return;
+    	}
+    	// Else:
+    	else{
+    		if(c.getX() > 0 && c.getX() < SensorServices.getInstance().getFloorPlan().length-1 && c.getY() >0 && c.getY() < SensorServices.getInstance().getFloorPlan().length-1){
+    			parents.add(FloorPlan.getInstance().getCellCordinates(c.getX(), c.getY()-1));
+        		parents.add(FloorPlan.getInstance().getCellCordinates(c.getX(), c.getY()+1));
+        		parents.add(FloorPlan.getInstance().getCellCordinates(c.getX()+1, c.getY()));
+        		parents.add(FloorPlan.getInstance().getCellCordinates(c.getX()-1, c.getY()));
+        		return;	
+    		}
+    	}
+    	}
     public boolean checkDirt() {
     	if(dirt){
     		Debugger.log("Floor Dirty: CleanSweeper cleans.");

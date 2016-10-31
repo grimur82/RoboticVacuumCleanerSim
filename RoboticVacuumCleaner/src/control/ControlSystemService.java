@@ -39,9 +39,7 @@ public class ControlSystemService {
      *
      * @return instance
      */
-	public Set<Coordinate> getVisitedFloorPlan(){
-		return visited.keySet();
-	}
+	
 	public static ControlSystemService getInstance() {
         if (controlSystemService == null)
             controlSystemService = new ControlSystemService();
@@ -108,10 +106,12 @@ public class ControlSystemService {
             if(Sweeper.getInstance().checkDirtCapacity() == 0 || Sweeper.getInstance().checkPowerCapacity() <= 0.0){
             	Debugger.log("Sweeper needs to go back to charge at base");
             	SweeperServices.getInstance().backToBase();
-            	x = (int) currentPos.getX();
-                y = (int) currentPos.getY();
+            	x = (int) sensorService.getCell(0,0).getCoordinate().getX(); // Base
+                y = (int) sensorService.getCell(0,0).getCoordinate().getY(); // Base
+                currentPos.setX(0);
+            	currentPos.setY(0);
                 cell = sensorService.getCell(x, y);
-            	break;
+                SweeperServices.getInstance().reCharge();
             }
            
             //shuts down when dirt and power capacity is 0 for now

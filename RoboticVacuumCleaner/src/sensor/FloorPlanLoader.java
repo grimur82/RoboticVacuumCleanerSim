@@ -115,7 +115,7 @@ public class FloorPlanLoader {
 
             // Set name
             c.setName(name);
-
+            c.setCoordinate(x, y);
             // Set obstacles
             NodeList obs = cell.getElementsByTagName("obstacles");
             if (obs.getLength() > 0) {

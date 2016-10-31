@@ -16,7 +16,7 @@ public class FloorPlan {
 
 	// Known floor plan
 	private Cell[][] floorPlan;
-
+	
 	// Known doors
 	private HashMap<Coordinate, DoorStatus> doorList;
 
@@ -32,7 +32,9 @@ public class FloorPlan {
 		startPosition = loader.getStartPosition();
 		doorList = loader.getDoorList();
 	}
-
+	public Coordinate getCellCordinates(double x, double y){
+		return floorPlan[(int)x][(int)y].getCoordinate();
+	}
 	/**
 	 * Singleton.
 	 *
