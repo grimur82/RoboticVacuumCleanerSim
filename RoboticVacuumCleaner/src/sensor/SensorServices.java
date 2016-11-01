@@ -84,7 +84,7 @@ public class SensorServices {
 
 	public boolean senseObstacleRight(Cell cell) {
 		if (cell.getObstacles().contains(Obstacle.RIGHT)){
-			Debugger.log("Path to RIGHT is obstructed");
+			Debugger.log("Path to RIGHT cell is obstructed");
 			return true;
 		}
 		return false;

@@ -92,9 +92,21 @@ public class ControlSystemService {
     	return sweeper.checkPowerCapacity();
     }
     
+    public boolean setCleaningStat(boolean status){
+    	return sweeper.setCleaningCycleStatus(status);
+    }
+    
+    public boolean checkCleaningStat(){
+    	return sweeper.checkCleaningCycle();
+    }
+    
     
     public void clean() throws ParserConfigurationException, SAXException, IOException {
         setPosition(sensorService.getStartPosition());
+        
+        if(!unvisited.isEmpty()){
+        	setCleaningStat(false);
+        }
 
         do {
 
@@ -112,6 +124,7 @@ public class ControlSystemService {
             	currentPos.setY(0);
                 cell = sensorService.getCell(x, y);
                 SweeperServices.getInstance().reCharge();
+                Debugger.log("Cleaning cycle done: "+ checkCleaningStat());
             }
            
             //shuts down when dirt and power capacity is 0 for now
@@ -158,7 +171,8 @@ public class ControlSystemService {
                 }
             }
 
-        } while (!unvisited.isEmpty());
+        } while (checkCleaningStat() == false);
+        setCleaningStat(true);
         Debugger.log("Cleaning done!");
     }
     private boolean checkDirt(int x, int y) throws ParserConfigurationException, SAXException, IOException{
