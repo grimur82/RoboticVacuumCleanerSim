@@ -17,11 +17,19 @@ import util.Visualizer;
 
 public class ControlSystemService {
 
+	// Current position of the sweeper
     private Coordinate currentPos;
 
+	// Single instance
     private static ControlSystemService controlSystemService;
+
+	// Visited cells
     private HashMap<Coordinate, Cell> visited = new HashMap<>();
+
+	// Unvisited cells
     private HashMap<Coordinate, Cell> unvisited = new HashMap<>();
+
+	// Sensor simulator to check data against
     private SensorServices sensorService;
     private Sweeper sweeper = Sweeper.getInstance(); 
     // initialise Sweeper.class
@@ -39,7 +47,6 @@ public class ControlSystemService {
      *
      * @return instance
      */
-	
 	public static ControlSystemService getInstance() {
         if (controlSystemService == null)
             controlSystemService = new ControlSystemService();
@@ -99,8 +106,14 @@ public class ControlSystemService {
     public boolean checkCleaningStat(){
     	return sweeper.checkCleaningCycle();
     }
-    
-    
+
+	/**
+	 * Cleaning engine.
+	 *
+	 * @throws ParserConfigurationException
+	 * @throws SAXException
+	 * @throws IOException
+	 */
     public void clean() throws ParserConfigurationException, SAXException, IOException {
         setPosition(sensorService.getStartPosition());
         
