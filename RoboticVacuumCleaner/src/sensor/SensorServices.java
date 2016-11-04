@@ -35,7 +35,7 @@ public class SensorServices {
     }
 
 	/**
-	 *
+	 * Initiate door simulator.
 	 */
 	private void initDoorSimulator() {
 		Thread t = new Thread(new DoorSimulator());
