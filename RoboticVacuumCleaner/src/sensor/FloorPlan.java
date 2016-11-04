@@ -85,4 +85,19 @@ public class FloorPlan {
 				? null : floorPlan[x][y];
 	}
 
+	/**
+	 * Change door status of a coordinate.
+	 *
+	 * @param coordinate Coordinate whose door status is to be changed.
+	 */
+	public void changeDoorStatus(Coordinate coordinate) {
+
+		DoorStatus doorStatus = doorList.get(coordinate);
+		doorList.put(
+				coordinate,
+				doorStatus == DoorStatus.CLOSED ? DoorStatus.OPEN : DoorStatus.CLOSED
+		);
+
+	}
+
 }

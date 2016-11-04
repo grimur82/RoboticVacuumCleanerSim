@@ -24,6 +24,7 @@ public class SensorServices {
     private SensorServices() {
         Debugger.log("Starting sensor simulator");
 		floorPlan = FloorPlan.getInstance();
+		initDoorSimulator();
     }
 
     public static SensorServices getInstance() {
@@ -32,6 +33,14 @@ public class SensorServices {
 
         return sensorServices;
     }
+
+	/**
+	 *
+	 */
+	private void initDoorSimulator() {
+		Thread t = new Thread(new DoorSimulator());
+		t.start();
+	}
 
     public Cell getCell(int x, int y) {
         return floorPlan.getCell(x, y);
