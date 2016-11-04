@@ -127,15 +127,17 @@ public class ControlSystemService {
             int y = (int) currentPos.getY();
             Cell cell = sensorService.getCell(x, y);
 			Visualizer.getInstance().print(visited);
-
+			// Checks if Sweeper is out of power or no dirt capacity left.
             if(Sweeper.getInstance().checkDirtCapacity() == 0 || Sweeper.getInstance().checkPowerCapacity() <= 0.0){
             	Debugger.log("Sweeper needs to go back to charge at base");
+            	// Call sweeper to go back to base.
             	SweeperServices.getInstance().backToBase();
             	x = (int) sensorService.getCell(0,0).getCoordinate().getX(); // Base
                 y = (int) sensorService.getCell(0,0).getCoordinate().getY(); // Base
                 currentPos.setX(0);
             	currentPos.setY(0);
                 cell = sensorService.getCell(x, y);
+                // Sweeper is charged.
                 SweeperServices.getInstance().reCharge();
                 Debugger.log("Cleaning cycle done: "+ checkCleaningStat());
             }
