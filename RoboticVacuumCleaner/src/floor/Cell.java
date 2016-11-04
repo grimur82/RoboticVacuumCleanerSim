@@ -42,6 +42,7 @@ public class Cell {
     	
     	return parents;
     }
+    // For neighbors of sweeper.
     public void setParents(){
     	if(parents == null){
     		parents = new ArrayList<Coordinate>();
@@ -103,6 +104,7 @@ public class Cell {
     		}
     	}
     	}
+    	
     public boolean checkDirt() {
     	if(dirt){
     		Debugger.log("Floor Dirty: CleanSweeper cleans.");

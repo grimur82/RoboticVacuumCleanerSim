@@ -19,24 +19,27 @@ public class Coordinate {
         parents = new ArrayList<Coordinate>();
         neighbor = null;
     }
+ // Set shortest path distance from current sweeper position towards the charging base.
     public void setDistance(int distance){
     	this.distance = distance;
     }
+    // Get shortest path distance from current sweeper position towards the charging base.
     public int getDistance(){
     	return distance;
     }
+    // Set neighbors for location Sweeper is on.
     public void setNeighbor(Coordinate c){
     	neighbor = c;
     }
+    // Get the neighbors, Sweeper is currently on.
     public Coordinate getNeighbor(){
     	return neighbor;
     }
+    // Has the coordinates the Sweeper is on and the sides.
     public ArrayList<Coordinate> getParents(){
-    	if(parents == null){
-    		parents = new ArrayList<Coordinate>();
-    	}
     	return parents;
     }
+    // Simplified boolean functions to finding obstacles for SweeperService class.
     public boolean checkObstacle(double x, double y, String check){
     	if(check.equals("bottom")){
     		Cell cell = SensorServices.getInstance().getCell((int)x, (int)y);
@@ -57,10 +60,9 @@ public class Coordinate {
 		return false;
     	
     }
+    // Checks the floorplan for obstacles and sets a path for SweeperService to use, in order to find its
+    //way back to a recharge base.
     public void setParents(){
-    	if(parents == null){
-    		parents = new ArrayList<Coordinate>();
-    	}
     	// Corners:
     	if(x == 0 && y ==0){
     		if(checkObstacle(x,y+1,"top") == false){

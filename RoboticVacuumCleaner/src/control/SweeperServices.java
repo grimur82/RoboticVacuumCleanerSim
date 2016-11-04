@@ -36,7 +36,7 @@ public class SweeperServices {
 		MinPriorityQueue pqUnvisited = new MinPriorityQueue();
 		MinPriorityQueue pqVisited = new MinPriorityQueue();
 		ArrayList<Coordinate> test = new ArrayList<Coordinate>();
-		
+		// Get floorplan coordinates.
 		for(int i =0; i < SensorServices.getInstance().getFloorPlan().length-1; i++){
 			for(int j =0; j < SensorServices.getInstance().getFloorPlan().length-1; j++){
 				if(SensorServices.getInstance().getCell(i, j).getParents() == null){
@@ -49,13 +49,14 @@ public class SweeperServices {
 				
 			
 		}
+		// Set the neighbors which sweeper is going to pass through.
 		SensorServices.getInstance().getCell((int)ControlSystemService.getInstance().getCurrentPos().getX(), 
 		(int)ControlSystemService.getInstance().getCurrentPos().getY()).setParents();
 		Coordinate c = SensorServices.getInstance().getCell((int)ControlSystemService.getInstance().getCurrentPos().getX(), 
 				(int)ControlSystemService.getInstance().getCurrentPos().getY()).getCoordinate();
 		c.setDistance(0);
 		pqUnvisited.addPQ(c);
-		
+		// Calculate a path for sweeper to reach a charging base.
 		while(pqUnvisited.checkSize() != 0){
 			Coordinate temp = pqUnvisited.getMin();
 			pqVisited.addPQ(temp);
@@ -77,15 +78,15 @@ public class SweeperServices {
 		Coordinate toPath = SensorServices.getInstance().getCell(0, 0).getCoordinate();
 		Coordinate fromPath = SensorServices.getInstance().getCell((int)ControlSystemService.getInstance().getCurrentPos().getX(), 
 				(int)ControlSystemService.getInstance().getCurrentPos().getY()).getCoordinate();
+		// Go through path, the sweeper has found.
 		while(toPath != fromPath){
 			System.out.println("x: " + toPath.getX() + " Y: " + toPath.getY());
 			toPath = toPath.getNeighbor();
 		}
+		// Let user know, the sweeper has reached its charging base.
 		if(toPath == fromPath){
 			System.out.println("Found Base");
 		}
 	}
-	
-
 	}
 }
