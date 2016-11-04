@@ -71,6 +71,8 @@ public class ControlSystemService {
     public void setPosition(Coordinate currentPos) {
         this.currentPos = currentPos;
     }
+    
+    
     public void decreaseSweepDirtCapacity(){
     	sweeper.decreaseDirtCapacity();
     }
@@ -79,30 +81,36 @@ public class ControlSystemService {
     }
     
     
+    // Calculate power consumed by movement
     public double movementCharge(Cell cellA, Cell cellB){
     	double chargeA = cellA.getSurfaceType().getPowerUsed();
     	double chargeB = cellB.getSurfaceType().getPowerUsed();
     	return (chargeA+chargeB)/2;  	
     }
     
+    // Decrease power capacity due to movement
     public void decreasePowerMove(double total){
     	sweeper.decreasePowerCapacity(total);
     }
     
     
+    // Decrease power capacity due to cleaning
     public void decreasePowerClean(Cell cell){
     	double currentCellCharge = cell.getSurfaceType().getPowerUsed();
     	sweeper.decreasePowerCapacity(currentCellCharge);
     }
     
+    // Check power capacity
     public double checkPowerCapacity(){
     	return sweeper.checkPowerCapacity();
     }
     
+    // Sets status of cleaning cycle
     public boolean setCleaningStat(boolean status){
     	return sweeper.setCleaningCycleStatus(status);
     }
     
+    // Checking status of cleaning cycle
     public boolean checkCleaningStat(){
     	return sweeper.checkCleaningCycle();
     }
@@ -145,6 +153,7 @@ public class ControlSystemService {
             //shuts down when dirt and power capacity is 0 for now
             Debugger.log("Cleaning cell (" + x + ", " + y + ")");
 
+            //gets surface type of current cell
             Debugger.log("Surface type: "+ cell.getSurfaceType());
             cell.checkDirt();
 
@@ -171,6 +180,7 @@ public class ControlSystemService {
 			setPosition(chosenCoord);
 			Cell nextCell = sensorService.getCell(chosenCoord);
             
+			//Decreases power capacity due to movement
             decreasePowerMove(movementCharge(cell, nextCell));
             Debugger.log("Power for movement from current cell to next cell: "+ movementCharge(cell, nextCell));
         	Debugger.log("New power capacity will be: "+ checkPowerCapacity());
@@ -187,6 +197,7 @@ public class ControlSystemService {
             }
 
         } while (checkCleaningStat() == false);
+        //cleaning cycle done when all surfaces are visited
         setCleaningStat(true);
         Debugger.log("Cleaning done!");
     }

@@ -36,11 +36,13 @@ public class Sweeper{
 		return powerCapacity;
 	}
 	
+	// Sets the status of cleaning cycle
 	public boolean setCleaningCycleStatus(boolean status){
 		cleaningCycle = status;
 		return cleaningCycle;
 	}
 	
+	// Check if cleaning cycle is done
 	public boolean checkCleaningCycle(){
 		return cleaningCycle;
 	}
