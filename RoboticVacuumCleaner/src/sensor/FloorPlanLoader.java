@@ -128,9 +128,23 @@ public class FloorPlanLoader {
                 }
             }
 
+			// Set flags
+			NodeList flags = cell.getElementsByTagName("flags");
+			if (flags.getLength() > 0) {
 
-            // Record cell
-            
+				Node flagList = flags.item(0);
+				Element flatsList = (Element) flagList;
+				NodeList eachFlag = flatsList.getElementsByTagName("flag");
+
+				for (int j = 0; j < eachFlag.getLength(); ++j) {
+					String content = (eachFlag.item(j)).getTextContent();
+
+					if (content.equals("STAIRS"))
+						c.setStairs(true);
+				}
+			}
+
+			// Record cell
             floorPlan[x][y] = c;
         }
     }
