@@ -24,6 +24,7 @@ public class Cell {
     private EnumSet<Obstacle> obstacles;
     private boolean dirt;
 	private boolean stairs;
+	private boolean chargingBase;
 	private Coordinate c;
     private ArrayList<Coordinate> parents;
     public Cell(SurfaceType surfaceType) {
@@ -31,6 +32,7 @@ public class Cell {
         this.obstacles = EnumSet.noneOf(Obstacle.class);
         this.dirt = true;
 		this.stairs = false;
+		this.chargingBase = false;
     }
     public void setCoordinate(double x, double y){
     	c = new Coordinate(x,y);
@@ -38,8 +40,11 @@ public class Cell {
     public Coordinate getCoordinate(){
     	return c;
     }
+    
     public ArrayList<Coordinate> getParents(){
-    	
+    	if(parents == null){
+    		parents = new ArrayList<Coordinate>();
+    	}
     	return parents;
     }
     // For neighbors of sweeper.
@@ -126,6 +131,12 @@ public class Cell {
 	 *
 	 * @param stairs Presence of stairs.
 	 */
+    public void setChargingBase(){
+    	this.chargingBase = true;
+    }
+    public boolean typeChargingBase(){
+    	return chargingBase;
+    }
 	public void setStairs(boolean stairs) {
 		if (stairs) {
 			Debugger.log("stairs set");

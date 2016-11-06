@@ -124,7 +124,6 @@ public class ControlSystemService {
 	 */
     public void clean() throws ParserConfigurationException, SAXException, IOException {
         setPosition(sensorService.getStartPosition());
-        
         if(!unvisited.isEmpty()){
         	setCleaningStat(false);
         }
@@ -219,6 +218,35 @@ public class ControlSystemService {
 	 *
 	 * @param free Available directions.
 	 */
+    ArrayList<Coordinate> getNeighbors(Coordinate c){
+    	int x = (int) c.getX();
+		int y = (int) c.getY();
+		ArrayList<Coordinate> neighbors = new ArrayList<Coordinate>();
+		Cell cell = sensorService.getCell(x,y);
+		try{
+			if(visited.containsKey(sensorService.getInstance().getCell(x+1,y).getCoordinate())){
+				neighbors.add(sensorService.getInstance().getCell(x+1,y).getCoordinate());
+			}
+			if(visited.containsKey(sensorService.getInstance().getCell(x-1,y).getCoordinate())){
+				neighbors.add(sensorService.getInstance().getCell(x-1,y).getCoordinate());
+			}
+			if(visited.containsKey(sensorService.getInstance().getCell(x,y-1).getCoordinate())){
+				neighbors.add(sensorService.getInstance().getCell(x,y-1).getCoordinate());
+			}
+			if(visited.containsKey(sensorService.getInstance().getCell(x,y+1).getCoordinate())){
+				neighbors.add(sensorService.getInstance().getCell(x,y+1).getCoordinate());
+			}
+			
+		}catch(ArrayIndexOutOfBoundsException ex){
+			
+		}
+		catch(NullPointerException ex){
+			
+		}
+		return neighbors;
+
+    	
+    }
     private void registerCells(EnumSet<Obstacle> free) {
 		int x = (int) currentPos.getX();
 		int y = (int) currentPos.getY();
@@ -269,6 +297,18 @@ public class ControlSystemService {
 	 */
 	public Coordinate getCurrentPos() {
 		return currentPos;
+	}
+	public Coordinate getVisitedCoordinates(Coordinate c){
+		if(visited.get(c) != null){
+			return c;
+		}
+		return null;
+	}
+	public Cell getVisitedCell(Coordinate c ){
+		return visited.get(c);
+	}
+	public int getVisitedLength(){
+		return visited.size();
 	}
 
 }

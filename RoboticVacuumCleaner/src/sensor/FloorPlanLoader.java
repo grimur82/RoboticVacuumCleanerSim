@@ -141,6 +141,9 @@ public class FloorPlanLoader {
 
 					if (content.equals("STAIRS"))
 						c.setStairs(true);
+					if (content.equals("CHARGINGBASE")){
+						c.setChargingBase();
+					}
 				}
 			}
 
