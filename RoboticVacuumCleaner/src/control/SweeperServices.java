@@ -63,10 +63,10 @@ public class SweeperServices {
 			}		
 		}
 		// Go through path, the sweeper has found.
-		while(toPath != fromPath){
-			System.out.println("x: " + toPath.getX() + " Y: " + toPath.getY());
-			toPath = toPath.getNeighbor();
-		}
+		//while(toPath != fromPath){
+			//System.out.println("x: " + toPath.getX() + " Y: " + toPath.getY());
+		//	toPath = toPath.getNeighbor();
+		//}
 		// Let user know, the sweeper has reached its charging base.
 		if(toPath == fromPath){
 			System.out.println("Found Base");
