@@ -62,14 +62,20 @@ public class SweeperServices {
 				fromPath = cd; 
 			}		
 		}
-		// Go through path, the sweeper has found.
-		//while(toPath != fromPath){
-			//System.out.println("x: " + toPath.getX() + " Y: " + toPath.getY());
-		//	toPath = toPath.getNeighbor();
-		//}
-		// Let user know, the sweeper has reached its charging base.
-		if(toPath == fromPath){
-			System.out.println("Found Base");
+		if(fromPath == null){
+			System.out.println("There is no recharge base discoved. Shutting down.....");
+			ControlSystemService.getInstance().shutDownSweeper();
+		}
+		else{
+			// Go through path, the sweeper has found.
+			while(toPath != fromPath){
+				System.out.println("x: " + toPath.getX() + " Y: " + toPath.getY());
+				fromPath = fromPath.getNeighbor();
+			}
+			// Let user know, the sweeper has reached its charging base.
+			if(toPath == fromPath){
+				System.out.println("Found Base");
+			}
 		}
 	}
 	}

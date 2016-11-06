@@ -8648,3 +8648,1745 @@ New power capacity will be: 0.0
 Changing door status of (7.5, 4.5)
 Sweeper needs to go back to charge at base
 Changing door status of (3.0, 3.5)
+Starting sensor simulator
+stairs set
+Starting control system
+Changing door status of (7.5, 4.5)
+Cleaning cell (7, 4)
+Surface type: BARE
+Floor Dirty: CleanSweeper cleans.
+Dirt Capacity: 49
+Power consumed from cleaning: 1
+Power capacity: 99.0
+Power for movement from current cell to next cell: 1.0
+New power capacity will be: 98.0
+Cleaning cell (7, 5)
+Surface type: BARE
+Floor Dirty: CleanSweeper cleans.
+Dirt Capacity: 48
+Power consumed from cleaning: 1
+Power capacity: 97.0
+Power for movement from current cell to next cell: 1.0
+New power capacity will be: 96.0
+Cleaning cell (7, 4)
+Surface type: BARE
+Floor Clean: CleanSweeper moves on.
+Power for movement from current cell to next cell: 1.0
+New power capacity will be: 95.0
+Cleaning cell (7, 5)
+Surface type: BARE
+Floor Clean: CleanSweeper moves on.
+Power for movement from current cell to next cell: 1.0
+New power capacity will be: 94.0
+Cleaning cell (7, 6)
+Surface type: BARE
+Floor Dirty: CleanSweeper cleans.
+Dirt Capacity: 47
+Power consumed from cleaning: 1
+Power capacity: 93.0
+Power for movement from current cell to next cell: 1.0
+New power capacity will be: 92.0
+Cleaning cell (6, 6)
+Surface type: BARE
+Floor Dirty: CleanSweeper cleans.
+Dirt Capacity: 46
+Power consumed from cleaning: 1
+Power capacity: 91.0
+Power for movement from current cell to next cell: 1.0
+New power capacity will be: 90.0
+Changing door status of (7.0, 5.5)
+Cleaning cell (7, 6)
+Surface type: BARE
+Floor Clean: CleanSweeper moves on.
+Power for movement from current cell to next cell: 1.0
+New power capacity will be: 89.0
+Cleaning cell (8, 6)
+Surface type: BARE
+Floor Dirty: CleanSweeper cleans.
+Dirt Capacity: 45
+Power consumed from cleaning: 1
+Power capacity: 88.0
+Power for movement from current cell to next cell: 1.0
+New power capacity will be: 87.0
+Cleaning cell (7, 6)
+Surface type: BARE
+Floor Clean: CleanSweeper moves on.
+Power for movement from current cell to next cell: 1.0
+New power capacity will be: 86.0
+Cleaning cell (7, 5)
+Surface type: BARE
+Floor Clean: CleanSweeper moves on.
+Power for movement from current cell to next cell: 1.0
+New power capacity will be: 85.0
+Cleaning cell (6, 5)
+Surface type: BARE
+Floor Dirty: CleanSweeper cleans.
+Dirt Capacity: 44
+Power consumed from cleaning: 1
+Power capacity: 84.0
+Power for movement from current cell to next cell: 1.0
+New power capacity will be: 83.0
+Changing door status of (7.5, 4.5)
+Cleaning cell (7, 5)
+Surface type: BARE
+Floor Clean: CleanSweeper moves on.
+Power for movement from current cell to next cell: 1.0
+New power capacity will be: 82.0
+Cleaning cell (8, 5)
+Surface type: BARE
+Floor Dirty: CleanSweeper cleans.
+Dirt Capacity: 43
+Power consumed from cleaning: 1
+Power capacity: 81.0
+Power for movement from current cell to next cell: 1.0
+New power capacity will be: 80.0
+Cleaning cell (7, 5)
+Surface type: BARE
+Floor Clean: CleanSweeper moves on.
+Power for movement from current cell to next cell: 1.0
+New power capacity will be: 79.0
+Cleaning cell (7, 6)
+Surface type: BARE
+Floor Clean: CleanSweeper moves on.
+Power for movement from current cell to next cell: 1.0
+New power capacity will be: 78.0
+Starting sensor simulator
+stairs set
+Starting control system
+Changing door status of (6.7, 0.5)
+Cleaning cell (7, 4)
+Surface type: BARE
+Floor Dirty: CleanSweeper cleans.
+Dirt Capacity: 49
+Power consumed from cleaning: 1
+Power capacity: 99.0
+Power for movement from current cell to next cell: 1.0
+New power capacity will be: 98.0
+Cleaning cell (6, 4)
+Surface type: BARE
+Floor Dirty: CleanSweeper cleans.
+Dirt Capacity: 48
+Power consumed from cleaning: 1
+Power capacity: 97.0
+Power for movement from current cell to next cell: 1.0
+New power capacity will be: 96.0
+Cleaning cell (6, 3)
+Surface type: BARE
+Floor Dirty: CleanSweeper cleans.
+Dirt Capacity: 47
+Power consumed from cleaning: 1
+Power capacity: 95.0
+Power for movement from current cell to next cell: 1.0
+New power capacity will be: 94.0
+Cleaning cell (6, 2)
+Surface type: BARE
+Floor Dirty: CleanSweeper cleans.
+Dirt Capacity: 46
+Power consumed from cleaning: 1
+Power capacity: 93.0
+Power for movement from current cell to next cell: 1.0
+New power capacity will be: 92.0
+Starting sensor simulator
+stairs set
+Starting control system
+Changing door status of (6.7, 0.5)
+Cleaning cell (7, 4)
+Surface type: BARE
+Floor Dirty: CleanSweeper cleans.
+Dirt Capacity: 49
+Power consumed from cleaning: 1
+Power capacity: 99.0
+Power for movement from current cell to next cell: 1.0
+New power capacity will be: 98.0
+Cleaning cell (8, 4)
+Surface type: BARE
+Floor Dirty: CleanSweeper cleans.
+Dirt Capacity: 48
+Power consumed from cleaning: 1
+Power capacity: 97.0
+Power for movement from current cell to next cell: 1.0
+New power capacity will be: 96.0
+Cleaning cell (7, 4)
+Surface type: BARE
+Floor Clean: CleanSweeper moves on.
+Power for movement from current cell to next cell: 1.0
+New power capacity will be: 95.0
+Cleaning cell (6, 4)
+Surface type: BARE
+Floor Dirty: CleanSweeper cleans.
+Dirt Capacity: 47
+Power consumed from cleaning: 1
+Power capacity: 94.0
+Power for movement from current cell to next cell: 1.0
+New power capacity will be: 93.0
+Cleaning cell (7, 4)
+Surface type: BARE
+Floor Clean: CleanSweeper moves on.
+Power for movement from current cell to next cell: 1.0
+New power capacity will be: 92.0
+Cleaning cell (6, 4)
+Surface type: BARE
+Floor Clean: CleanSweeper moves on.
+Power for movement from current cell to next cell: 1.0
+New power capacity will be: 91.0
+Changing door status of (7.5, 4.5)
+Cleaning cell (6, 3)
+Surface type: BARE
+Floor Dirty: CleanSweeper cleans.
+Dirt Capacity: 46
+Power consumed from cleaning: 1
+Power capacity: 90.0
+Power for movement from current cell to next cell: 1.0
+New power capacity will be: 89.0
+Cleaning cell (6, 2)
+Surface type: BARE
+Floor Dirty: CleanSweeper cleans.
+Dirt Capacity: 45
+Power consumed from cleaning: 1
+Power capacity: 88.0
+Power for movement from current cell to next cell: 1.0
+New power capacity will be: 87.0
+Cleaning cell (6, 3)
+Surface type: BARE
+Floor Clean: CleanSweeper moves on.
+Power for movement from current cell to next cell: 1.0
+New power capacity will be: 86.0
+Cleaning cell (6, 2)
+Surface type: BARE
+Floor Clean: CleanSweeper moves on.
+Power for movement from current cell to next cell: 1.0
+New power capacity will be: 85.0
+Cleaning cell (6, 3)
+Surface type: BARE
+Floor Clean: CleanSweeper moves on.
+Power for movement from current cell to next cell: 1.0
+New power capacity will be: 84.0
+Changing door status of (7.0, 5.5)
+Cleaning cell (6, 4)
+Surface type: BARE
+Floor Clean: CleanSweeper moves on.
+Power for movement from current cell to next cell: 1.0
+New power capacity will be: 83.0
+Cleaning cell (6, 3)
+Surface type: BARE
+Floor Clean: CleanSweeper moves on.
+Power for movement from current cell to next cell: 1.0
+New power capacity will be: 82.0
+Cleaning cell (6, 4)
+Surface type: BARE
+Floor Clean: CleanSweeper moves on.
+Power for movement from current cell to next cell: 1.0
+New power capacity will be: 81.0
+Cleaning cell (7, 4)
+Surface type: BARE
+Floor Clean: CleanSweeper moves on.
+Power for movement from current cell to next cell: 1.0
+New power capacity will be: 80.0
+Cleaning cell (8, 4)
+Surface type: BARE
+Floor Clean: CleanSweeper moves on.
+Power for movement from current cell to next cell: 1.0
+New power capacity will be: 79.0
+Cleaning cell (7, 4)
+Surface type: BARE
+Changing door status of (8.0, 7.5)
+Floor Clean: CleanSweeper moves on.
+Power for movement from current cell to next cell: 1.0
+New power capacity will be: 78.0
+Cleaning cell (7, 5)
+Surface type: BARE
+Floor Dirty: CleanSweeper cleans.
+Dirt Capacity: 44
+Power consumed from cleaning: 1
+Power capacity: 77.0
+Power for movement from current cell to next cell: 1.0
+New power capacity will be: 76.0
+Cleaning cell (7, 4)
+Surface type: BARE
+Floor Clean: CleanSweeper moves on.
+Power for movement from current cell to next cell: 1.0
+New power capacity will be: 75.0
+Cleaning cell (7, 5)
+Surface type: BARE
+Floor Clean: CleanSweeper moves on.
+Power for movement from current cell to next cell: 1.0
+New power capacity will be: 74.0
+Cleaning cell (6, 5)
+Surface type: BARE
+Floor Dirty: CleanSweeper cleans.
+Dirt Capacity: 43
+Power consumed from cleaning: 1
+Power capacity: 73.0
+Power for movement from current cell to next cell: 1.0
+New power capacity will be: 72.0
+Cleaning cell (6, 4)
+Surface type: BARE
+Floor Clean: CleanSweeper moves on.
+Power for movement from current cell to next cell: 1.0
+New power capacity will be: 71.0
+Changing door status of (3.0, 3.5)
+Cleaning cell (6, 5)
+Surface type: BARE
+Floor Clean: CleanSweeper moves on.
+Power for movement from current cell to next cell: 1.0
+New power capacity will be: 70.0
+Cleaning cell (7, 5)
+Surface type: BARE
+Floor Clean: CleanSweeper moves on.
+Power for movement from current cell to next cell: 1.0
+New power capacity will be: 69.0
+Cleaning cell (6, 5)
+Surface type: BARE
+Floor Clean: CleanSweeper moves on.
+Power for movement from current cell to next cell: 1.0
+New power capacity will be: 68.0
+Cleaning cell (6, 4)
+Surface type: BARE
+Floor Clean: CleanSweeper moves on.
+Power for movement from current cell to next cell: 1.0
+New power capacity will be: 67.0
+Cleaning cell (7, 4)
+Surface type: BARE
+Floor Clean: CleanSweeper moves on.
+Power for movement from current cell to next cell: 1.5
+New power capacity will be: 65.5
+Changing door status of (3.0, 3.5)
+Cleaning cell (7, 3)
+Surface type: LOWPILE
+Floor Dirty: CleanSweeper cleans.
+Dirt Capacity: 42
+Power consumed from cleaning: 2
+Power capacity: 63.5
+Power for movement from current cell to next cell: 1.5
+New power capacity will be: 62.0
+Cleaning cell (7, 4)
+Surface type: BARE
+Floor Clean: CleanSweeper moves on.
+Power for movement from current cell to next cell: 1.0
+New power capacity will be: 61.0
+Cleaning cell (6, 4)
+Surface type: BARE
+Floor Clean: CleanSweeper moves on.
+Power for movement from current cell to next cell: 1.0
+New power capacity will be: 60.0
+Cleaning cell (5, 4)
+Surface type: BARE
+Floor Dirty: CleanSweeper cleans.
+Dirt Capacity: 41
+Power consumed from cleaning: 1
+Power capacity: 59.0
+Power for movement from current cell to next cell: 1.0
+New power capacity will be: 58.0
+Cleaning cell (4, 4)
+Surface type: BARE
+Floor Dirty: CleanSweeper cleans.
+Dirt Capacity: 40
+Power consumed from cleaning: 1
+Power capacity: 57.0
+Power for movement from current cell to next cell: 1.0
+New power capacity will be: 56.0
+Cleaning cell (4, 5)
+Surface type: BARE
+Floor Dirty: CleanSweeper cleans.
+Changing door status of (4.5, 1.5)
+Dirt Capacity: 39
+Power consumed from cleaning: 1
+Power capacity: 55.0
+Power for movement from current cell to next cell: 1.0
+New power capacity will be: 54.0
+Cleaning cell (3, 5)
+Surface type: BARE
+Floor Dirty: CleanSweeper cleans.
+Dirt Capacity: 38
+Power consumed from cleaning: 1
+Power capacity: 53.0
+Power for movement from current cell to next cell: 1.0
+New power capacity will be: 52.0
+Cleaning cell (3, 4)
+Surface type: BARE
+Floor Dirty: CleanSweeper cleans.
+Dirt Capacity: 37
+Power consumed from cleaning: 1
+Power capacity: 51.0
+Power for movement from current cell to next cell: 1.0
+New power capacity will be: 50.0
+Cleaning cell (2, 4)
+Surface type: BARE
+Floor Dirty: CleanSweeper cleans.
+Dirt Capacity: 36
+Power consumed from cleaning: 1
+Power capacity: 49.0
+Power for movement from current cell to next cell: 1.0
+New power capacity will be: 48.0
+Cleaning cell (3, 4)
+Surface type: BARE
+Floor Clean: CleanSweeper moves on.
+Power for movement from current cell to next cell: 1.0
+New power capacity will be: 47.0
+Cleaning cell (4, 4)
+Surface type: BARE
+Floor Clean: CleanSweeper moves on.
+Power for movement from current cell to next cell: 1.0
+New power capacity will be: 46.0
+Changing door status of (6.7, 0.5)
+Cleaning cell (4, 5)
+Surface type: BARE
+Floor Clean: CleanSweeper moves on.
+Power for movement from current cell to next cell: 1.0
+New power capacity will be: 45.0
+Cleaning cell (4, 4)
+Surface type: BARE
+Floor Clean: CleanSweeper moves on.
+Power for movement from current cell to next cell: 1.0
+New power capacity will be: 44.0
+Cleaning cell (3, 4)
+Surface type: BARE
+Floor Clean: CleanSweeper moves on.
+Power for movement from current cell to next cell: 1.0
+New power capacity will be: 43.0
+Cleaning cell (4, 4)
+Surface type: BARE
+Floor Clean: CleanSweeper moves on.
+Power for movement from current cell to next cell: 1.0
+New power capacity will be: 42.0
+Cleaning cell (4, 5)
+Surface type: BARE
+Floor Clean: CleanSweeper moves on.
+Power for movement from current cell to next cell: 1.0
+New power capacity will be: 41.0
+Changing door status of (8.5, 6.5)
+Cleaning cell (3, 5)
+Surface type: BARE
+Floor Clean: CleanSweeper moves on.
+Power for movement from current cell to next cell: 1.0
+New power capacity will be: 40.0
+Cleaning cell (4, 5)
+Surface type: BARE
+Floor Clean: CleanSweeper moves on.
+Power for movement from current cell to next cell: 1.0
+New power capacity will be: 39.0
+Cleaning cell (4, 4)
+Surface type: BARE
+Floor Clean: CleanSweeper moves on.
+Power for movement from current cell to next cell: 1.0
+New power capacity will be: 38.0
+Cleaning cell (4, 5)
+Surface type: BARE
+Floor Clean: CleanSweeper moves on.
+Power for movement from current cell to next cell: 1.0
+New power capacity will be: 37.0
+Cleaning cell (3, 5)
+Surface type: BARE
+Floor Clean: CleanSweeper moves on.
+Power for movement from current cell to next cell: 1.0
+New power capacity will be: 36.0
+Cleaning cell (2, 5)
+Surface type: BARE
+Floor Dirty: CleanSweeper cleans.
+Dirt Capacity: 35
+Power consumed from cleaning: 1
+Power capacity: 35.0
+Power for movement from current cell to next cell: 1.0
+New power capacity will be: 34.0
+Changing door status of (6.7, 0.5)
+Cleaning cell (1, 5)
+Surface type: BARE
+Floor Dirty: CleanSweeper cleans.
+Dirt Capacity: 34
+Power consumed from cleaning: 1
+Power capacity: 33.0
+Power for movement from current cell to next cell: 1.0
+New power capacity will be: 32.0
+Cleaning cell (0, 5)
+Surface type: BARE
+Floor Dirty: CleanSweeper cleans.
+Dirt Capacity: 33
+Power consumed from cleaning: 1
+Power capacity: 31.0
+Stairs detected to the LEFT
+Power for movement from current cell to next cell: 1.0
+New power capacity will be: 30.0
+Cleaning cell (1, 5)
+Surface type: BARE
+Floor Clean: CleanSweeper moves on.
+Power for movement from current cell to next cell: 1.0
+New power capacity will be: 29.0
+Cleaning cell (1, 4)
+Surface type: BARE
+Floor Dirty: CleanSweeper cleans.
+Dirt Capacity: 32
+Power consumed from cleaning: 1
+Power capacity: 28.0
+Stairs detected to the BOTTOM
+Power for movement from current cell to next cell: 1.0
+New power capacity will be: 27.0
+Cleaning cell (2, 4)
+Surface type: BARE
+Floor Clean: CleanSweeper moves on.
+Power for movement from current cell to next cell: 1.0
+New power capacity will be: 26.0
+Changing door status of (7.0, 3.5)
+Cleaning cell (3, 4)
+Surface type: BARE
+Floor Clean: CleanSweeper moves on.
+Power for movement from current cell to next cell: 1.0
+New power capacity will be: 25.0
+Cleaning cell (3, 5)
+Surface type: BARE
+Floor Clean: CleanSweeper moves on.
+Power for movement from current cell to next cell: 1.0
+New power capacity will be: 24.0
+Cleaning cell (3, 4)
+Surface type: BARE
+Floor Clean: CleanSweeper moves on.
+Power for movement from current cell to next cell: 1.0
+New power capacity will be: 23.0
+Cleaning cell (3, 5)
+Surface type: BARE
+Floor Clean: CleanSweeper moves on.
+Power for movement from current cell to next cell: 1.0
+New power capacity will be: 22.0
+Cleaning cell (2, 5)
+Surface type: BARE
+Floor Clean: CleanSweeper moves on.
+Power for movement from current cell to next cell: 1.0
+New power capacity will be: 21.0
+Changing door status of (6.0, 3.5)
+Cleaning cell (2, 4)
+Surface type: BARE
+Floor Clean: CleanSweeper moves on.
+Power for movement from current cell to next cell: 1.0
+New power capacity will be: 20.0
+Cleaning cell (1, 4)
+Surface type: BARE
+Floor Clean: CleanSweeper moves on.
+Power for movement from current cell to next cell: 1.0
+New power capacity will be: 19.0
+Cleaning cell (2, 4)
+Surface type: BARE
+Floor Clean: CleanSweeper moves on.
+Power for movement from current cell to next cell: 1.0
+New power capacity will be: 18.0
+Cleaning cell (1, 4)
+Surface type: BARE
+Floor Clean: CleanSweeper moves on.
+Power for movement from current cell to next cell: 1.0
+New power capacity will be: 17.0
+Cleaning cell (2, 4)
+Surface type: BARE
+Floor Clean: CleanSweeper moves on.
+Power for movement from current cell to next cell: 1.0
+New power capacity will be: 16.0
+Cleaning cell (3, 4)
+Surface type: BARE
+Floor Clean: CleanSweeper moves on.
+Power for movement from current cell to next cell: 1.0
+New power capacity will be: 15.0
+Changing door status of (7.0, 5.5)
+Cleaning cell (3, 5)
+Surface type: BARE
+Floor Clean: CleanSweeper moves on.
+Power for movement from current cell to next cell: 1.0
+New power capacity will be: 14.0
+Cleaning cell (3, 4)
+Surface type: BARE
+Floor Clean: CleanSweeper moves on.
+Power for movement from current cell to next cell: 1.0
+New power capacity will be: 13.0
+Cleaning cell (4, 4)
+Surface type: BARE
+Floor Clean: CleanSweeper moves on.
+Power for movement from current cell to next cell: 1.0
+New power capacity will be: 12.0
+Cleaning cell (3, 4)
+Surface type: BARE
+Floor Clean: CleanSweeper moves on.
+Power for movement from current cell to next cell: 1.0
+New power capacity will be: 11.0
+Cleaning cell (4, 4)
+Surface type: BARE
+Floor Clean: CleanSweeper moves on.
+Power for movement from current cell to next cell: 1.0
+New power capacity will be: 10.0
+Changing door status of (7.5, 4.5)
+Cleaning cell (3, 4)
+Surface type: BARE
+Floor Clean: CleanSweeper moves on.
+Power for movement from current cell to next cell: 1.0
+New power capacity will be: 9.0
+Cleaning cell (4, 4)
+Surface type: BARE
+Floor Clean: CleanSweeper moves on.
+Power for movement from current cell to next cell: 1.0
+New power capacity will be: 8.0
+Cleaning cell (3, 4)
+Surface type: BARE
+Floor Clean: CleanSweeper moves on.
+Power for movement from current cell to next cell: 1.0
+New power capacity will be: 7.0
+Cleaning cell (2, 4)
+Surface type: BARE
+Floor Clean: CleanSweeper moves on.
+Power for movement from current cell to next cell: 1.0
+New power capacity will be: 6.0
+Cleaning cell (1, 4)
+Surface type: BARE
+Floor Clean: CleanSweeper moves on.
+Power for movement from current cell to next cell: 1.0
+New power capacity will be: 5.0
+Changing door status of (3.0, 3.5)
+Cleaning cell (2, 4)
+Surface type: BARE
+Floor Clean: CleanSweeper moves on.
+Power for movement from current cell to next cell: 1.0
+New power capacity will be: 4.0
+Cleaning cell (1, 4)
+Surface type: BARE
+Floor Clean: CleanSweeper moves on.
+Power for movement from current cell to next cell: 1.0
+New power capacity will be: 3.0
+Cleaning cell (2, 4)
+Surface type: BARE
+Floor Clean: CleanSweeper moves on.
+Power for movement from current cell to next cell: 1.0
+New power capacity will be: 2.0
+Cleaning cell (2, 5)
+Surface type: BARE
+Floor Clean: CleanSweeper moves on.
+Power for movement from current cell to next cell: 1.0
+New power capacity will be: 1.0
+Cleaning cell (3, 5)
+Surface type: BARE
+Floor Clean: CleanSweeper moves on.
+Power for movement from current cell to next cell: 1.0
+New power capacity will be: 0.0
+Sweeper needs to go back to charge at base
+Changing door status of (7.0, 5.5)
+Changing door status of (7.0, 3.5)
+Changing door status of (7.5, 4.5)
+Changing door status of (8.0, 7.5)
+Changing door status of (7.5, 4.5)
+Changing door status of (7.5, 4.5)
+Changing door status of (8.0, 7.5)
+Changing door status of (3.0, 3.5)
+Changing door status of (7.0, 3.5)
+Changing door status of (6.0, 3.5)
+Changing door status of (8.5, 6.5)
+Changing door status of (3.0, 3.5)
+Changing door status of (8.5, 6.5)
+Changing door status of (8.0, 7.5)
+Changing door status of (6.0, 3.5)
+Changing door status of (7.0, 5.5)
+Changing door status of (8.0, 7.5)
+Changing door status of (7.0, 3.5)
+Changing door status of (7.0, 3.5)
+Changing door status of (3.0, 3.5)
+Starting sensor simulator
+stairs set
+Changing door status of (6.7, 0.5)
+Starting control system
+Cleaning cell (7, 4)
+Surface type: BARE
+Floor Dirty: CleanSweeper cleans.
+Dirt Capacity: 49
+Power consumed from cleaning: 1
+Power capacity: 99.0
+Power for movement from current cell to next cell: 1.0
+New power capacity will be: 98.0
+Changing door status of (6.7, 0.5)
+Cleaning cell (7, 5)
+Surface type: BARE
+Floor Dirty: CleanSweeper cleans.
+Dirt Capacity: 48
+Power consumed from cleaning: 1
+Power capacity: 97.0
+Power for movement from current cell to next cell: 1.0
+New power capacity will be: 96.0
+Cleaning cell (7, 6)
+Surface type: BARE
+Floor Dirty: CleanSweeper cleans.
+Dirt Capacity: 47
+Power consumed from cleaning: 1
+Power capacity: 95.0
+Power for movement from current cell to next cell: 1.0
+New power capacity will be: 94.0
+Cleaning cell (7, 7)
+Surface type: BARE
+Floor Dirty: CleanSweeper cleans.
+Dirt Capacity: 46
+Power consumed from cleaning: 1
+Power capacity: 93.0
+Power for movement from current cell to next cell: 1.0
+New power capacity will be: 92.0
+Cleaning cell (7, 6)
+Surface type: BARE
+Floor Clean: CleanSweeper moves on.
+Power for movement from current cell to next cell: 1.0
+New power capacity will be: 91.0
+Cleaning cell (6, 6)
+Surface type: BARE
+Floor Dirty: CleanSweeper cleans.
+Dirt Capacity: 45
+Power consumed from cleaning: 1
+Power capacity: 90.0
+Power for movement from current cell to next cell: 1.0
+New power capacity will be: 89.0
+Changing door status of (7.0, 3.5)
+Cleaning cell (5, 6)
+Surface type: BARE
+Floor Dirty: CleanSweeper cleans.
+Dirt Capacity: 44
+Power consumed from cleaning: 1
+Power capacity: 88.0
+Power for movement from current cell to next cell: 1.0
+New power capacity will be: 87.0
+Changing door status of (6.0, 3.5)
+Cleaning cell (4, 6)
+Surface type: BARE
+Floor Dirty: CleanSweeper cleans.
+Dirt Capacity: 43
+Power consumed from cleaning: 1
+Power capacity: 86.0
+Power for movement from current cell to next cell: 1.0
+New power capacity will be: 85.0
+Cleaning cell (3, 6)
+Surface type: BARE
+Floor Dirty: CleanSweeper cleans.
+Dirt Capacity: 42
+Power consumed from cleaning: 1
+Power capacity: 84.0
+Power for movement from current cell to next cell: 1.0
+New power capacity will be: 83.0
+Cleaning cell (4, 6)
+Surface type: BARE
+Floor Clean: CleanSweeper moves on.
+Power for movement from current cell to next cell: 1.0
+New power capacity will be: 82.0
+Cleaning cell (3, 6)
+Surface type: BARE
+Floor Clean: CleanSweeper moves on.
+Power for movement from current cell to next cell: 1.0
+New power capacity will be: 81.0
+Changing door status of (4.5, 1.5)
+Cleaning cell (2, 6)
+Surface type: BARE
+Floor Dirty: CleanSweeper cleans.
+Dirt Capacity: 41
+Power consumed from cleaning: 1
+Power capacity: 80.0
+Power for movement from current cell to next cell: 1.0
+New power capacity will be: 79.0
+Changing door status of (7.5, 4.5)
+Cleaning cell (1, 6)
+Surface type: BARE
+Floor Dirty: CleanSweeper cleans.
+Dirt Capacity: 40
+Power consumed from cleaning: 1
+Power capacity: 78.0
+Power for movement from current cell to next cell: 2.0
+New power capacity will be: 76.0
+Cleaning cell (1, 7)
+Surface type: HIGHPILE
+Floor Dirty: CleanSweeper cleans.
+Dirt Capacity: 39
+Power consumed from cleaning: 3
+Power capacity: 73.0
+Power for movement from current cell to next cell: 2.0
+New power capacity will be: 71.0
+Cleaning cell (1, 6)
+Surface type: BARE
+Floor Clean: CleanSweeper moves on.
+Power for movement from current cell to next cell: 2.0
+New power capacity will be: 69.0
+Cleaning cell (1, 7)
+Surface type: HIGHPILE
+Floor Clean: CleanSweeper moves on.
+Power for movement from current cell to next cell: 3.0
+New power capacity will be: 66.0
+Changing door status of (6.0, 3.5)
+Cleaning cell (2, 7)
+Surface type: HIGHPILE
+Floor Dirty: CleanSweeper cleans.
+Dirt Capacity: 38
+Power consumed from cleaning: 3
+Power capacity: 63.0
+Power for movement from current cell to next cell: 2.0
+New power capacity will be: 61.0
+Changing door status of (6.0, 3.5)
+Cleaning cell (2, 6)
+Surface type: BARE
+Floor Clean: CleanSweeper moves on.
+Power for movement from current cell to next cell: 1.0
+New power capacity will be: 60.0
+Cleaning cell (3, 6)
+Surface type: BARE
+Floor Clean: CleanSweeper moves on.
+Power for movement from current cell to next cell: 1.0
+New power capacity will be: 59.0
+Cleaning cell (4, 6)
+Surface type: BARE
+Floor Clean: CleanSweeper moves on.
+Power for movement from current cell to next cell: 2.0
+New power capacity will be: 57.0
+Cleaning cell (4, 7)
+Surface type: HIGHPILE
+Floor Dirty: CleanSweeper cleans.
+Dirt Capacity: 37
+Power consumed from cleaning: 3
+Power capacity: 54.0
+Power for movement from current cell to next cell: 3.0
+New power capacity will be: 51.0
+Cleaning cell (4, 8)
+Surface type: HIGHPILE
+Floor Dirty: CleanSweeper cleans.
+Dirt Capacity: 36
+Power consumed from cleaning: 3
+Power capacity: 48.0
+Power for movement from current cell to next cell: 3.0
+New power capacity will be: 45.0
+Changing door status of (8.0, 7.5)
+Cleaning cell (3, 8)
+Surface type: HIGHPILE
+Floor Dirty: CleanSweeper cleans.
+Dirt Capacity: 35
+Power consumed from cleaning: 3
+Power capacity: 42.0
+Power for movement from current cell to next cell: 2.0
+Changing door status of (6.0, 3.5)
+New power capacity will be: 40.0
+Cleaning cell (3, 9)
+Surface type: BARE
+Floor Dirty: CleanSweeper cleans.
+Dirt Capacity: 34
+Power consumed from cleaning: 1
+Power capacity: 39.0
+Power for movement from current cell to next cell: 2.0
+New power capacity will be: 37.0
+Cleaning cell (3, 8)
+Surface type: HIGHPILE
+Floor Clean: CleanSweeper moves on.
+Power for movement from current cell to next cell: 3.0
+New power capacity will be: 34.0
+Cleaning cell (2, 8)
+Surface type: HIGHPILE
+Floor Dirty: CleanSweeper cleans.
+Dirt Capacity: 33
+Power consumed from cleaning: 3
+Power capacity: 31.0
+Power for movement from current cell to next cell: 3.0
+New power capacity will be: 28.0
+Cleaning cell (1, 8)
+Surface type: HIGHPILE
+Floor Dirty: CleanSweeper cleans.
+Dirt Capacity: 32
+Power consumed from cleaning: 3
+Power capacity: 25.0
+Power for movement from current cell to next cell: 2.0
+New power capacity will be: 23.0
+Changing door status of (3.0, 3.5)
+Cleaning cell (1, 9)
+Surface type: BARE
+Floor Dirty: CleanSweeper cleans.
+Dirt Capacity: 31
+Power consumed from cleaning: 1
+Power capacity: 22.0
+Power for movement from current cell to next cell: 1.0
+New power capacity will be: 21.0
+Changing door status of (7.0, 3.5)
+Cleaning cell (2, 9)
+Surface type: BARE
+Floor Dirty: CleanSweeper cleans.
+Dirt Capacity: 30
+Power consumed from cleaning: 1
+Power capacity: 20.0
+Power for movement from current cell to next cell: 1.0
+New power capacity will be: 19.0
+Cleaning cell (1, 9)
+Surface type: BARE
+Floor Clean: CleanSweeper moves on.
+Power for movement from current cell to next cell: 1.0
+New power capacity will be: 18.0
+Cleaning cell (0, 9)
+Surface type: BARE
+Floor Dirty: CleanSweeper cleans.
+Dirt Capacity: 29
+Power consumed from cleaning: 1
+Power capacity: 17.0
+Power for movement from current cell to next cell: 1.0
+New power capacity will be: 16.0
+Cleaning cell (1, 9)
+Surface type: BARE
+Floor Clean: CleanSweeper moves on.
+Power for movement from current cell to next cell: 1.0
+New power capacity will be: 15.0
+Changing door status of (7.0, 3.5)
+Cleaning cell (0, 9)
+Surface type: BARE
+Floor Clean: CleanSweeper moves on.
+Power for movement from current cell to next cell: 1.0
+New power capacity will be: 14.0
+Changing door status of (7.0, 5.5)
+Cleaning cell (1, 9)
+Surface type: BARE
+Floor Clean: CleanSweeper moves on.
+Power for movement from current cell to next cell: 2.0
+New power capacity will be: 12.0
+Cleaning cell (1, 8)
+Surface type: HIGHPILE
+Floor Clean: CleanSweeper moves on.
+Power for movement from current cell to next cell: 3.0
+New power capacity will be: 9.0
+Cleaning cell (2, 8)
+Surface type: HIGHPILE
+Floor Clean: CleanSweeper moves on.
+Power for movement from current cell to next cell: 3.0
+New power capacity will be: 6.0
+Cleaning cell (1, 8)
+Surface type: HIGHPILE
+Floor Clean: CleanSweeper moves on.
+Power for movement from current cell to next cell: 3.0
+New power capacity will be: 3.0
+Cleaning cell (2, 8)
+Surface type: HIGHPILE
+Floor Clean: CleanSweeper moves on.
+Power for movement from current cell to next cell: 3.0
+New power capacity will be: 0.0
+Changing door status of (7.0, 5.5)
+Sweeper needs to go back to charge at base
+Changing door status of (6.0, 3.5)
+Changing door status of (8.0, 7.5)
+Changing door status of (8.5, 6.5)
+Changing door status of (8.5, 6.5)
+Changing door status of (6.0, 3.5)
+Changing door status of (6.7, 0.5)
+Changing door status of (8.5, 6.5)
+Changing door status of (8.5, 6.5)
+Changing door status of (7.5, 4.5)
+Changing door status of (4.5, 1.5)
+Changing door status of (6.0, 3.5)
+Changing door status of (8.5, 6.5)
+Changing door status of (7.0, 3.5)
+Changing door status of (6.0, 3.5)
+Changing door status of (7.5, 4.5)
+Changing door status of (6.0, 3.5)
+Changing door status of (4.5, 1.5)
+Changing door status of (7.0, 3.5)
+Changing door status of (8.0, 7.5)
+Changing door status of (7.0, 3.5)
+Changing door status of (8.5, 6.5)
+Changing door status of (7.0, 3.5)
+Changing door status of (7.5, 4.5)
+Changing door status of (7.5, 4.5)
+Changing door status of (6.7, 0.5)
+Changing door status of (7.5, 4.5)
+Changing door status of (8.5, 6.5)
+Changing door status of (8.5, 6.5)
+Changing door status of (7.5, 4.5)
+Changing door status of (8.0, 7.5)
+Changing door status of (6.7, 0.5)
+Changing door status of (8.0, 7.5)
+Changing door status of (4.5, 1.5)
+Changing door status of (7.0, 5.5)
+Changing door status of (7.0, 3.5)
+Changing door status of (6.0, 3.5)
+Changing door status of (7.0, 3.5)
+Changing door status of (7.5, 4.5)
+Changing door status of (7.5, 4.5)
+Changing door status of (7.0, 5.5)
+Starting sensor simulator
+stairs set
+Starting control system
+Changing door status of (4.5, 1.5)
+Cleaning cell (7, 4)
+Surface type: BARE
+Floor Dirty: CleanSweeper cleans.
+Dirt Capacity: 49
+Power consumed from cleaning: 1
+Power capacity: 99.0
+Power for movement from current cell to next cell: 1.0
+New power capacity will be: 98.0
+Cleaning cell (8, 4)
+Surface type: BARE
+Floor Dirty: CleanSweeper cleans.
+Dirt Capacity: 48
+Power consumed from cleaning: 1
+Power capacity: 97.0
+Power for movement from current cell to next cell: 1.0
+New power capacity will be: 96.0
+Cleaning cell (7, 4)
+Surface type: BARE
+Floor Clean: CleanSweeper moves on.
+Power for movement from current cell to next cell: 1.0
+New power capacity will be: 95.0
+Cleaning cell (7, 5)
+Surface type: BARE
+Floor Dirty: CleanSweeper cleans.
+Dirt Capacity: 47
+Power consumed from cleaning: 1
+Power capacity: 94.0
+Power for movement from current cell to next cell: 1.0
+New power capacity will be: 93.0
+Cleaning cell (6, 5)
+Surface type: BARE
+Floor Dirty: CleanSweeper cleans.
+Dirt Capacity: 46
+Power consumed from cleaning: 1
+Power capacity: 92.0
+Power for movement from current cell to next cell: 1.0
+New power capacity will be: 91.0
+Cleaning cell (6, 4)
+Surface type: BARE
+Floor Dirty: CleanSweeper cleans.
+Dirt Capacity: 45
+Power consumed from cleaning: 1
+Power capacity: 90.0
+Power for movement from current cell to next cell: 1.0
+New power capacity will be: 89.0
+Changing door status of (6.7, 0.5)
+Cleaning cell (6, 5)
+Surface type: BARE
+Floor Clean: CleanSweeper moves on.
+Power for movement from current cell to next cell: 1.0
+New power capacity will be: 88.0
+Cleaning cell (6, 4)
+Surface type: BARE
+Floor Clean: CleanSweeper moves on.
+Power for movement from current cell to next cell: 1.0
+New power capacity will be: 87.0
+Cleaning cell (5, 4)
+Surface type: BARE
+Floor Dirty: CleanSweeper cleans.
+Dirt Capacity: 44
+Power consumed from cleaning: 1
+Power capacity: 86.0
+Power for movement from current cell to next cell: 1.0
+New power capacity will be: 85.0
+Cleaning cell (6, 4)
+Surface type: BARE
+Floor Clean: CleanSweeper moves on.
+Power for movement from current cell to next cell: 1.0
+New power capacity will be: 84.0
+Cleaning cell (6, 5)
+Surface type: BARE
+Floor Clean: CleanSweeper moves on.
+Power for movement from current cell to next cell: 1.0
+New power capacity will be: 83.0
+Changing door status of (7.0, 3.5)
+Cleaning cell (6, 4)
+Surface type: BARE
+Floor Clean: CleanSweeper moves on.
+Power for movement from current cell to next cell: 1.0
+New power capacity will be: 82.0
+Cleaning cell (7, 4)
+Surface type: BARE
+Floor Clean: CleanSweeper moves on.
+Power for movement from current cell to next cell: 1.5
+New power capacity will be: 80.5
+Cleaning cell (7, 3)
+Surface type: LOWPILE
+Floor Dirty: CleanSweeper cleans.
+Dirt Capacity: 43
+Power consumed from cleaning: 2
+Power capacity: 78.5
+Power for movement from current cell to next cell: 2.0
+New power capacity will be: 76.5
+Cleaning cell (7, 2)
+Surface type: LOWPILE
+Floor Dirty: CleanSweeper cleans.
+Dirt Capacity: 42
+Power consumed from cleaning: 2
+Power capacity: 74.5
+Power for movement from current cell to next cell: 2.0
+New power capacity will be: 72.5
+Cleaning cell (8, 2)
+Surface type: LOWPILE
+Floor Dirty: CleanSweeper cleans.
+Dirt Capacity: 41
+Power consumed from cleaning: 2
+Power capacity: 70.5
+Power for movement from current cell to next cell: 2.0
+New power capacity will be: 68.5
+Changing door status of (7.0, 5.5)
+Cleaning cell (8, 3)
+Surface type: LOWPILE
+Floor Dirty: CleanSweeper cleans.
+Dirt Capacity: 40
+Power consumed from cleaning: 2
+Power capacity: 66.5
+Power for movement from current cell to next cell: 2.0
+New power capacity will be: 64.5
+Cleaning cell (8, 2)
+Surface type: LOWPILE
+Floor Clean: CleanSweeper moves on.
+Power for movement from current cell to next cell: 2.0
+New power capacity will be: 62.5
+Cleaning cell (9, 2)
+Surface type: LOWPILE
+Floor Dirty: CleanSweeper cleans.
+Dirt Capacity: 39
+Power consumed from cleaning: 2
+Power capacity: 60.5
+Power for movement from current cell to next cell: 2.0
+New power capacity will be: 58.5
+Cleaning cell (8, 2)
+Surface type: LOWPILE
+Floor Clean: CleanSweeper moves on.
+Power for movement from current cell to next cell: 2.0
+New power capacity will be: 56.5
+Cleaning cell (9, 2)
+Surface type: LOWPILE
+Floor Clean: CleanSweeper moves on.
+Power for movement from current cell to next cell: 2.0
+New power capacity will be: 54.5
+Cleaning cell (9, 1)
+Surface type: LOWPILE
+Floor Dirty: CleanSweeper cleans.
+Dirt Capacity: 38
+Power consumed from cleaning: 2
+Power capacity: 52.5
+Power for movement from current cell to next cell: 2.0
+New power capacity will be: 50.5
+Changing door status of (8.0, 7.5)
+Cleaning cell (9, 0)
+Surface type: LOWPILE
+Floor Dirty: CleanSweeper cleans.
+Dirt Capacity: 37
+Power consumed from cleaning: 2
+Power capacity: 48.5
+Power for movement from current cell to next cell: 2.0
+New power capacity will be: 46.5
+Cleaning cell (8, 0)
+Surface type: LOWPILE
+Floor Dirty: CleanSweeper cleans.
+Dirt Capacity: 36
+Power consumed from cleaning: 2
+Power capacity: 44.5
+Power for movement from current cell to next cell: 2.0
+New power capacity will be: 42.5
+Cleaning cell (7, 0)
+Surface type: LOWPILE
+Floor Dirty: CleanSweeper cleans.
+Dirt Capacity: 35
+Power consumed from cleaning: 2
+Power capacity: 40.5
+Power for movement from current cell to next cell: 2.0
+New power capacity will be: 38.5
+Cleaning cell (8, 0)
+Surface type: LOWPILE
+Floor Clean: CleanSweeper moves on.
+Power for movement from current cell to next cell: 2.0
+New power capacity will be: 36.5
+Cleaning cell (9, 0)
+Surface type: LOWPILE
+Floor Clean: CleanSweeper moves on.
+Power for movement from current cell to next cell: 2.0
+New power capacity will be: 34.5
+Changing door status of (8.5, 6.5)
+Cleaning cell (9, 1)
+Surface type: LOWPILE
+Floor Clean: CleanSweeper moves on.
+Power for movement from current cell to next cell: 2.0
+New power capacity will be: 32.5
+Cleaning cell (9, 2)
+Surface type: LOWPILE
+Floor Clean: CleanSweeper moves on.
+Power for movement from current cell to next cell: 2.0
+New power capacity will be: 30.5
+Cleaning cell (9, 3)
+Surface type: LOWPILE
+Floor Dirty: CleanSweeper cleans.
+Dirt Capacity: 34
+Power consumed from cleaning: 2
+Power capacity: 28.5
+Power for movement from current cell to next cell: 2.0
+New power capacity will be: 26.5
+Cleaning cell (8, 3)
+Surface type: LOWPILE
+Floor Clean: CleanSweeper moves on.
+Power for movement from current cell to next cell: 2.0
+New power capacity will be: 24.5
+Cleaning cell (9, 3)
+Surface type: LOWPILE
+Floor Clean: CleanSweeper moves on.
+Power for movement from current cell to next cell: 2.0
+New power capacity will be: 22.5
+Changing door status of (7.0, 5.5)
+Cleaning cell (8, 3)
+Surface type: LOWPILE
+Floor Clean: CleanSweeper moves on.
+Power for movement from current cell to next cell: 2.0
+New power capacity will be: 20.5
+Cleaning cell (8, 2)
+Surface type: LOWPILE
+Floor Clean: CleanSweeper moves on.
+Power for movement from current cell to next cell: 2.0
+New power capacity will be: 18.5
+Cleaning cell (9, 2)
+Surface type: LOWPILE
+Floor Clean: CleanSweeper moves on.
+Power for movement from current cell to next cell: 2.0
+New power capacity will be: 16.5
+Cleaning cell (9, 1)
+Surface type: LOWPILE
+Floor Clean: CleanSweeper moves on.
+Power for movement from current cell to next cell: 2.0
+New power capacity will be: 14.5
+Cleaning cell (8, 1)
+Surface type: LOWPILE
+Floor Dirty: CleanSweeper cleans.
+Dirt Capacity: 33
+Power consumed from cleaning: 2
+Power capacity: 12.5
+Power for movement from current cell to next cell: 2.0
+New power capacity will be: 10.5
+Cleaning cell (8, 2)
+Surface type: LOWPILE
+Floor Clean: CleanSweeper moves on.
+Power for movement from current cell to next cell: 2.0
+New power capacity will be: 8.5
+Changing door status of (7.0, 5.5)
+Cleaning cell (9, 2)
+Surface type: LOWPILE
+Floor Clean: CleanSweeper moves on.
+Power for movement from current cell to next cell: 2.0
+New power capacity will be: 6.5
+Cleaning cell (8, 2)
+Surface type: LOWPILE
+Floor Clean: CleanSweeper moves on.
+Power for movement from current cell to next cell: 2.0
+New power capacity will be: 4.5
+Cleaning cell (7, 2)
+Surface type: LOWPILE
+Floor Clean: CleanSweeper moves on.
+Power for movement from current cell to next cell: 2.0
+New power capacity will be: 2.5
+Cleaning cell (7, 1)
+Surface type: LOWPILE
+Floor Dirty: CleanSweeper cleans.
+Dirt Capacity: 32
+Power consumed from cleaning: 2
+Power capacity: 0.5
+Power for movement from current cell to next cell: 2.0
+New power capacity will be: -1.5
+Sweeper needs to go back to charge at base
+Cleaning cycle done: false
+Cleaning cell (0, 0)
+Surface type: LOWPILE
+Floor Dirty: CleanSweeper cleans.
+Dirt Capacity: 49
+Power consumed from cleaning: 2
+Power capacity: 98.0
+Power for movement from current cell to next cell: 2.0
+New power capacity will be: 96.0
+Changing door status of (6.7, 0.5)
+Cleaning cell (0, 1)
+Surface type: LOWPILE
+Floor Dirty: CleanSweeper cleans.
+Dirt Capacity: 48
+Power consumed from cleaning: 2
+Power capacity: 94.0
+Power for movement from current cell to next cell: 2.0
+New power capacity will be: 92.0
+Cleaning cell (0, 0)
+Surface type: LOWPILE
+Floor Clean: CleanSweeper moves on.
+Power for movement from current cell to next cell: 2.0
+New power capacity will be: 90.0
+Cleaning cell (1, 0)
+Surface type: LOWPILE
+Floor Dirty: CleanSweeper cleans.
+Dirt Capacity: 47
+Power consumed from cleaning: 2
+Power capacity: 88.0
+Power for movement from current cell to next cell: 2.0
+New power capacity will be: 86.0
+Cleaning cell (1, 1)
+Surface type: LOWPILE
+Floor Dirty: CleanSweeper cleans.
+Dirt Capacity: 46
+Power consumed from cleaning: 2
+Power capacity: 84.0
+Power for movement from current cell to next cell: 2.0
+New power capacity will be: 82.0
+Cleaning cell (0, 1)
+Surface type: LOWPILE
+Floor Clean: CleanSweeper moves on.
+Power for movement from current cell to next cell: 2.0
+New power capacity will be: 80.0
+Changing door status of (3.0, 3.5)
+Cleaning cell (0, 0)
+Surface type: LOWPILE
+Floor Clean: CleanSweeper moves on.
+Power for movement from current cell to next cell: 2.0
+New power capacity will be: 78.0
+Cleaning cell (1, 0)
+Surface type: LOWPILE
+Floor Clean: CleanSweeper moves on.
+Power for movement from current cell to next cell: 2.0
+New power capacity will be: 76.0
+Cleaning cell (1, 1)
+Surface type: LOWPILE
+Floor Clean: CleanSweeper moves on.
+Power for movement from current cell to next cell: 2.0
+New power capacity will be: 74.0
+Cleaning cell (1, 0)
+Surface type: LOWPILE
+Floor Clean: CleanSweeper moves on.
+Power for movement from current cell to next cell: 2.0
+New power capacity will be: 72.0
+Cleaning cell (0, 0)
+Surface type: LOWPILE
+Floor Clean: CleanSweeper moves on.
+Power for movement from current cell to next cell: 2.0
+New power capacity will be: 70.0
+Cleaning cell (1, 0)
+Surface type: LOWPILE
+Floor Clean: CleanSweeper moves on.
+Power for movement from current cell to next cell: 2.0
+New power capacity will be: 68.0
+Changing door status of (7.5, 4.5)
+Cleaning cell (1, 1)
+Surface type: LOWPILE
+Floor Clean: CleanSweeper moves on.
+Power for movement from current cell to next cell: 2.0
+New power capacity will be: 66.0
+Cleaning cell (2, 1)
+Surface type: LOWPILE
+Floor Dirty: CleanSweeper cleans.
+Dirt Capacity: 45
+Power consumed from cleaning: 2
+Power capacity: 64.0
+Power for movement from current cell to next cell: 2.0
+New power capacity will be: 62.0
+Cleaning cell (2, 2)
+Surface type: LOWPILE
+Floor Dirty: CleanSweeper cleans.
+Dirt Capacity: 44
+Power consumed from cleaning: 2
+Power capacity: 60.0
+Power for movement from current cell to next cell: 2.0
+New power capacity will be: 58.0
+Cleaning cell (2, 3)
+Surface type: LOWPILE
+Floor Dirty: CleanSweeper cleans.
+Dirt Capacity: 43
+Power consumed from cleaning: 2
+Power capacity: 56.0
+Power for movement from current cell to next cell: 2.0
+New power capacity will be: 54.0
+Cleaning cell (3, 3)
+Surface type: LOWPILE
+Floor Dirty: CleanSweeper cleans.
+Dirt Capacity: 42
+Power consumed from cleaning: 2
+Power capacity: 52.0
+Power for movement from current cell to next cell: 2.0
+New power capacity will be: 50.0
+Changing door status of (7.0, 5.5)
+Cleaning cell (2, 3)
+Surface type: LOWPILE
+Floor Clean: CleanSweeper moves on.
+Power for movement from current cell to next cell: 2.0
+New power capacity will be: 48.0
+Cleaning cell (2, 2)
+Surface type: LOWPILE
+Floor Clean: CleanSweeper moves on.
+Power for movement from current cell to next cell: 2.0
+New power capacity will be: 46.0
+Cleaning cell (1, 2)
+Surface type: LOWPILE
+Floor Dirty: CleanSweeper cleans.
+Dirt Capacity: 41
+Power consumed from cleaning: 2
+Power capacity: 44.0
+Power for movement from current cell to next cell: 2.0
+New power capacity will be: 42.0
+Cleaning cell (1, 3)
+Surface type: LOWPILE
+Floor Dirty: CleanSweeper cleans.
+Dirt Capacity: 40
+Power consumed from cleaning: 2
+Power capacity: 40.0
+Power for movement from current cell to next cell: 2.0
+New power capacity will be: 38.0
+Cleaning cell (0, 3)
+Surface type: LOWPILE
+Floor Dirty: CleanSweeper cleans.
+Dirt Capacity: 39
+Power consumed from cleaning: 2
+Power capacity: 36.0
+Power for movement from current cell to next cell: 2.0
+New power capacity will be: 34.0
+Cleaning cell (0, 2)
+Surface type: LOWPILE
+Floor Dirty: CleanSweeper cleans.
+Dirt Capacity: 38
+Power consumed from cleaning: 2
+Power capacity: 32.0
+Power for movement from current cell to next cell: 2.0
+New power capacity will be: 30.0
+Changing door status of (6.7, 0.5)
+Cleaning cell (1, 2)
+Surface type: LOWPILE
+Floor Clean: CleanSweeper moves on.
+Power for movement from current cell to next cell: 2.0
+New power capacity will be: 28.0
+Cleaning cell (1, 3)
+Surface type: LOWPILE
+Floor Clean: CleanSweeper moves on.
+Power for movement from current cell to next cell: 2.0
+New power capacity will be: 26.0
+Cleaning cell (2, 3)
+Surface type: LOWPILE
+Floor Clean: CleanSweeper moves on.
+Power for movement from current cell to next cell: 2.0
+New power capacity will be: 24.0
+Cleaning cell (2, 2)
+Surface type: LOWPILE
+Floor Clean: CleanSweeper moves on.
+Power for movement from current cell to next cell: 2.0
+New power capacity will be: 22.0
+Cleaning cell (3, 2)
+Surface type: LOWPILE
+Floor Dirty: CleanSweeper cleans.
+Dirt Capacity: 37
+Power consumed from cleaning: 2
+Power capacity: 20.0
+Power for movement from current cell to next cell: 2.0
+New power capacity will be: 18.0
+Changing door status of (6.0, 3.5)
+Cleaning cell (3, 1)
+Surface type: LOWPILE
+Floor Dirty: CleanSweeper cleans.
+Dirt Capacity: 36
+Power consumed from cleaning: 2
+Power capacity: 16.0
+Power for movement from current cell to next cell: 2.0
+New power capacity will be: 14.0
+Cleaning cell (3, 0)
+Surface type: LOWPILE
+Floor Dirty: CleanSweeper cleans.
+Dirt Capacity: 35
+Power consumed from cleaning: 2
+Power capacity: 12.0
+Power for movement from current cell to next cell: 2.0
+New power capacity will be: 10.0
+Cleaning cell (2, 0)
+Surface type: LOWPILE
+Floor Dirty: CleanSweeper cleans.
+Dirt Capacity: 34
+Power consumed from cleaning: 2
+Power capacity: 8.0
+Power for movement from current cell to next cell: 2.0
+New power capacity will be: 6.0
+Cleaning cell (1, 0)
+Surface type: LOWPILE
+Floor Clean: CleanSweeper moves on.
+Power for movement from current cell to next cell: 2.0
+New power capacity will be: 4.0
+Cleaning cell (2, 0)
+Surface type: LOWPILE
+Floor Clean: CleanSweeper moves on.
+Power for movement from current cell to next cell: 2.0
+New power capacity will be: 2.0
+Changing door status of (3.0, 3.5)
+Cleaning cell (3, 0)
+Surface type: LOWPILE
+Floor Clean: CleanSweeper moves on.
+Power for movement from current cell to next cell: 2.0
+New power capacity will be: 0.0
+Sweeper needs to go back to charge at base
+Cleaning cycle done: false
+Cleaning cell (0, 0)
+Surface type: LOWPILE
+Floor Clean: CleanSweeper moves on.
+Power for movement from current cell to next cell: 2.0
+New power capacity will be: 98.0
+Cleaning cell (0, 1)
+Surface type: LOWPILE
+Floor Clean: CleanSweeper moves on.
+Power for movement from current cell to next cell: 2.0
+New power capacity will be: 96.0
+Cleaning cell (0, 0)
+Surface type: LOWPILE
+Floor Clean: CleanSweeper moves on.
+Power for movement from current cell to next cell: 2.0
+New power capacity will be: 94.0
+Cleaning cell (0, 1)
+Surface type: LOWPILE
+Floor Clean: CleanSweeper moves on.
+Power for movement from current cell to next cell: 2.0
+New power capacity will be: 92.0
+Cleaning cell (0, 0)
+Surface type: LOWPILE
+Floor Clean: CleanSweeper moves on.
+Power for movement from current cell to next cell: 2.0
+New power capacity will be: 90.0
+Changing door status of (3.0, 3.5)
+Cleaning cell (0, 1)
+Surface type: LOWPILE
+Floor Clean: CleanSweeper moves on.
+Power for movement from current cell to next cell: 2.0
+New power capacity will be: 88.0
+Cleaning cell (1, 1)
+Surface type: LOWPILE
+Floor Clean: CleanSweeper moves on.
+Power for movement from current cell to next cell: 2.0
+New power capacity will be: 86.0
+Cleaning cell (0, 1)
+Surface type: LOWPILE
+Floor Clean: CleanSweeper moves on.
+Power for movement from current cell to next cell: 2.0
+New power capacity will be: 84.0
+Cleaning cell (0, 2)
+Surface type: LOWPILE
+Floor Clean: CleanSweeper moves on.
+Power for movement from current cell to next cell: 2.0
+New power capacity will be: 82.0
+Cleaning cell (0, 1)
+Surface type: LOWPILE
+Floor Clean: CleanSweeper moves on.
+Power for movement from current cell to next cell: 2.0
+New power capacity will be: 80.0
+Changing door status of (8.5, 6.5)
+Cleaning cell (0, 2)
+Surface type: LOWPILE
+Floor Clean: CleanSweeper moves on.
+Power for movement from current cell to next cell: 2.0
+New power capacity will be: 78.0
+Cleaning cell (0, 3)
+Surface type: LOWPILE
+Floor Clean: CleanSweeper moves on.
+Power for movement from current cell to next cell: 2.0
+New power capacity will be: 76.0
+Cleaning cell (1, 3)
+Surface type: LOWPILE
+Floor Clean: CleanSweeper moves on.
+Power for movement from current cell to next cell: 2.0
+New power capacity will be: 74.0
+Cleaning cell (0, 3)
+Surface type: LOWPILE
+Floor Clean: CleanSweeper moves on.
+Power for movement from current cell to next cell: 2.0
+New power capacity will be: 72.0
+Cleaning cell (0, 2)
+Surface type: LOWPILE
+Floor Clean: CleanSweeper moves on.
+Power for movement from current cell to next cell: 2.0
+New power capacity will be: 70.0
+Changing door status of (6.7, 0.5)
+Cleaning cell (0, 1)
+Surface type: LOWPILE
+Floor Clean: CleanSweeper moves on.
+Power for movement from current cell to next cell: 2.0
+New power capacity will be: 68.0
+Cleaning cell (0, 2)
+Surface type: LOWPILE
+Floor Clean: CleanSweeper moves on.
+Power for movement from current cell to next cell: 2.0
+New power capacity will be: 66.0
+Cleaning cell (0, 3)
+Surface type: LOWPILE
+Floor Clean: CleanSweeper moves on.
+Power for movement from current cell to next cell: 2.0
+New power capacity will be: 64.0
+Cleaning cell (0, 2)
+Surface type: LOWPILE
+Floor Clean: CleanSweeper moves on.
+Power for movement from current cell to next cell: 2.0
+New power capacity will be: 62.0
+Cleaning cell (0, 1)
+Surface type: LOWPILE
+Floor Clean: CleanSweeper moves on.
+Power for movement from current cell to next cell: 2.0
+New power capacity will be: 60.0
+Cleaning cell (1, 1)
+Surface type: LOWPILE
+Floor Clean: CleanSweeper moves on.
+Power for movement from current cell to next cell: 2.0
+New power capacity will be: 58.0
+Changing door status of (7.0, 3.5)
+Cleaning cell (1, 0)
+Surface type: LOWPILE
+Floor Clean: CleanSweeper moves on.
+Power for movement from current cell to next cell: 2.0
+New power capacity will be: 56.0
+Cleaning cell (2, 0)
+Surface type: LOWPILE
+Floor Clean: CleanSweeper moves on.
+Power for movement from current cell to next cell: 2.0
+New power capacity will be: 54.0
+Cleaning cell (1, 0)
+Surface type: LOWPILE
+Floor Clean: CleanSweeper moves on.
+Power for movement from current cell to next cell: 2.0
+New power capacity will be: 52.0
+Cleaning cell (0, 0)
+Surface type: LOWPILE
+Floor Clean: CleanSweeper moves on.
+Power for movement from current cell to next cell: 2.0
+New power capacity will be: 50.0
+Cleaning cell (1, 0)
+Surface type: LOWPILE
+Floor Clean: CleanSweeper moves on.
+Power for movement from current cell to next cell: 2.0
+New power capacity will be: 48.0
+Changing door status of (7.0, 5.5)
+Cleaning cell (0, 0)
+Surface type: LOWPILE
+Floor Clean: CleanSweeper moves on.
+Power for movement from current cell to next cell: 2.0
+New power capacity will be: 46.0
+Cleaning cell (0, 1)
+Surface type: LOWPILE
+Floor Clean: CleanSweeper moves on.
+Power for movement from current cell to next cell: 2.0
+New power capacity will be: 44.0
+Cleaning cell (0, 2)
+Surface type: LOWPILE
+Floor Clean: CleanSweeper moves on.
+Power for movement from current cell to next cell: 2.0
+New power capacity will be: 42.0
+Cleaning cell (0, 3)
+Surface type: LOWPILE
+Floor Clean: CleanSweeper moves on.
+Power for movement from current cell to next cell: 2.0
+New power capacity will be: 40.0
+Cleaning cell (0, 2)
+Surface type: LOWPILE
+Floor Clean: CleanSweeper moves on.
+Power for movement from current cell to next cell: 2.0
+New power capacity will be: 38.0
+Changing door status of (7.0, 3.5)
+Cleaning cell (0, 1)
+Surface type: LOWPILE
+Floor Clean: CleanSweeper moves on.
+Power for movement from current cell to next cell: 2.0
+New power capacity will be: 36.0
+Cleaning cell (0, 2)
+Surface type: LOWPILE
+Floor Clean: CleanSweeper moves on.
+Power for movement from current cell to next cell: 2.0
+New power capacity will be: 34.0
+Cleaning cell (1, 2)
+Surface type: LOWPILE
+Floor Clean: CleanSweeper moves on.
+Power for movement from current cell to next cell: 2.0
+New power capacity will be: 32.0
+Cleaning cell (1, 1)
+Surface type: LOWPILE
+Floor Clean: CleanSweeper moves on.
+Power for movement from current cell to next cell: 2.0
+New power capacity will be: 30.0
+Cleaning cell (1, 2)
+Surface type: LOWPILE
+Floor Clean: CleanSweeper moves on.
+Power for movement from current cell to next cell: 2.0
+New power capacity will be: 28.0
+Cleaning cell (1, 3)
+Surface type: LOWPILE
+Floor Clean: CleanSweeper moves on.
+Power for movement from current cell to next cell: 2.0
+New power capacity will be: 26.0
+Changing door status of (8.0, 7.5)
+Cleaning cell (2, 3)
+Surface type: LOWPILE
+Floor Clean: CleanSweeper moves on.
+Power for movement from current cell to next cell: 2.0
+New power capacity will be: 24.0
+Cleaning cell (3, 3)
+Surface type: LOWPILE
+Floor Clean: CleanSweeper moves on.
+Power for movement from current cell to next cell: 2.0
+New power capacity will be: 22.0
+Cleaning cell (3, 2)
+Surface type: LOWPILE
+Floor Clean: CleanSweeper moves on.
+Power for movement from current cell to next cell: 2.0
+New power capacity will be: 20.0
+Cleaning cell (3, 3)
+Surface type: LOWPILE
+Floor Clean: CleanSweeper moves on.
+Power for movement from current cell to next cell: 2.0
+New power capacity will be: 18.0
+Cleaning cell (2, 3)
+Surface type: LOWPILE
+Floor Clean: CleanSweeper moves on.
+Power for movement from current cell to next cell: 2.0
+New power capacity will be: 16.0
+Changing door status of (7.0, 3.5)
+Cleaning cell (2, 2)
+Surface type: LOWPILE
+Floor Clean: CleanSweeper moves on.
+Power for movement from current cell to next cell: 2.0
+New power capacity will be: 14.0
+Cleaning cell (2, 1)
+Surface type: LOWPILE
+Floor Clean: CleanSweeper moves on.
+Power for movement from current cell to next cell: 2.0
+New power capacity will be: 12.0
+Cleaning cell (3, 1)
+Surface type: LOWPILE
+Floor Clean: CleanSweeper moves on.
+Power for movement from current cell to next cell: 2.0
+New power capacity will be: 10.0
+Cleaning cell (2, 1)
+Surface type: LOWPILE
+Floor Clean: CleanSweeper moves on.
+Power for movement from current cell to next cell: 2.0
+New power capacity will be: 8.0
+Cleaning cell (3, 1)
+Surface type: LOWPILE
+Floor Clean: CleanSweeper moves on.
+Power for movement from current cell to next cell: 2.0
+New power capacity will be: 6.0
+Cleaning cell (4, 1)
+Surface type: LOWPILE
+Floor Dirty: CleanSweeper cleans.
+Dirt Capacity: 49
+Power consumed from cleaning: 2
+Power capacity: 4.0
+Power for movement from current cell to next cell: 2.0
+New power capacity will be: 2.0
+Changing door status of (3.0, 3.5)
+Cleaning cell (4, 0)
+Surface type: LOWPILE
+Floor Dirty: CleanSweeper cleans.
+Dirt Capacity: 48
+Power consumed from cleaning: 2
+Power capacity: 0.0
+Power for movement from current cell to next cell: 2.0
+New power capacity will be: -2.0
+Sweeper needs to go back to charge at base
+Cleaning cycle done: false
+Cleaning cell (0, 0)
+Surface type: LOWPILE
+Floor Clean: CleanSweeper moves on.
+Power for movement from current cell to next cell: 2.0
+New power capacity will be: 98.0
+Cleaning cell (0, 1)
+Surface type: LOWPILE
+Floor Clean: CleanSweeper moves on.
+Power for movement from current cell to next cell: 2.0
+New power capacity will be: 96.0
+Cleaning cell (1, 1)
+Surface type: LOWPILE
+Floor Clean: CleanSweeper moves on.
+Power for movement from current cell to next cell: 2.0
+New power capacity will be: 94.0
+Cleaning cell (0, 1)
+Surface type: LOWPILE
+Floor Clean: CleanSweeper moves on.
+Power for movement from current cell to next cell: 2.0
+New power capacity will be: 92.0
+Changing door status of (4.5, 1.5)
+Cleaning cell (0, 0)
+Surface type: LOWPILE
+Floor Clean: CleanSweeper moves on.
+Power for movement from current cell to next cell: 2.0
+New power capacity will be: 90.0
+Cleaning cell (0, 1)
+Surface type: LOWPILE
+Floor Clean: CleanSweeper moves on.
+Power for movement from current cell to next cell: 2.0
+New power capacity will be: 88.0

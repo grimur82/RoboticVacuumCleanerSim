@@ -414,6 +414,9 @@
                 <obstacle>LEFT</obstacle>
                 <obstacle>TOP</obstacle>
             </obstacles>
+            <flags>
+                <flag>CHARGINGSTATION</flag>
+            </flags>
         </cell>
         <cell name="Bathroom A">
             <y>4</y>
