@@ -56,3 +56,5 @@ build/
 dist/
 
 .DS_Store
+
+cleaninglog.txt
