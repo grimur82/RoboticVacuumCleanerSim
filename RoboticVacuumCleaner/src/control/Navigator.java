@@ -157,14 +157,29 @@ public class Navigator {
 		}
 	}
 
+	/**
+	 * Get the current list of unvisited cells.
+	 *
+	 * @return Unvisited cells
+	 */
 	public HashMap<Coordinate, Cell> getUnvisited() {
 		return unvisited;
 	}
 
+	/**
+	 * Get the current list of visited cells.
+	 *
+	 * @return Visited cells
+	 */
 	public HashMap<Coordinate, Cell> getVisited() {
 		return visited;
 	}
 
+	/**
+	 * Get the updated current position.
+	 *
+	 * @return Current position
+	 */
 	public Coordinate getCurrentPos() {
 		return currentPos;
 	}
@@ -172,8 +187,8 @@ public class Navigator {
 	/**
 	 * Dynamic detection of surrounding obstacles from the current position.
 	 *
-	 * @param currentPos
-	 * @return
+	 * @param currentPos Current position
+	 * @return List of obstacles.
 	 */
 	private EnumSet<Obstacle> detectObstacles(Coordinate currentPos) {
 
@@ -258,6 +273,11 @@ public class Navigator {
 		return obstacles;
 	}
 
+	/**
+	 * Record this and surrounding cells.
+	 *
+	 * @param free List of non-obstructed cell dirs.
+	 */
 	private void registerCells(EnumSet<Obstacle> free) {
 
 		int x = (int) currentPos.getX();
