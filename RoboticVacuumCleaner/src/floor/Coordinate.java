@@ -228,4 +228,13 @@ public class Coordinate {
         return x == ((Coordinate)c).getX() && y == ((Coordinate)c).getY();
     }
 
+	/**
+	 * Conversion to string.
+	 *
+	 * @return String format.
+	 */
+	public String toString() {
+		return "(" + x + ", " + y + ")";
+	}
+
 }

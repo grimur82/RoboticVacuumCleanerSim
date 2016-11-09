@@ -2,7 +2,6 @@ package control;
 
 import floor.Cell;
 import floor.Coordinate;
-import floor.Obstacle;
 import sensor.SensorServices;
 import util.Debugger;
 
@@ -68,7 +67,7 @@ public class ControlSystemService {
      *
      * @param currentPos Current position.
      */
-    public void setPosition(Coordinate currentPos) {
+    private void setPosition(Coordinate currentPos) {
         this.currentPos = currentPos;
     }
     
@@ -162,24 +161,15 @@ public class ControlSystemService {
 
             cell.clean();
 
-			// Dynamically find obstacles
-			EnumSet<Obstacle> obstacles = ObstacleDetector.generate(currentPos);
-
-			// Get free directions
-			EnumSet<Obstacle> free = EnumSet.allOf(Obstacle.class);
-			free.removeAll(obstacles);
-
-            // Update visited and unvisited cells
-            registerCells(free);
-
-            // Choose next random cell
-			Coordinate chosenCoord = RandomPosition.generate(currentPos, free);
-
-			// Set next cell
+			// Navigator and update
+			Navigator navigator = new Navigator(currentPos, visited, unvisited);
+			visited = navigator.getVisited();
+			unvisited = navigator.getUnvisited();
+			Coordinate chosenCoord = navigator.getCurrentPos();
 			setPosition(chosenCoord);
-			Cell nextCell = sensorService.getCell(chosenCoord);
-            
+
 			//Decreases power capacity due to movement
+			Cell nextCell = sensorService.getCell(chosenCoord);
             decreasePowerMove(movementCharge(cell, nextCell));
             Debugger.log("Power for movement from current cell to next cell: "+ movementCharge(cell, nextCell));
         	Debugger.log("New power capacity will be: "+ checkPowerCapacity());
@@ -246,48 +236,6 @@ public class ControlSystemService {
 		return neighbors;
 
     	
-    }
-    private void registerCells(EnumSet<Obstacle> free) {
-		int x = (int) currentPos.getX();
-		int y = (int) currentPos.getY();
-
-		// Current cell
-		Cell cell = sensorService.getCell(x, y);
-		visited.put(currentPos, cell);
-		unvisited.remove(currentPos);
-
-		// Register surrounding cells
-		for (Obstacle o : free) {
-
-			switch (o) {
-
-				case TOP:
-					Coordinate topCoordinate = new Coordinate(x + 1, y);
-					if (!visited.containsKey(topCoordinate))
-						unvisited.put(topCoordinate, sensorService.getCell(x + 1, y));
-					break;
-
-				case BOTTOM:
-					Coordinate bottomCoordinate = new Coordinate(x - 1, y);
-					if (!visited.containsKey(bottomCoordinate))
-						unvisited.put(bottomCoordinate, sensorService.getCell(x - 1, y));
-					break;
-
-				case LEFT:
-					Coordinate leftCoordinate = new Coordinate(x, y - 1);
-					if (!visited.containsKey(leftCoordinate))
-						unvisited.put(leftCoordinate, sensorService.getCell(x, y - 1));
-					break;
-
-				case RIGHT:
-				default:
-					Coordinate rightCoordinate = new Coordinate(x, y + 1);
-					if (!visited.containsKey(rightCoordinate))
-						unvisited.put(rightCoordinate, sensorService.getCell(x, y + 1));
-					break;
-
-			}
-		}
     }
 
 	/**
