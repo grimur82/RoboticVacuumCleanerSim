@@ -19,6 +19,7 @@ public class Visualizer {
 	public final String ANSI_SWEEPER = "\u001B[32m";
 	public final String ANSI_DIRTY = "\u001B[31m";
 	public final String ANSI_STAIRS = "\u001B[35m";
+	public final String ANSI_SEMIDIRTY = "\u001B[33m";
 
 	private Visualizer() {
 		floorPlan = FloorPlan.getInstance();
@@ -31,11 +32,10 @@ public class Visualizer {
 		return instance;
 	}
 
-	public void print(HashMap<Coordinate, Cell> visited) {
+	public void print() {
 
 		Cell[][] plan = floorPlan.getFloorPlan();
 		Coordinate pos = control.getCurrentPos();
-		HashMap<Coordinate, DoorStatus> doorList = floorPlan.getDoorList();
 
 		if (plan.length == 0 || plan[0].length == 0)
 			return;
@@ -62,10 +62,12 @@ public class Visualizer {
 					System.out.print(ANSI_STAIRS + "S" + ANSI_RESET);
 				} else if (pos.getX() == i && pos.getY() == j) {
 					System.out.print(ANSI_SWEEPER + "O" + ANSI_RESET);
-				} else if (visited.containsKey(new Coordinate(i, j))) {
-					System.out.print(" ");
-				} else {
+				} else if (plan[i][j].getDirt() == 2){
 					System.out.print(ANSI_DIRTY + "x" + ANSI_RESET);
+				} else if (plan[i][j].getDirt() == 1) {
+					System.out.print(ANSI_SEMIDIRTY + "x" + ANSI_RESET);
+				} else {
+					System.out.print(" ");
 				}
 
 				System.out.print(
@@ -83,6 +85,15 @@ public class Visualizer {
 				);
 			}
 			System.out.println("");
+		}
+
+		// Delay for visualization
+		if (Debugger.getMode()) {
+			try {
+				Thread.sleep(1000);
+			} catch (InterruptedException e) {
+				Thread.currentThread().interrupt();
+			}
 		}
 	}
 

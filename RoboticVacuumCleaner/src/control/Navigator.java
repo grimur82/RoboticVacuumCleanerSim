@@ -13,23 +13,23 @@ import java.util.*;
 public class Navigator {
 
 	private Coordinate currentPos;
-	private HashMap<Coordinate, Cell> visited;
-	private HashMap<Coordinate, Cell> unvisited;
+	private HashMap<Coordinate, Cell> clean;
+	private HashMap<Coordinate, Cell> dirty;
 	private SensorServices sensorService;
 
 	/**
 	 * Store current sweeper coordinate info.
 	 *
 	 * @param currentPos Current position.
-	 * @param visited Visited cells.
-	 * @param unvisited Unvisited cells.
+	 * @param clean Clean cells.
+	 * @param dirty Dirty cells.
 	 */
 	public Navigator(Coordinate currentPos,
-					 HashMap<Coordinate, Cell> visited,
-					 HashMap<Coordinate, Cell> unvisited) {
+					 HashMap<Coordinate, Cell> clean,
+					 HashMap<Coordinate, Cell> dirty) {
 		this.currentPos = currentPos;
-		this.visited = visited;
-		this.unvisited = unvisited;
+		this.clean = clean;
+		this.dirty = dirty;
 		this.sensorService = SensorServices.getInstance();
 
 		find();
@@ -50,7 +50,7 @@ public class Navigator {
 		// List of surrounding dirty cells
 		int x = (int) currentPos.getX();
 		int y = (int) currentPos.getY();
-		ArrayList<Coordinate> dirty = new ArrayList<>();
+		ArrayList<Coordinate> dirt = new ArrayList<>();
 		Coordinate coordinate;
 		for (Obstacle o : free) {
 			switch (o) {
@@ -68,19 +68,19 @@ public class Navigator {
 					coordinate = new Coordinate(x, y + 1);
 					break;
 			}
-			if (unvisited.containsKey(coordinate))
-				dirty.add(coordinate);
+			if (dirty.containsKey(coordinate))
+				dirt.add(coordinate);
 		}
 
 		// Favor a clean cell
-		if (!dirty.isEmpty()) {
+		if (!dirt.isEmpty()) {
 			Random r = new Random();
-			int i = r.nextInt(dirty.size());
-			this.currentPos = dirty.get(i);
+			int i = r.nextInt(dirt.size());
+			this.currentPos = dirt.get(i);
 			return;
 		}
 
-		// Check for the nearest unvisited or dirty cell and head in that direction
+		// Check for the nearest dirty cell and head in that direction
 		searchDirtyCell(free);
 	}
 
@@ -92,7 +92,7 @@ public class Navigator {
 		Coordinate c;
 
 		// Search setup
-		ArrayList<Coordinate> finderVisited = new ArrayList<>();
+		ArrayList<Coordinate> finderClean = new ArrayList<>();
 		Queue<Coordinate> queue = new LinkedList<>();
 		HashMap<Coordinate, Coordinate> origins = new HashMap<>();
 		for (Obstacle o: free) {
@@ -120,9 +120,9 @@ public class Navigator {
 		int cy;
 		while (!queue.isEmpty()) {
 			c = queue.remove();
-			finderVisited.add(c);
+			finderClean.add(c);
 
-			if (unvisited.containsKey(c)) {
+			if (dirty.containsKey(c)) {
 				currentPos = origins.get(c);
 				return;
 			}
@@ -148,8 +148,8 @@ public class Navigator {
 						coordinate = new Coordinate(cx, cy + 1);
 						break;
 				}
-				if ((unvisited.containsKey(coordinate) || visited.containsKey(coordinate))
-						&& !finderVisited.contains(coordinate) && !queue.contains(coordinate)) {
+				if ((dirty.containsKey(coordinate) || clean.containsKey(coordinate))
+						&& !finderClean.contains(coordinate) && !queue.contains(coordinate)) {
 					queue.add(coordinate);
 					origins.put(coordinate, origins.get(c));
 				}
@@ -158,21 +158,21 @@ public class Navigator {
 	}
 
 	/**
-	 * Get the current list of unvisited cells.
+	 * Get the current list of dirty cells.
 	 *
-	 * @return Unvisited cells
+	 * @return Dirty cells
 	 */
-	public HashMap<Coordinate, Cell> getUnvisited() {
-		return unvisited;
+	public HashMap<Coordinate, Cell> getDirty() {
+		return dirty;
 	}
 
 	/**
-	 * Get the current list of visited cells.
+	 * Get the current list of clean cells.
 	 *
-	 * @return Visited cells
+	 * @return Clean cells
 	 */
-	public HashMap<Coordinate, Cell> getVisited() {
-		return visited;
+	public HashMap<Coordinate, Cell> getClean() {
+		return clean;
 	}
 
 	/**
@@ -274,7 +274,7 @@ public class Navigator {
 	}
 
 	/**
-	 * Record this and surrounding cells.
+	 * Record surrounding cells.
 	 *
 	 * @param free List of non-obstructed cell dirs.
 	 */
@@ -283,11 +283,6 @@ public class Navigator {
 		int x = (int) currentPos.getX();
 		int y = (int) currentPos.getY();
 
-		// Current cell
-		Cell cell = sensorService.getCell(x, y);
-		visited.put(currentPos, cell);
-		unvisited.remove(currentPos);
-
 		// Register surrounding cells
 		for (Obstacle o : free) {
 
@@ -295,27 +290,27 @@ public class Navigator {
 
 				case TOP:
 					Coordinate topCoordinate = new Coordinate(x + 1, y);
-					if (!visited.containsKey(topCoordinate))
-						unvisited.put(topCoordinate, sensorService.getCell(x + 1, y));
+					if (!clean.containsKey(topCoordinate))
+						dirty.put(topCoordinate, sensorService.getCell(x + 1, y));
 					break;
 
 				case BOTTOM:
 					Coordinate bottomCoordinate = new Coordinate(x - 1, y);
-					if (!visited.containsKey(bottomCoordinate))
-						unvisited.put(bottomCoordinate, sensorService.getCell(x - 1, y));
+					if (!clean.containsKey(bottomCoordinate))
+						dirty.put(bottomCoordinate, sensorService.getCell(x - 1, y));
 					break;
 
 				case LEFT:
 					Coordinate leftCoordinate = new Coordinate(x, y - 1);
-					if (!visited.containsKey(leftCoordinate))
-						unvisited.put(leftCoordinate, sensorService.getCell(x, y - 1));
+					if (!clean.containsKey(leftCoordinate))
+						dirty.put(leftCoordinate, sensorService.getCell(x, y - 1));
 					break;
 
 				case RIGHT:
 				default:
 					Coordinate rightCoordinate = new Coordinate(x, y + 1);
-					if (!visited.containsKey(rightCoordinate))
-						unvisited.put(rightCoordinate, sensorService.getCell(x, y + 1));
+					if (!clean.containsKey(rightCoordinate))
+						dirty.put(rightCoordinate, sensorService.getCell(x, y + 1));
 					break;
 
 			}

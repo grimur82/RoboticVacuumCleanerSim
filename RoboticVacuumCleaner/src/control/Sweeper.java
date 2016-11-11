@@ -22,10 +22,13 @@ public class Sweeper{
 	public int checkDirtCapacity(){
 		return dirtCapacity;
 	}
+
 	// Decrement sweeper dirt capacity.
 	public void decreaseDirtCapacity(){
-		dirtCapacity--;
+		if (dirtCapacity > 0)
+			dirtCapacity--;
 	}
+
 	// Check how much power. Sweeper has left.
 	public double checkPowerCapacity(){
 		return powerCapacity;

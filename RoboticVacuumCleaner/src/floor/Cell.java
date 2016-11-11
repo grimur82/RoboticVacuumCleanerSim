@@ -7,6 +7,7 @@ import util.Debugger;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.EnumSet;
+import java.util.Random;
 
 import javax.xml.parsers.ParserConfigurationException;
 
@@ -22,7 +23,10 @@ public class Cell {
     private String name;
     private SurfaceType surfaceType;
     private EnumSet<Obstacle> obstacles;
-    private boolean dirt;
+
+	// Dirt level
+    private int dirt;
+
 	private boolean stairs;
 	private boolean chargingBase;
 	private Coordinate c;
@@ -30,9 +34,12 @@ public class Cell {
     public Cell(SurfaceType surfaceType) {
         this.surfaceType = surfaceType;
         this.obstacles = EnumSet.noneOf(Obstacle.class);
-        this.dirt = true;
 		this.stairs = false;
 		this.chargingBase = false;
+
+		// Randomly set the dirt level
+		Random r = new Random();
+		this.dirt = r.nextInt(2) + 1;
     }
     public void setCoordinate(double x, double y){
     	c = new Coordinate(x,y);
@@ -109,22 +116,6 @@ public class Cell {
     		}
     	}
     	}
-    	
-    public boolean checkDirt() {
-    	if(dirt){
-    		Debugger.log("Floor Dirty: CleanSweeper cleans.");
-    		Sweeper.getInstance().decreaseDirtCapacity();
-    		Debugger.log("Dirt Capacity: " + Sweeper.getInstance().checkDirtCapacity());
-        	Debugger.log("Power consumed from cleaning: "+ getSurfaceType().getPowerUsed());
-        	Sweeper.getInstance().decreasePowerCapacity(getSurfaceType().getPowerUsed());
-        	Debugger.log("Power capacity: "+ Sweeper.getInstance().checkPowerCapacity());
-
-    	}
-    	else{
-    		Debugger.log("Floor Clean: CleanSweeper moves on.");
-    	}
-        return dirt;
-    }
 
 	/**
 	 * Sets whether this cell has stairs.
@@ -153,9 +144,23 @@ public class Cell {
 		return stairs;
 	}
 
+	/**
+	 * Clean one unit of dirt.
+	 */
     public void clean() {
-        dirt = false;
+        if (dirt > 0)
+			dirt--;
     }
+
+	/**
+	 * Get level of dirt.
+	 *
+	 * @return Dirt level
+	 */
+	public int getDirt() {
+		return dirt;
+	}
+
     public SurfaceType getSurfaceType() {
         return surfaceType;
     }
