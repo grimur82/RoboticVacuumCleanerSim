@@ -131,10 +131,10 @@ public class ControlSystemService {
             	Debugger.log("Sweeper needs to go back to charge at base");
             	// Call sweeper to go back to base.
             	SweeperServices.getInstance().backToBase();
-            	x = (int) sensorService.getCell(0,0).getCoordinate().getX(); // Base
-                y = (int) sensorService.getCell(0,0).getCoordinate().getY(); // Base
-                currentPos.setX(0);
-            	currentPos.setY(0);
+            	x = (int) SweeperServices.getInstance().getChargePosition().getX();		
+                y = (int) SweeperServices.getInstance().getChargePosition().getY();
+                currentPos.setX(x);
+            	currentPos.setY(y);
                 cell = sensorService.getCell(x, y);
                 // Sweeper is charged.
                 SweeperServices.getInstance().reCharge();

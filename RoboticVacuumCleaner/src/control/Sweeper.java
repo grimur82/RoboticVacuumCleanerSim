@@ -1,5 +1,7 @@
 package control;
 
+import util.Debugger;
+
 public class Sweeper{
 	public static Sweeper sweeper = new Sweeper();
 	private int dirtCapacity;
@@ -17,6 +19,7 @@ public class Sweeper{
 	public void reCharged(){
 		dirtCapacity = 50;
 		powerCapacity = 100.0;
+		Debugger.log("Sweeper is recharged");
 	}
 	// Check how much dirt capacity sweeper has left.
 	public int checkDirtCapacity(){
