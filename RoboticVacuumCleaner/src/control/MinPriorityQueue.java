@@ -8,6 +8,7 @@ import floor.Coordinate;
 public class MinPriorityQueue
 {
   PriorityQueue<Coordinate> minPQ;  
+  // Lowest Distance is on top of queue.
   public MinPriorityQueue() {
 		minPQ = new PriorityQueue<Coordinate>(36, new Comparator<Coordinate>() {
 
@@ -23,15 +24,19 @@ public class MinPriorityQueue
 			}
 		});
   }
+  // Add to Queue
   public void addPQ(Coordinate v){
     minPQ.add(v);
   }
+  // Get the queue
   public PriorityQueue<Coordinate> getPq(){
     return minPQ;
   }
+  // Look at what Coordinate is on top of Queue
   public Coordinate getMin(){
     return minPQ.poll();
   }
+  // Return size of queue.
   public int checkSize(){
     return minPQ.size();
   }

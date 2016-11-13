@@ -29,7 +29,7 @@ public class Sweeper{
 			dirtCapacity--;
 	}
 
-	// Check how much power. Sweeper has left.
+	// Power capacity left on Sweeper.
 	public double checkPowerCapacity(){
 		return powerCapacity;
 	}

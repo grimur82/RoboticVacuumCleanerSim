@@ -28,9 +28,11 @@ public class SweeperServices {
 	public static SweeperServices getInstance(){
 		return sweeperServices;
 	}
+	// Recharge power and dirt capacity on sweeper.
 	public void reCharge(){
 		sweeper.getInstance().reCharged();
 	}
+	// Run a path for sweeper to find back to a base.
 	public void backToBase() throws ParserConfigurationException, SAXException, IOException{
 		// path from current to startPosition
 		MinPriorityQueue pqUnvisited = new MinPriorityQueue();
