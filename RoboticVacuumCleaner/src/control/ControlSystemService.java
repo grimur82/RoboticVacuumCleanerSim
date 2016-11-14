@@ -127,9 +127,19 @@ public class ControlSystemService {
 			Debugger.log("Arrived at cell (" + x + ", " + y + ")");
 
 			// Checks if Sweeper is out of power or no dirt capacity left.
-            if(Sweeper.getInstance().checkDirtCapacity() == 0 || Sweeper.getInstance().checkPowerCapacity() <= 0.0){
+			
+			if(sweeper.checkPowerCapacity() == 0){
+				Debugger.log("No base was found and no power left. Shutting down");
+				ControlSystemService.getInstance().shutDownSweeper();
+			}
+            if(sweeper.checkDirtCapacity() ==0 || 
+            		(Math.abs(SweeperServices.getInstance().powerNeededtoRechargeBase()
+            				-Sweeper.getInstance().checkPowerCapacity()) <= 3.0)
+            		){
             	Debugger.log("Sweeper needs to go back to charge at base");
             	// Call sweeper to go back to base.
+            	Debugger.log("Sweeper Power: " + Sweeper.getInstance().checkPowerCapacity()
+            			+ " Base Power: "+ SweeperServices.getInstance().powerNeededtoRechargeBase());
             	SweeperServices.getInstance().backToBase();
             	x = (int) SweeperServices.getInstance().getChargePosition().getX();		
                 y = (int) SweeperServices.getInstance().getChargePosition().getY();
@@ -147,18 +157,15 @@ public class ControlSystemService {
 			// If dirt is present
 			int oldDirt;
 			if ((oldDirt = cell.getDirt()) > 0) {
-
 				// Clean
 				cell.clean();
 				int currentDirt = cell.getDirt();
 				Debugger.log("Floor Dirty: cleaning, dirt level " + oldDirt + " -> " + currentDirt);
-
 				// Mark if clean or dirty
 				if (currentDirt == 0) {
 					dirty.remove(currentPos);
 					clean.put(currentPos, cell);
 				}
-
 				// Decrease sweeper's dirt capacity
 				int oldCapacity = sweeper.checkDirtCapacity();
 				sweeper.decreaseDirtCapacity();
@@ -200,7 +207,7 @@ public class ControlSystemService {
 
     public void shutDownSweeper(){
     	System.out.println("Sweeper is full: Stopped");
-    	return;
+    	System.exit(1);
     }
 
 	/**

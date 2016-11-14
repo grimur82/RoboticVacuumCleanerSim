@@ -32,7 +32,7 @@ public class SweeperServices {
 	}
 	// Recharge power and dirt capacity on sweeper.
 	public void reCharge(){
-		sweeper.getInstance().reCharged();
+		sweeper.reCharged();
 	}
 	// Run a path for sweeper to find back to a base.
 	public void backToBase() throws ParserConfigurationException, SAXException, IOException{
@@ -65,8 +65,7 @@ public class SweeperServices {
 				toPath = cd;
 			}
 			if(SensorServices.getInstance().getCell(cd).typeChargingBase()){
-				findClosestChargingBase.addPQ(cd);
-				
+				findClosestChargingBase.addPQ(cd);	
 			}		
 		}
 		if(findClosestChargingBase.checkSize() <=0){
@@ -87,19 +86,56 @@ public class SweeperServices {
 				SweeperServices.getInstance().setChargePosition(toPath);
 				shortestPath.add(getChargingPath);
 				Collections.reverse(shortestPath);
-				System.out.println("Moving towards charging base:");
+				Debugger.log("Moving towards charging base:");
 				for(Coordinate getPath : shortestPath){
-					System.out.println("x: " + getPath.getX() + " Y: " + getPath.getY());
+					Debugger.log("x: " + getPath.getX() + " Y: " + getPath.getY());
 				}
-				System.out.println("Found Base");
+				Debugger.log("Found Base");
 			}
 		}
+	}
+	public double powerNeededtoRechargeBase(){
+		double power = 0;
+		// path from current to startPosition
+		MinPriorityQueue pqUnvisited = new MinPriorityQueue();
+		MinPriorityQueue pqVisited = new MinPriorityQueue();
+		MinPriorityQueue findClosestChargingBase = new MinPriorityQueue();
+		Coordinate c = ControlSystemService.getInstance().getCurrentPos();
+		c.setDistance(0);
+		c.setNeighbor(c);
+		pqUnvisited.addPQ(c);
+		// Calculate a path for sweeper to reach a charging base.
+		while(pqUnvisited.checkSize() != 0){
+			Coordinate temp = pqUnvisited.getMin();
+			pqVisited.addPQ(temp);
+			for(Coordinate parent : ControlSystemService.getInstance().getNeighbors(temp)){
+				if(!pqVisited.getPq().contains(parent)){
+					
+					power += ControlSystemService.getInstance().movementCharge(SensorServices.getInstance()
+							.getCell(c), SensorServices.getInstance()
+									.getCell(parent));
+					parent.setPowerDistance(power);
+					parent.setNeighbor(temp);
+					pqUnvisited.addPQ(parent);
+				}
+			}
+		}
+		for(Coordinate cd : pqVisited.getPq()){
+			if(SensorServices.getInstance().getCell(cd).typeChargingBase()){
+				findClosestChargingBase.addPQ(cd);	
+			}		
+		}
+			Coordinate getChargingPath = findClosestChargingBase.getMin();
+			if(getChargingPath != null){
+				return getChargingPath.getPowerDistance();
+			}
+		return 0;
+		
 	}
 	public void setChargePosition(Coordinate c){
 		chargePosition = c;
 	}
 	public Coordinate getChargePosition(){
 		return chargePosition;
-		
 	}
 	}

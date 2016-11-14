@@ -10,6 +10,7 @@ public class Coordinate {
     private double x = 0;
     private double y = 0;
     private int distance = -1;
+    private double powerDistance = 0;
     private Coordinate neighbor;
     public Coordinate(int x, int y) {
         this.x = x;
@@ -24,6 +25,14 @@ public class Coordinate {
     // Get shortest path distance from current sweeper position towards the charging base.
     public int getDistance(){
     	return distance;
+    }
+ // Set shortest path distance from current sweeper position towards the charging base.
+    public void setPowerDistance(double distance){
+    	this.powerDistance = distance;
+    }
+    // Get shortest path distance from current sweeper position towards the charging base.
+    public double getPowerDistance(){
+    	return powerDistance;
     }
     // Set neighbors for location Sweeper is on.
     public void setNeighbor(Coordinate c){
