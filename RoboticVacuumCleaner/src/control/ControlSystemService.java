@@ -126,12 +126,12 @@ public class ControlSystemService {
 			Cell cell = sensorService.getCell(x, y);
 			Debugger.log("Arrived at cell (" + x + ", " + y + ")");
 
-			// Checks if Sweeper is out of power or no dirt capacity left.
-			
+			// Checks if Sweeper is out of power.
 			if(sweeper.checkPowerCapacity() == 0){
 				Debugger.log("No base was found and no power left. Shutting down");
 				ControlSystemService.getInstance().shutDownSweeper();
 			}
+			// Checks if Sweeper has no dirt capacity or power left.
             if(sweeper.checkDirtCapacity() ==0 || 
             		(Math.abs(SweeperServices.getInstance().powerNeededtoRechargeBase()
             				-Sweeper.getInstance().checkPowerCapacity()) <= 3.0)
