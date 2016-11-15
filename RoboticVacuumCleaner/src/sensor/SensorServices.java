@@ -22,8 +22,8 @@ public class SensorServices {
 	private HashMap<Coordinate, DoorStatus> doorList;
 
     private SensorServices() {
+    	floorPlan = FloorPlan.getInstance();
         Debugger.log("Starting sensor simulator");
-		floorPlan = FloorPlan.getInstance();
 		initDoorSimulator();
     }
 

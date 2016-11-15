@@ -3,12 +3,14 @@ package sensor;
 import java.io.File;
 import java.io.IOException;
 import java.util.HashMap;
+import java.util.Scanner;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
 
 import floor.DoorStatus;
+
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.NodeList;
@@ -32,7 +34,8 @@ public class FloorPlanLoader {
 
 	public FloorPlanLoader() {
 		try {
-			loadFloorPlan();
+			File newFile = getFile();
+			loadFloorPlan(newFile);
 		} catch (ParserConfigurationException | SAXException | IOException e) {
 			Debugger.log("Error loading floor plan");
 			e.printStackTrace();
@@ -43,9 +46,40 @@ public class FloorPlanLoader {
     public Cell[][] getFloorPlan() {
         return floorPlan;
     }
+    
+    public File getFile() throws IOException {
+    	Scanner sc = new Scanner(System.in);
+    	boolean fileExists = false;
+    	File file = null;
+    	
+    	while(!fileExists){
+    		System.out.print("Type in file path of floor plan: ");
+        	String filePath = sc.next();
+        	if(filePath.equals("Exit")){
+        		System.exit(-1);
+        	}
+    	
+        	file = new File(filePath);    	
+        	
+        	if(file.exists()){
+        		String ext = filePath.substring(filePath.lastIndexOf(".")+1);
+        		if(ext.equals("xml")){
+        			Debugger.log("Loading floor plan");
+        			fileExists = true;
+        		}else{
+        			Debugger.log("Invalid file format.");
+        		}    
+        	} else{
+        		Debugger.log("File does not exist.");
+        	}  
+    	}	
+    	
+    	sc.close();
+    	return file;
+    }
+  
 
-    public void loadFloorPlan() throws ParserConfigurationException, SAXException, IOException {
-        File file = new File("../test/PlanA.xml");
+    public void loadFloorPlan(File file) throws ParserConfigurationException, SAXException, IOException {
         DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
         DocumentBuilder db = dbf.newDocumentBuilder();
         Document parsing = db.parse(file);
