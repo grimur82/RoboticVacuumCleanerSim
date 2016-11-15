@@ -47,11 +47,13 @@ public class FloorPlanLoader {
         return floorPlan;
     }
     
+    //getting file from user input
     public File getFile() throws IOException {
     	Scanner sc = new Scanner(System.in);
     	boolean fileExists = false;
     	File file = null;
     	
+    	//prompts user until file is accepted
     	while(!fileExists){
     		System.out.print("Type in file path of floor plan: ");
         	String filePath = sc.next();
@@ -61,8 +63,10 @@ public class FloorPlanLoader {
     	
         	file = new File(filePath);    	
         	
+        	//checks if file path is valid or if file exists
         	if(file.exists()){
         		String ext = filePath.substring(filePath.lastIndexOf(".")+1);
+        		//checks file format
         		if(ext.equals("xml")){
         			Debugger.log("Loading floor plan");
         			fileExists = true;
