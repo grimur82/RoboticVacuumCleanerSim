@@ -54,68 +54,7 @@ public class Cell {
     	}
     	return parents;
     }
-    // For neighbors of sweeper.
-    public void setParents(){
-    	if(parents == null){
-    		parents = new ArrayList<Coordinate>();
-    	}
-    	// Corners:
-    	if(c.getX() == 0 && c.getY() ==0){		
-    		parents.add(FloorPlan.getInstance().getCellCordinates(c.getX(), c.getY()+1));
-    		parents.add(FloorPlan.getInstance().getCellCordinates(c.getX()+1, c.getY()));
-    		return;
-    	}
-    	if(c.getX() == SensorServices.getInstance().getFloorPlan().length-1 && c.getY() == 0){
-    		parents.add(FloorPlan.getInstance().getCellCordinates(c.getX(), c.getY()+1));
-    		parents.add(FloorPlan.getInstance().getCellCordinates(c.getX()-1, c.getY()));
-    		return;
-    	}
-    	if(c.getX() == 0 && c.getY() ==SensorServices.getInstance().getFloorPlan().length-1){
-    		parents.add(FloorPlan.getInstance().getCellCordinates(c.getX()+1, c.getY()));
-    		parents.add(FloorPlan.getInstance().getCellCordinates(c.getX(), c.getY()-1));
-    		return;
-    	}
-    	if(c.getX() == SensorServices.getInstance().getFloorPlan().length-1 && c.getY() ==SensorServices.getInstance().getFloorPlan().length-1){
-    		parents.add(FloorPlan.getInstance().getCellCordinates(c.getX()-1, c.getY()));
-    		parents.add(FloorPlan.getInstance().getCellCordinates(c.getX(), c.getY()-1));
-    	  	return;
-    	}
-    	// Sides:
-    	if(c.getX() >0 && c.getX() < SensorServices.getInstance().getFloorPlan().length-1 && c.getY() ==0){
-    		parents.add(FloorPlan.getInstance().getCellCordinates(c.getX(), c.getY()+1));
-    		parents.add(FloorPlan.getInstance().getCellCordinates(c.getX()-1, c.getY()));
-    		parents.add(FloorPlan.getInstance().getCellCordinates(c.getX()+1, c.getY()));
-    		return;
-    	}
-    	if(c.getX() ==0 && c.getX() > 0 && c.getY() < SensorServices.getInstance().getFloorPlan().length-1){
-    		parents.add(FloorPlan.getInstance().getCellCordinates(c.getX(), c.getY()+1));
-    		parents.add(FloorPlan.getInstance().getCellCordinates(c.getX(), c.getY()-1));
-    		parents.add(FloorPlan.getInstance().getCellCordinates(c.getX()+1, c.getY()));
-    		return;
-    	}
-    	if(c.getX() >0 && c.getX() < SensorServices.getInstance().getFloorPlan().length-1 && c.getY() == SensorServices.getInstance().getFloorPlan().length-1){
-    		parents.add(FloorPlan.getInstance().getCellCordinates(c.getX()+1, c.getY()));
-    		parents.add(FloorPlan.getInstance().getCellCordinates(c.getX(), c.getY()-1));
-    		parents.add(FloorPlan.getInstance().getCellCordinates(c.getX()-1, c.getY()));
-    		return;
-    	}
-    	if(c.getX() == SensorServices.getInstance().getFloorPlan().length-1 && c.getY() > 0 && c.getY() < SensorServices.getInstance().getFloorPlan().length-1){
-    		parents.add(FloorPlan.getInstance().getCellCordinates(c.getX()-1, c.getY()));
-    		parents.add(FloorPlan.getInstance().getCellCordinates(c.getX(), c.getY()+1));
-    		parents.add(FloorPlan.getInstance().getCellCordinates(c.getX(), c.getY()-1));
-    		return;
-    	}
-    	// Else:
-    	else{
-    		if(c.getX() > 0 && c.getX() < SensorServices.getInstance().getFloorPlan().length-1 && c.getY() >0 && c.getY() < SensorServices.getInstance().getFloorPlan().length-1){
-    			parents.add(FloorPlan.getInstance().getCellCordinates(c.getX(), c.getY()-1));
-        		parents.add(FloorPlan.getInstance().getCellCordinates(c.getX(), c.getY()+1));
-        		parents.add(FloorPlan.getInstance().getCellCordinates(c.getX()+1, c.getY()));
-        		parents.add(FloorPlan.getInstance().getCellCordinates(c.getX()-1, c.getY()));
-        		return;	
-    		}
-    	}
-    	}
+    	
 
 	/**
 	 * Sets whether this cell has stairs.

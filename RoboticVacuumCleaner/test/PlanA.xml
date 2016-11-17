@@ -5,7 +5,7 @@
     </description>
 
     <dimensions x="9" y="9" />
-    <start x="7" y="4" />
+    <start x="0" y="0" />
 
     <doors>
         <door y="0.5" x="6.7" status="OPEN" />

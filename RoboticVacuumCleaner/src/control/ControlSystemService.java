@@ -77,6 +77,11 @@ public class ControlSystemService {
     	double chargeB = cellB.getSurfaceType().getPowerUsed();
     	return (chargeA+chargeB)/2;  	
     }
+    public double calcCharge(Cell cellA, Cell cellB){
+    	double chargeA = cellA.getSurfaceType().getPowerUsed();
+    	double chargeB = cellB.getSurfaceType().getPowerUsed();
+    	return (chargeA+chargeB);  	
+    }
     
     // Decrease power capacity due to movement
     public void decreasePowerMove(double total){
@@ -112,6 +117,11 @@ public class ControlSystemService {
 	 * @throws SAXException
 	 * @throws IOException
 	 */
+    public Set<Coordinate> getClean(){
+    	Navigator navigator = new Navigator(currentPos, clean, dirty);
+		clean = navigator.getClean();
+		return clean.keySet();
+    }
     public void clean() throws ParserConfigurationException, SAXException, IOException {
         setPosition(sensorService.getStartPosition());
         if (!dirty.isEmpty()) {
@@ -125,9 +135,8 @@ public class ControlSystemService {
 			int y = (int) currentPos.getY();
 			Cell cell = sensorService.getCell(x, y);
 			Debugger.log("Arrived at cell (" + x + ", " + y + ")");
-
 			// Checks if Sweeper is out of power.
-			if(sweeper.checkPowerCapacity() == 0){
+			if(sweeper.checkPowerCapacity() <= 0){
 				Debugger.log("No base was found and no power left. Shutting down");
 				ControlSystemService.getInstance().shutDownSweeper();
 			}
@@ -197,7 +206,7 @@ public class ControlSystemService {
 			Debugger.log("New power capacity will be: "+ checkPowerCapacity());
 
 			// Show map
-			Visualizer.getInstance().print();
+			//Visualizer.getInstance().print();
 
         } while (checkCleaningStat() == false);
         //cleaning cycle done when all surfaces are clean
@@ -215,23 +224,35 @@ public class ControlSystemService {
 	 *
 	 * @param free Available directions.
 	 */
-    ArrayList<Coordinate> getNeighbors(Coordinate c){
+    
+    public ArrayList<Coordinate> getNeighbors(Coordinate c){
     	int x = (int) c.getX();
 		int y = (int) c.getY();
 		ArrayList<Coordinate> neighbors = new ArrayList<Coordinate>();
-		Cell cell = sensorService.getCell(x,y);
 		try{
-			if(clean.containsKey(sensorService.getInstance().getCell(x+1,y).getCoordinate())){
-				neighbors.add(sensorService.getInstance().getCell(x+1,y).getCoordinate());
+			if(clean.containsKey(sensorService.getCell(x+1,y).getCoordinate())){
+				neighbors.add(sensorService.getCell(x+1,y).getCoordinate());
 			}
-			if(clean.containsKey(sensorService.getInstance().getCell(x-1,y).getCoordinate())){
-				neighbors.add(sensorService.getInstance().getCell(x-1,y).getCoordinate());
+			if(clean.containsKey(sensorService.getCell(x-1,y).getCoordinate())){
+				neighbors.add(sensorService.getCell(x-1,y).getCoordinate());
 			}
-			if(clean.containsKey(sensorService.getInstance().getCell(x,y-1).getCoordinate())){
-				neighbors.add(sensorService.getInstance().getCell(x,y-1).getCoordinate());
+			if(clean.containsKey(sensorService.getCell(x,y-1).getCoordinate())){
+				neighbors.add(sensorService.getCell(x,y-1).getCoordinate());
 			}
-			if(clean.containsKey(sensorService.getInstance().getCell(x,y+1).getCoordinate())){
-				neighbors.add(sensorService.getInstance().getCell(x,y+1).getCoordinate());
+			if(clean.containsKey(sensorService.getCell(x,y+1).getCoordinate())){
+				neighbors.add(sensorService.getCell(x,y+1).getCoordinate());
+			}
+			if(dirty.containsKey(sensorService.getCell(x+1,y).getCoordinate())){
+				neighbors.add(sensorService.getCell(x+1,y).getCoordinate());
+			}
+			if(dirty.containsKey(sensorService.getCell(x-1,y).getCoordinate())){
+				neighbors.add(sensorService.getCell(x-1,y).getCoordinate());
+			}
+			if(dirty.containsKey(sensorService.getCell(x,y-1).getCoordinate())){
+				neighbors.add(sensorService.getCell(x,y-1).getCoordinate());
+			}
+			if(dirty.containsKey(sensorService.getCell(x,y+1).getCoordinate())){
+				neighbors.add(sensorService.getCell(x,y+1).getCoordinate());
 			}
 			
 		}catch(ArrayIndexOutOfBoundsException ex){

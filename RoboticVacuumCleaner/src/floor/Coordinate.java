@@ -18,6 +18,7 @@ public class Coordinate {
         distance = -1;
         neighbor = null;
     }
+    
  // Set shortest path distance from current sweeper position towards the charging base.
     public void setDistance(int distance){
     	this.distance = distance;

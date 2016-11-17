@@ -74,7 +74,8 @@ public class SweeperServices {
 		}
 		else{
 			Coordinate getChargingPath = findClosestChargingBase.getMin();
-			
+			//setChargePosition(getChargingPath);
+			setChargePosition(new Coordinate(getChargingPath.getX(), getChargingPath.getY()));
 			ArrayList<Coordinate> shortestPath = new ArrayList<Coordinate>();
 			// Go through path, the sweeper has found.
 			while(toPath != getChargingPath){
@@ -83,12 +84,11 @@ public class SweeperServices {
 			}
 			// Let user know, the sweeper has reached its charging base.
 			if(toPath == getChargingPath){
-				SweeperServices.getInstance().setChargePosition(toPath);
 				shortestPath.add(getChargingPath);
 				Collections.reverse(shortestPath);
-				Debugger.log("Moving towards charging base:");
+				Debugger.log("Moving towards charging base:"); 
 				for(Coordinate getPath : shortestPath){
-					Debugger.log("x: " + getPath.getX() + " Y: " + getPath.getY());
+					Debugger.log("x: " + getPath.getX() + " Y: " + getPath.getY());		
 				}
 				Debugger.log("Found Base");
 			}
@@ -101,7 +101,8 @@ public class SweeperServices {
 		MinPriorityQueue pqVisited = new MinPriorityQueue();
 		MinPriorityQueue findClosestChargingBase = new MinPriorityQueue();
 		Coordinate c = ControlSystemService.getInstance().getCurrentPos();
-		c.setDistance(0);
+		
+		c.setPowerDistance(0);
 		c.setNeighbor(c);
 		pqUnvisited.addPQ(c);
 		// Calculate a path for sweeper to reach a charging base.
@@ -111,12 +112,42 @@ public class SweeperServices {
 			for(Coordinate parent : ControlSystemService.getInstance().getNeighbors(temp)){
 				if(!pqVisited.getPq().contains(parent)){
 					
-					power += ControlSystemService.getInstance().movementCharge(SensorServices.getInstance()
+						parent.setPowerDistance(Double.POSITIVE_INFINITY);
+						parent.setNeighbor(temp);
+						pqUnvisited.addPQ(parent);
+					}
+					
+				}
+			}
+		
+		power = 0;
+		
+		
+		// path from current to startPosition
+		pqUnvisited = new MinPriorityQueue();
+		pqVisited = new MinPriorityQueue();
+		findClosestChargingBase = new MinPriorityQueue();
+		c = ControlSystemService.getInstance().getCurrentPos();
+		
+		c.setPowerDistance(0);
+		c.setNeighbor(c);
+		pqUnvisited.addPQ(c);
+		// Calculate a path for sweeper to reach a charging base.
+		while(pqUnvisited.checkSize() != 0){
+			Coordinate temp = pqUnvisited.getMin();
+			pqVisited.addPQ(temp);
+			for(Coordinate parent : ControlSystemService.getInstance().getNeighbors(temp)){
+				if(!pqVisited.getPq().contains(parent)){
+					
+					power = ControlSystemService.getInstance().calcCharge(SensorServices.getInstance()
 							.getCell(c), SensorServices.getInstance()
 									.getCell(parent));
-					parent.setPowerDistance(power);
-					parent.setNeighbor(temp);
-					pqUnvisited.addPQ(parent);
+					if(parent.getPowerDistance() > power){
+						parent.setPowerDistance(power);
+						parent.setNeighbor(temp);
+						pqUnvisited.addPQ(parent);
+					}
+					
 				}
 			}
 		}
@@ -125,10 +156,20 @@ public class SweeperServices {
 				findClosestChargingBase.addPQ(cd);	
 			}		
 		}
-			Coordinate getChargingPath = findClosestChargingBase.getMin();
-			if(getChargingPath != null){
-				return getChargingPath.getPowerDistance();
+		Coordinate getChargingPath = findClosestChargingBase.getMin();
+		if(getChargingPath != null){
+			power = 0;
+			
+			// Go through path, the sweeper has found.
+			while(c != getChargingPath){
+				power += getChargingPath.getPowerDistance();
+				getChargingPath = getChargingPath.getNeighbor();
 			}
+			// Let user know, the sweeper has reached its charging base.
+			if(c == getChargingPath){
+				return power;
+			}
+		}
 		return 0;
 		
 	}
