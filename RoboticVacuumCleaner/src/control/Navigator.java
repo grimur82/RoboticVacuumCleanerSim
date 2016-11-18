@@ -85,10 +85,6 @@ class Navigator {
 	}
 
 	private void searchDirtyCell(EnumSet<Obstacle> free) {
-
-		int x = (int) currentPos.getX();
-		int y = (int) currentPos.getY();
-
 		Coordinate c;
 
 		// Search setup
@@ -96,28 +92,12 @@ class Navigator {
 		Queue<Coordinate> queue = new LinkedList<>();
 		HashMap<Coordinate, Coordinate> origins = new HashMap<>();
 		for (Obstacle o: free) {
-			switch (o) {
-				case TOP:
-					c = new Coordinate(x + 1, y);
-					break;
-				case BOTTOM:
-					c = new Coordinate(x - 1, y);
-					break;
-				case LEFT:
-					c = new Coordinate(x, y - 1);
-					break;
-				case RIGHT:
-				default:
-					c = new Coordinate(x, y + 1);
-					break;
-			}
+			c = Cell.adjacent(o, currentPos);
 			queue.add(c);
 			origins.put(c, c);
 		}
 
 		// Search for nearest dirty cell
-		int cx;
-		int cy;
 		while (!queue.isEmpty()) {
 			c = queue.remove();
 			finderClean.add(c);
@@ -127,27 +107,10 @@ class Navigator {
 				return;
 			}
 
-			cx = (int) c.getX();
-			cy = (int) c.getY();
-
 			EnumSet<Obstacle> directions = EnumSet.allOf(Obstacle.class);
-			Coordinate coordinate;
+
 			for (Obstacle o: directions) {
-				switch (o) {
-					case TOP:
-						coordinate = new Coordinate(cx + 1, cy);
-						break;
-					case BOTTOM:
-						coordinate = new Coordinate(cx - 1, cy);
-						break;
-					case LEFT:
-						coordinate = new Coordinate(cx, cy - 1);
-						break;
-					case RIGHT:
-					default:
-						coordinate = new Coordinate(cx, cy + 1);
-						break;
-				}
+				Coordinate coordinate = Cell.adjacent(o, c);
 				if ((dirty.containsKey(coordinate) || clean.containsKey(coordinate))
 						&& !finderClean.contains(coordinate) && !queue.contains(coordinate)) {
 					queue.add(coordinate);
@@ -206,36 +169,11 @@ class Navigator {
 		free.removeAll(obstacles);
 		for (Obstacle o : free) {
 
-			switch (o) {
+			Coordinate c = Cell.adjacent(o, currentPos);
 
-				case TOP:
-					if (sensor.getCell(new Coordinate(x + 1, y)).hasStairs()) {
-						Debugger.log("Stairs detected to the TOP");
-						obstacles.add(Obstacle.TOP);
-					}
-					break;
-
-				case BOTTOM:
-					if (sensor.getCell(new Coordinate(x - 1, y)).hasStairs()) {
-						Debugger.log("Stairs detected to the BOTTOM");
-						obstacles.add(Obstacle.BOTTOM);
-					}
-					break;
-
-				case LEFT:
-					if (sensor.getCell(new Coordinate(x, y - 1)).hasStairs()) {
-						Debugger.log("Stairs detected to the LEFT");
-						obstacles.add(Obstacle.LEFT);
-					}
-					break;
-
-				case RIGHT:
-				default:
-					if (sensor.getCell(new Coordinate(x, y + 1)).hasStairs()) {
-						Debugger.log("Stairs detected to the RIGHT");
-						obstacles.add(Obstacle.RIGHT);
-					}
-					break;
+			if (sensor.getCell(c).hasStairs()) {
+				Debugger.log("Stairs detected to the " + o);
+				obstacles.add(o);
 			}
 		}
 
@@ -279,41 +217,12 @@ class Navigator {
 	 * @param free List of non-obstructed cell dirs.
 	 */
 	private void registerCells(EnumSet<Obstacle> free) {
-
-		int x = (int) currentPos.getX();
-		int y = (int) currentPos.getY();
-
 		// Register surrounding cells
 		for (Obstacle o : free) {
+			Coordinate coordinate = Cell.adjacent(o, currentPos);
 
-			switch (o) {
-
-				case TOP:
-					Coordinate topCoordinate = new Coordinate(x + 1, y);
-					if (!clean.containsKey(topCoordinate))
-						dirty.put(topCoordinate, sensorService.getCell(x + 1, y));
-					break;
-
-				case BOTTOM:
-					Coordinate bottomCoordinate = new Coordinate(x - 1, y);
-					if (!clean.containsKey(bottomCoordinate))
-						dirty.put(bottomCoordinate, sensorService.getCell(x - 1, y));
-					break;
-
-				case LEFT:
-					Coordinate leftCoordinate = new Coordinate(x, y - 1);
-					if (!clean.containsKey(leftCoordinate))
-						dirty.put(leftCoordinate, sensorService.getCell(x, y - 1));
-					break;
-
-				case RIGHT:
-				default:
-					Coordinate rightCoordinate = new Coordinate(x, y + 1);
-					if (!clean.containsKey(rightCoordinate))
-						dirty.put(rightCoordinate, sensorService.getCell(x, y + 1));
-					break;
-
-			}
+			if (!clean.containsKey(coordinate))
+				dirty.put(coordinate, sensorService.getCell(coordinate));
 		}
 	}
 }

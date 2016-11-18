@@ -105,5 +105,27 @@ public class Cell {
     	return obstacles;
     }
 
+	/**
+	 * Coordinate representation of a cell adjacent to a given cell.
+	 *
+	 * @param o Direction/obstacle
+	 * @param c Coordinate
+	 * @return Coordinate in the direction of c
+	 */
+    public static Coordinate adjacent(Obstacle o, Coordinate c) {
 
+		int x = (int) c.getX();
+		int y = (int) c.getY();
+
+		switch (o) {
+			case TOP:
+				return new Coordinate(x + 1, y);
+			case BOTTOM:
+				return new Coordinate(x - 1, y);
+			case LEFT:
+				return new Coordinate(x, y - 1);
+			default:
+				return new Coordinate(x, y + 1);
+		}
+	}
 }
