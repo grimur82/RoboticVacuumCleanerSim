@@ -1,14 +1,7 @@
 package control;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.LinkedList;
-import java.util.Map;
-import java.util.PriorityQueue;
-import java.util.Queue;
-import java.util.Set;
+import java.util.*;
 
 import javax.xml.parsers.ParserConfigurationException;
 
@@ -21,14 +14,15 @@ import sensor.SensorServices;
 import util.Debugger;
 
 class SweeperServices {
-	private static SweeperServices sweeperServices = new SweeperServices();
+	private static SweeperServices instance;
 	private Sweeper sweeper = Sweeper.getInstance();
-	private PriorityQueue<Coordinate> pq;
 	private Coordinate chargePosition;
-	private SweeperServices(){
-	}
+	private SweeperServices(){}
 	static SweeperServices getInstance(){
-		return sweeperServices;
+		if (instance == null)
+			instance = new SweeperServices();
+
+		return instance;
 	}
 	// Recharge power and dirt capacity on sweeper.
 	void reCharge(){
@@ -95,7 +89,7 @@ class SweeperServices {
 		}
 	}
 	double powerNeededtoRechargeBase(){
-		double power = 0;
+		double power;
 		// path from current to startPosition
 		MinPriorityQueue pqUnvisited = new MinPriorityQueue();
 		MinPriorityQueue pqVisited = new MinPriorityQueue();
@@ -119,10 +113,7 @@ class SweeperServices {
 					
 				}
 			}
-		
-		power = 0;
-		
-		
+
 		// path from current to startPosition
 		pqUnvisited = new MinPriorityQueue();
 		pqVisited = new MinPriorityQueue();
@@ -173,7 +164,7 @@ class SweeperServices {
 		return 0;
 		
 	}
-	void setChargePosition(Coordinate c){
+	private void setChargePosition(Coordinate c){
 		chargePosition = c;
 	}
 	Coordinate getChargePosition(){
