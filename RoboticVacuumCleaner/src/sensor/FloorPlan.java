@@ -60,7 +60,7 @@ public class FloorPlan {
 	 *
 	 * @return Door list.
 	 */
-	public HashMap<Coordinate, DoorStatus> getDoorList() {
+	HashMap<Coordinate, DoorStatus> getDoorList() {
 		return doorList;
 	}
 
@@ -69,7 +69,7 @@ public class FloorPlan {
 	 *
 	 * @return Current position.
 	 */
-	public Coordinate getStartPosition() {
+	Coordinate getStartPosition() {
 		return startPosition;
 	}
 
@@ -80,7 +80,7 @@ public class FloorPlan {
 	 * @param y Y coordinate.
 	 * @return Cell.
 	 */
-	public Cell getCell(int x, int y) {
+	Cell getCell(int x, int y) {
 		return (floorPlan.length <= x || floorPlan[0].length <= y)
 				? null : floorPlan[x][y];
 	}
@@ -90,7 +90,7 @@ public class FloorPlan {
 	 *
 	 * @param coordinate Coordinate whose door status is to be changed.
 	 */
-	public void changeDoorStatus(Coordinate coordinate) {
+	void changeDoorStatus(Coordinate coordinate) {
 
 		DoorStatus doorStatus = doorList.get(coordinate);
 		doorList.put(

@@ -15,11 +15,11 @@ public class Visualizer {
 	private ControlSystemService control;
 
 	private static Visualizer instance = null;
-	public final String ANSI_RESET = "\u001B[0m";
-	public final String ANSI_SWEEPER = "\u001B[32m";
-	public final String ANSI_DIRTY = "\u001B[31m";
-	public final String ANSI_STAIRS = "\u001B[35m";
-	public final String ANSI_SEMIDIRTY = "\u001B[33m";
+	private final static String ANSIRESET = "\u001B[0m";
+	private final static String ANSISWEEPER = "\u001B[32m";
+	private final static String ANSIDIRTY = "\u001B[31m";
+	private final static String ANSISTAIRS = "\u001B[35m";
+	private final static String ANSISEMIDIRTY = "\u001B[33m";
 
 	private Visualizer() {
 		floorPlan = FloorPlan.getInstance();
@@ -59,13 +59,13 @@ public class Visualizer {
 				);
 
 				if (plan[i][j].hasStairs()) {
-					System.out.print(ANSI_STAIRS + "S" + ANSI_RESET);
+					System.out.print(ANSISTAIRS + "S" + ANSIRESET);
 				} else if (pos.getX() == i && pos.getY() == j) {
-					System.out.print(ANSI_SWEEPER + "O" + ANSI_RESET);
+					System.out.print(ANSISWEEPER + "O" + ANSIRESET);
 				} else if (plan[i][j].getDirt() == 2){
-					System.out.print(ANSI_DIRTY + "x" + ANSI_RESET);
+					System.out.print(ANSIDIRTY + "x" + ANSIRESET);
 				} else if (plan[i][j].getDirt() == 1) {
-					System.out.print(ANSI_SEMIDIRTY + "x" + ANSI_RESET);
+					System.out.print(ANSISEMIDIRTY + "x" + ANSIRESET);
 				} else {
 					System.out.print(" ");
 				}

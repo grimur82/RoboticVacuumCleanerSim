@@ -23,14 +23,17 @@ public class ControlSystemService {
     private static ControlSystemService controlSystemService;
 
 	// Clean cells
-    private HashMap<Coordinate, Cell> clean = new HashMap<>();
+    private Map<Coordinate, Cell> clean = new HashMap<>();
 
 	// Dirty cells
-    private HashMap<Coordinate, Cell> dirty = new HashMap<>();
+    private Map<Coordinate, Cell> dirty = new HashMap<>();
 
 	// Sensor simulator to check data against
     private SensorServices sensorService;
-    private Sweeper sweeper = Sweeper.getInstance(); 
+    private Sweeper sweeper = Sweeper.getInstance();
+
+	private SweeperServices sweeperServices = SweeperServices.getInstance();
+
     // initialise Sweeper.class
     // dirt capacity
     // dirt space available
@@ -72,19 +75,19 @@ public class ControlSystemService {
     }
     
     // Calculate power consumed by movement
-    public double movementCharge(Cell cellA, Cell cellB){
+    private double movementCharge(Cell cellA, Cell cellB){
     	double chargeA = cellA.getSurfaceType().getPowerUsed();
     	double chargeB = cellB.getSurfaceType().getPowerUsed();
     	return (chargeA+chargeB)/2;  	
     }
-    public double calcCharge(Cell cellA, Cell cellB){
+	double calcCharge(Cell cellA, Cell cellB){
     	double chargeA = cellA.getSurfaceType().getPowerUsed();
     	double chargeB = cellB.getSurfaceType().getPowerUsed();
-    	return (chargeA+chargeB);  	
+    	return chargeA+chargeB;
     }
     
     // Decrease power capacity due to movement
-    public void decreasePowerMove(double total){
+    private void decreasePowerMove(double total){
     	sweeper.decreasePowerCapacity(total);
     }
 
@@ -96,26 +99,22 @@ public class ControlSystemService {
     }
 
     // Check power capacity
-    public double checkPowerCapacity(){
+    private double checkPowerCapacity(){
     	return sweeper.checkPowerCapacity();
     }
 
     // Sets status of cleaning cycle
-    public boolean setCleaningStat(boolean status){
+    private boolean setCleaningStat(boolean status){
     	return sweeper.setCleaningCycleStatus(status);
     }
     
     // Checking status of cleaning cycle
-    public boolean checkCleaningStat(){
+    private boolean checkCleaningStat(){
     	return sweeper.checkCleaningCycle();
     }
 
 	/**
 	 * Cleaning engine.
-	 *
-	 * @throws ParserConfigurationException
-	 * @throws SAXException
-	 * @throws IOException
 	 */
     public Set<Coordinate> getClean(){
     	Navigator navigator = new Navigator(currentPos, clean, dirty);
@@ -138,25 +137,25 @@ public class ControlSystemService {
 			// Checks if Sweeper is out of power.
 			if(sweeper.checkPowerCapacity() <= 0){
 				Debugger.log("No base was found and no power left. Shutting down");
-				ControlSystemService.getInstance().shutDownSweeper();
+				shutDownSweeper();
 			}
 			// Checks if Sweeper has no dirt capacity or power left.
             if(sweeper.checkDirtCapacity() ==0 || 
-            		(Math.abs(SweeperServices.getInstance().powerNeededtoRechargeBase()
-            				-Sweeper.getInstance().checkPowerCapacity()) <= 3.0)
+            		(Math.abs(sweeperServices.powerNeededtoRechargeBase()
+            				-sweeper.checkPowerCapacity()) <= 3.0)
             		){
             	Debugger.log("Sweeper needs to go back to charge at base");
             	// Call sweeper to go back to base.
-            	Debugger.log("Sweeper Power: " + Sweeper.getInstance().checkPowerCapacity()
-            			+ " Base Power: "+ SweeperServices.getInstance().powerNeededtoRechargeBase());
-            	SweeperServices.getInstance().backToBase();
-            	x = (int) SweeperServices.getInstance().getChargePosition().getX();		
-                y = (int) SweeperServices.getInstance().getChargePosition().getY();
+            	Debugger.log("Sweeper Power: " + sweeper.checkPowerCapacity()
+            			+ " Base Power: "+ sweeperServices.powerNeededtoRechargeBase());
+            	sweeperServices.backToBase();
+            	x = (int) sweeperServices.getChargePosition().getX();
+                y = (int) sweeperServices.getChargePosition().getY();
                 currentPos.setX(x);
             	currentPos.setY(y);
                 cell = sensorService.getCell(x, y);
                 // Sweeper is charged.
-                SweeperServices.getInstance().reCharge();
+                sweeperServices.reCharge();
                 Debugger.log("Cleaning cycle done: "+ checkCleaningStat());
             }
 
@@ -208,13 +207,13 @@ public class ControlSystemService {
 			// Show map
 			//Visualizer.getInstance().print();
 
-        } while (checkCleaningStat() == false);
+        } while (!checkCleaningStat());
         //cleaning cycle done when all surfaces are clean
         setCleaningStat(true);
         Debugger.log("Cleaning done!");
     }
 
-    public void shutDownSweeper(){
+	void shutDownSweeper(){
     	System.out.println("Sweeper is full: Stopped");
     	System.exit(1);
     }
@@ -225,7 +224,7 @@ public class ControlSystemService {
 	 * @param free Available directions.
 	 */
     
-    public ArrayList<Coordinate> getNeighbors(Coordinate c){
+	ArrayList<Coordinate> getNeighbors(Coordinate c){
     	int x = (int) c.getX();
 		int y = (int) c.getY();
 		ArrayList<Coordinate> neighbors = new ArrayList<Coordinate>();

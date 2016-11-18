@@ -20,22 +20,22 @@ import sensor.FloorPlan;
 import sensor.SensorServices;
 import util.Debugger;
 
-public class SweeperServices {
+class SweeperServices {
 	private static SweeperServices sweeperServices = new SweeperServices();
 	private Sweeper sweeper = Sweeper.getInstance();
 	private PriorityQueue<Coordinate> pq;
 	private Coordinate chargePosition;
 	private SweeperServices(){
 	}
-	public static SweeperServices getInstance(){
+	static SweeperServices getInstance(){
 		return sweeperServices;
 	}
 	// Recharge power and dirt capacity on sweeper.
-	public void reCharge(){
+	void reCharge(){
 		sweeper.reCharged();
 	}
 	// Run a path for sweeper to find back to a base.
-	public void backToBase() throws ParserConfigurationException, SAXException, IOException{
+	void backToBase() throws ParserConfigurationException, SAXException, IOException{
 		// path from current to startPosition
 		MinPriorityQueue pqUnvisited = new MinPriorityQueue();
 		MinPriorityQueue pqVisited = new MinPriorityQueue();
@@ -69,7 +69,7 @@ public class SweeperServices {
 			}		
 		}
 		if(findClosestChargingBase.checkSize() <=0){
-			System.out.println("There is no recharge base discoved. Shutting down.....");
+			Debugger.log("There is no recharge base discoved. Shutting down.....");
 			ControlSystemService.getInstance().shutDownSweeper();
 		}
 		else{
@@ -94,7 +94,7 @@ public class SweeperServices {
 			}
 		}
 	}
-	public double powerNeededtoRechargeBase(){
+	double powerNeededtoRechargeBase(){
 		double power = 0;
 		// path from current to startPosition
 		MinPriorityQueue pqUnvisited = new MinPriorityQueue();
@@ -173,10 +173,10 @@ public class SweeperServices {
 		return 0;
 		
 	}
-	public void setChargePosition(Coordinate c){
+	void setChargePosition(Coordinate c){
 		chargePosition = c;
 	}
-	public Coordinate getChargePosition(){
+	Coordinate getChargePosition(){
 		return chargePosition;
 	}
 	}

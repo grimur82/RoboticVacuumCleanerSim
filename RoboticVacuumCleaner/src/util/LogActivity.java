@@ -8,10 +8,10 @@ import java.io.IOException;
 import java.io.OutputStreamWriter;
 import java.io.Writer;
 
-public class LogActivity {
+class LogActivity {
 
 
-	public synchronized void loggingCleaning(String str) {
+	synchronized void loggingCleaning(String str) {
 
 		// The name of the file to open.
 		String fileName = "cleaninglog.txt";
@@ -30,6 +30,9 @@ public class LogActivity {
 
 			// Always close files.
 			bufferedWriter.close();
+
+			fileWriter.close();
+
 		} catch (IOException ex) {
 			System.out.println("Error writing to file '" + fileName + "'");
 			// Or we could just do this:

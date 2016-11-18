@@ -43,12 +43,12 @@ public class FloorPlanLoader {
 		}
 	}
 
-    public Cell[][] getFloorPlan() {
+	Cell[][] getFloorPlan() {
         return floorPlan;
     }
     
     //getting file from user input
-    public File getFile() throws IOException {
+	private File getFile() throws IOException {
     	Scanner sc = new Scanner(System.in);
     	boolean fileExists = false;
     	File file = null;
@@ -83,7 +83,7 @@ public class FloorPlanLoader {
     }
   
 
-    public void loadFloorPlan(File file) throws ParserConfigurationException, SAXException, IOException {
+    private void loadFloorPlan(File file) throws ParserConfigurationException, SAXException, IOException {
         DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
         DocumentBuilder db = dbf.newDocumentBuilder();
         Document parsing = db.parse(file);
@@ -95,7 +95,7 @@ public class FloorPlanLoader {
         setCells(parsing);
     }
 
-    public void setDim(Document doc) {
+    private void setDim(Document doc) {
         NodeList start = doc.getElementsByTagName("dimensions");
         Element s = (Element) start.item(0);
 
@@ -105,7 +105,7 @@ public class FloorPlanLoader {
         floorPlan = new Cell[x + 1][y + 1];
     }
 
-    public void setStart(Document doc) {
+    private void setStart(Document doc) {
         NodeList start = doc.getElementsByTagName("start");
         Element s = (Element) start.item(0);
 
@@ -113,7 +113,7 @@ public class FloorPlanLoader {
         startPos.setY(Integer.parseInt(s.getAttribute("y")));
     }
 
-    public void setDoors(Document doc) {
+    private void setDoors(Document doc) {
         NodeList d = doc.getElementsByTagName("doors");
         Element doorList = (Element) d.item(0);
         NodeList eachDoor = doorList.getElementsByTagName("door");
@@ -130,11 +130,11 @@ public class FloorPlanLoader {
         }
     }
 
-    public HashMap<Coordinate, DoorStatus> getDoorList() {
+	HashMap<Coordinate, DoorStatus> getDoorList() {
     	return doors;
     }
 
-    public void setCells(Document doc) {
+    private void setCells(Document doc) {
         NodeList cells = doc.getElementsByTagName("cells");
         Element cellList = (Element) cells.item(0);
         NodeList eachCell = cellList.getElementsByTagName("cell");
@@ -190,7 +190,7 @@ public class FloorPlanLoader {
         }
     }
 
-    public Coordinate getStartPosition() {
+	Coordinate getStartPosition() {
         return startPos;
     }
 }

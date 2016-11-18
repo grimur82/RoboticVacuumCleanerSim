@@ -12,11 +12,16 @@ import java.util.Random;
 /**
  * Randomly changes the door status.
  */
-public class DoorSimulator implements Runnable {
 
-	public DoorSimulator() {
+class DoorSimulator implements Runnable {
+
+	private boolean running;
+
+	DoorSimulator() {
+		this.running = true;
 	}
 
+	@Override
 	public void run() {
 
 		FloorPlan floorPlan = FloorPlan.getInstance();
@@ -25,7 +30,7 @@ public class DoorSimulator implements Runnable {
 		Coordinate randomCoordinate;
 
 		try {
-			while (true) {
+			while (running) {
 
 				// Get the updated door list
 				HashMap<Coordinate, DoorStatus> doorList = floorPlan.getDoorList();

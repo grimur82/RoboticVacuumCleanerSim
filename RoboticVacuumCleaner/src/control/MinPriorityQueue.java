@@ -1,15 +1,14 @@
 package control;
 import java.util.Comparator;
 import java.util.PriorityQueue;
-import java.lang.Math;
 
 import floor.Coordinate;
 
-public class MinPriorityQueue
+class MinPriorityQueue
 {
-  PriorityQueue<Coordinate> minPQ;  
+  private PriorityQueue<Coordinate> minPQ;
   // Lowest Distance is on top of queue.
-  public MinPriorityQueue() {
+  MinPriorityQueue() {
 		minPQ = new PriorityQueue<Coordinate>(36, new Comparator<Coordinate>() {
 
 			@Override 
@@ -25,19 +24,19 @@ public class MinPriorityQueue
 		});
   }
   // Add to Queue
-  public void addPQ(Coordinate v){
+  void addPQ(Coordinate v){
     minPQ.add(v);
   }
   // Get the queue
-  public PriorityQueue<Coordinate> getPq(){
+  PriorityQueue<Coordinate> getPq(){
     return minPQ;
   }
   // Look at what Coordinate is on top of Queue
-  public Coordinate getMin(){
+  Coordinate getMin(){
     return minPQ.poll();
   }
   // Return size of queue.
-  public int checkSize(){
+  int checkSize(){
     return minPQ.size();
   }
 }

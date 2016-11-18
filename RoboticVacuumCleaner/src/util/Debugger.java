@@ -10,10 +10,10 @@ public class Debugger {
         if (mode)
             System.out.println(o.toString());
         
-            logActivity.loggingCleaning(o.toString());
+		logActivity.loggingCleaning(o.toString());
     }
 
-    public static boolean getMode() {
+	static boolean getMode() {
         return mode;
     }
 

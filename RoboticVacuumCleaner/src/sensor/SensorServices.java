@@ -13,13 +13,13 @@ import javax.xml.parsers.ParserConfigurationException;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Map;
 
 public class SensorServices {
 
     private static SensorServices sensorServices;
 
 	private FloorPlan floorPlan;
-	private HashMap<Coordinate, DoorStatus> doorList;
 
     private SensorServices() {
     	floorPlan = FloorPlan.getInstance();
@@ -63,7 +63,7 @@ public class SensorServices {
     	return floorPlan.getFloorPlan();
     }
 
-	public HashMap<Coordinate, DoorStatus> getDoorList() {
+	public Map<Coordinate, DoorStatus> getDoorList() {
 		return floorPlan.getDoorList();
 	}
 

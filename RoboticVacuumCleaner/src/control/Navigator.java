@@ -10,11 +10,11 @@ import util.Debugger;
 
 import java.util.*;
 
-public class Navigator {
+class Navigator {
 
 	private Coordinate currentPos;
-	private HashMap<Coordinate, Cell> clean;
-	private HashMap<Coordinate, Cell> dirty;
+	private Map<Coordinate, Cell> clean;
+	private Map<Coordinate, Cell> dirty;
 	private SensorServices sensorService;
 
 	/**
@@ -24,9 +24,9 @@ public class Navigator {
 	 * @param clean Clean cells.
 	 * @param dirty Dirty cells.
 	 */
-	public Navigator(Coordinate currentPos,
-					 HashMap<Coordinate, Cell> clean,
-					 HashMap<Coordinate, Cell> dirty) {
+	Navigator(Coordinate currentPos,
+			  Map<Coordinate, Cell> clean,
+			  Map<Coordinate, Cell> dirty) {
 		this.currentPos = currentPos;
 		this.clean = clean;
 		this.dirty = dirty;
@@ -38,7 +38,7 @@ public class Navigator {
 	private void find() {
 
 		// List of surrounding obstacles
-		EnumSet<Obstacle> obstacles = detectObstacles(currentPos);
+		Set<Obstacle> obstacles = detectObstacles(currentPos);
 
 		// List of surrounding free cells
 		EnumSet<Obstacle> free = EnumSet.allOf(Obstacle.class);
@@ -162,7 +162,7 @@ public class Navigator {
 	 *
 	 * @return Dirty cells
 	 */
-	public HashMap<Coordinate, Cell> getDirty() {
+	Map<Coordinate, Cell> getDirty() {
 		return dirty;
 	}
 
@@ -171,7 +171,7 @@ public class Navigator {
 	 *
 	 * @return Clean cells
 	 */
-	public HashMap<Coordinate, Cell> getClean() {
+	Map<Coordinate, Cell> getClean() {
 		return clean;
 	}
 
@@ -180,7 +180,7 @@ public class Navigator {
 	 *
 	 * @return Current position
 	 */
-	public Coordinate getCurrentPos() {
+	Coordinate getCurrentPos() {
 		return currentPos;
 	}
 
@@ -190,16 +190,16 @@ public class Navigator {
 	 * @param currentPos Current position
 	 * @return List of obstacles.
 	 */
-	private EnumSet<Obstacle> detectObstacles(Coordinate currentPos) {
+	private Set<Obstacle> detectObstacles(Coordinate currentPos) {
 
 		SensorServices sensor = SensorServices.getInstance();
-		HashMap<Coordinate, DoorStatus> doorList = sensor.getDoorList();
+		Map<Coordinate, DoorStatus> doorList = sensor.getDoorList();
 
 		double x = currentPos.getX();
 		double y = currentPos.getY();
 
 		Cell currentCell = sensor.getCell(currentPos);
-		EnumSet<Obstacle> obstacles = currentCell.getObstacles();
+		Set<Obstacle> obstacles = currentCell.getObstacles();
 
 		// Checks for presence of stairs
 		EnumSet<Obstacle> free = EnumSet.allOf(Obstacle.class);

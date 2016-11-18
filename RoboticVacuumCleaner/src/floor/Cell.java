@@ -1,19 +1,8 @@
 package floor;
 
-import sensor.FloorPlan;
-import sensor.SensorServices;
 import util.Debugger;
 
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.EnumSet;
-import java.util.Random;
-
-import javax.xml.parsers.ParserConfigurationException;
-
-import org.xml.sax.SAXException;
-
-import control.Sweeper;
+import java.util.*;
 
 /**
  * A cell object.
@@ -48,7 +37,7 @@ public class Cell {
     	return c;
     }
     
-    public ArrayList<Coordinate> getParents(){
+    public List<Coordinate> getParents(){
     	if(parents == null){
     		parents = new ArrayList<Coordinate>();
     	}
@@ -124,7 +113,7 @@ public class Cell {
         return true;
     }
     
-    public EnumSet<Obstacle> getObstacles(){
+    public Set<Obstacle> getObstacles(){
     	return obstacles;
     }
 

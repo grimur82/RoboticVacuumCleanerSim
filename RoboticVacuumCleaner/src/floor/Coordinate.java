@@ -7,17 +7,28 @@ import util.Debugger;
 
 public class Coordinate {
 
-    private double x = 0;
-    private double y = 0;
+    private double x;
+    private double y;
     private int distance = -1;
     private double powerDistance = 0;
     private Coordinate neighbor;
+
+	public Coordinate() {
+		this.x = 0;
+		this.y = 0;
+	}
+
     public Coordinate(int x, int y) {
         this.x = x;
         this.y = y;
         distance = -1;
         neighbor = null;
     }
+
+	public Coordinate(double x, double y) {
+		this.x = x;
+		this.y = y;
+	}
     
  // Set shortest path distance from current sweeper position towards the charging base.
     public void setDistance(int distance){
@@ -43,13 +54,6 @@ public class Coordinate {
     public Coordinate getNeighbor(){
     	return neighbor;
     }
-
-    public Coordinate(double x, double y) {
-        this.x = x;
-        this.y = y;
-    }
-
-    public Coordinate() {}
 
     public double getX() {
         return x;
@@ -109,6 +113,7 @@ public class Coordinate {
 	 *
 	 * @return String format.
 	 */
+	@Override
 	public String toString() {
 		return "(" + x + ", " + y + ")";
 	}
