@@ -13,9 +13,5 @@ public enum DoorStatus {
     DoorStatus(int doorStatus){
     	this.status = doorStatus;
     }
-    
-    public int getDoorStatus() {
-        return status;
-    }
 
 }

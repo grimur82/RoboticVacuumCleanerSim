@@ -19,7 +19,7 @@ public class Cell {
 	private boolean stairs;
 	private boolean chargingBase;
 	private Coordinate c;
-    private ArrayList<Coordinate> parents;
+
     public Cell(SurfaceType surfaceType) {
         this.surfaceType = surfaceType;
         this.obstacles = EnumSet.noneOf(Obstacle.class);
@@ -36,14 +36,6 @@ public class Cell {
     public Coordinate getCoordinate(){
     	return c;
     }
-    
-    public List<Coordinate> getParents(){
-    	if(parents == null){
-    		parents = new ArrayList<Coordinate>();
-    	}
-    	return parents;
-    }
-    	
 
 	/**
 	 * Sets whether this cell has stairs.
@@ -95,10 +87,6 @@ public class Cell {
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public String getName() {
-        return name;
     }
 
     public void setObstacle(String obstacle) {

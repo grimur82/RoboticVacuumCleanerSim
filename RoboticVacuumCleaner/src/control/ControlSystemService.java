@@ -91,13 +91,6 @@ public class ControlSystemService {
     	sweeper.decreasePowerCapacity(total);
     }
 
-
-    // Decrease power capacity due to cleaning
-    public void decreasePowerClean(Cell cell){
-    	double currentCellCharge = cell.getSurfaceType().getPowerUsed();
-    	sweeper.decreasePowerCapacity(currentCellCharge);
-    }
-
     // Check power capacity
     private double checkPowerCapacity(){
     	return sweeper.checkPowerCapacity();
@@ -116,11 +109,6 @@ public class ControlSystemService {
 	/**
 	 * Cleaning engine.
 	 */
-    public Set<Coordinate> getClean(){
-    	Navigator navigator = new Navigator(currentPos, clean, dirty);
-		clean = navigator.getClean();
-		return clean.keySet();
-    }
     public void clean() throws ParserConfigurationException, SAXException, IOException {
         setPosition(sensorService.getStartPosition());
         if (!dirty.isEmpty()) {

@@ -59,47 +59,8 @@ public class SensorServices {
     public Coordinate getStartPosition() {
         return floorPlan.getStartPosition();
     }
-    public Cell[][] getFloorPlan(){
-    	return floorPlan.getFloorPlan();
-    }
 
 	public Map<Coordinate, DoorStatus> getDoorList() {
 		return floorPlan.getDoorList();
-	}
-
-	// checks if there is an obstacle to the top cell
-	public boolean senseObstacleTop(Cell cell) {
-		if (cell.getObstacles().contains(Obstacle.TOP)){
-			Debugger.log("Path to TOP cell is obstructed");
-			return true;
-		}
-		return false;
-	}
-
-	// checks if there is an obstacle to the bottom cell
-	public boolean senseObstacleBottom(Cell cell) {
-		if (cell.getObstacles().contains(Obstacle.BOTTOM)){
-			Debugger.log("Path to BOTTOM cell is obstructed");
-			return true;
-		}
-		return false;
-	}
-
-	// checks if there is an obstacle to the left cell
-	public boolean senseObstacleLeft(Cell cell) {
-		if (cell.getObstacles().contains(Obstacle.LEFT)){
-			Debugger.log("Path to LEFT cell is obstructed");
-			return true;
-		}
-		return false;
-	}
-
-	// checks if there is an obstacle to the right cell
-	public boolean senseObstacleRight(Cell cell) {
-		if (cell.getObstacles().contains(Obstacle.RIGHT)){
-			Debugger.log("Path to RIGHT cell is obstructed");
-			return true;
-		}
-		return false;
 	}
 }
