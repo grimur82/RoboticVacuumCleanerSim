@@ -32,8 +32,6 @@ public class ControlSystemService {
     private SensorServices sensorService;
     private Sweeper sweeper = Sweeper.getInstance();
 
-	private SweeperServices sweeperServices = SweeperServices.getInstance();
-
     // initialise Sweeper.class
     // dirt capacity
     // dirt space available
@@ -123,33 +121,6 @@ public class ControlSystemService {
 			Cell cell = sensorService.getCell(x, y);
 			Debugger.log("Arrived at cell (" + x + ", " + y + ")");
 
-			/*
-			// Checks if Sweeper is out of power.
-			if(sweeper.checkPowerCapacity() <= 0){
-				Debugger.log("No base was found and no power left. Shutting down");
-				shutDownSweeper();
-			}
-			// Checks if Sweeper has no dirt capacity or power left.
-            if(sweeper.checkDirtCapacity() ==0 || 
-            		(Math.abs(sweeperServices.powerNeededtoRechargeBase()
-            				-sweeper.checkPowerCapacity()) <= 3.0)
-            		){
-            	Debugger.log("Sweeper needs to go back to charge at base");
-            	// Call sweeper to go back to base.
-            	Debugger.log("Sweeper Power: " + sweeper.checkPowerCapacity()
-            			+ " Base Power: "+ sweeperServices.powerNeededtoRechargeBase());
-            	sweeperServices.backToBase();
-            	x = (int) sweeperServices.getChargePosition().getX();
-                y = (int) sweeperServices.getChargePosition().getY();
-                currentPos.setX(x);
-            	currentPos.setY(y);
-                cell = sensorService.getCell(x, y);
-                // Sweeper is charged.
-                sweeperServices.reCharge();
-                Debugger.log("Cleaning cycle done: "+ checkCleaningStat());
-            }
-            */
-
             //gets surface type of current cell
             Debugger.log("Surface type: " + cell.getSurfaceType());
 
@@ -208,53 +179,6 @@ public class ControlSystemService {
     	System.out.println("Sweeper is full: Stopped");
     	System.exit(1);
     }
-
-	/**
-	 * Document this and surrounding cells as clean or dirty.
-	 *
-	 * @param free Available directions.
-
-    
-	ArrayList<Coordinate> getNeighbors(Coordinate c){
-    	int x = (int) c.getX();
-		int y = (int) c.getY();
-		ArrayList<Coordinate> neighbors = new ArrayList<Coordinate>();
-		try{
-			if(clean.containsKey(sensorService.getCell(x+1,y).getCoordinate())){
-				neighbors.add(sensorService.getCell(x+1,y).getCoordinate());
-			}
-			if(clean.containsKey(sensorService.getCell(x-1,y).getCoordinate())){
-				neighbors.add(sensorService.getCell(x-1,y).getCoordinate());
-			}
-			if(clean.containsKey(sensorService.getCell(x,y-1).getCoordinate())){
-				neighbors.add(sensorService.getCell(x,y-1).getCoordinate());
-			}
-			if(clean.containsKey(sensorService.getCell(x,y+1).getCoordinate())){
-				neighbors.add(sensorService.getCell(x,y+1).getCoordinate());
-			}
-			if(dirty.containsKey(sensorService.getCell(x+1,y).getCoordinate())){
-				neighbors.add(sensorService.getCell(x+1,y).getCoordinate());
-			}
-			if(dirty.containsKey(sensorService.getCell(x-1,y).getCoordinate())){
-				neighbors.add(sensorService.getCell(x-1,y).getCoordinate());
-			}
-			if(dirty.containsKey(sensorService.getCell(x,y-1).getCoordinate())){
-				neighbors.add(sensorService.getCell(x,y-1).getCoordinate());
-			}
-			if(dirty.containsKey(sensorService.getCell(x,y+1).getCoordinate())){
-				neighbors.add(sensorService.getCell(x,y+1).getCoordinate());
-			}
-			
-		}catch(ArrayIndexOutOfBoundsException ex){
-			
-		}
-		catch(NullPointerException ex){
-			
-		}
-		return neighbors;
-
-    	
-    }*/
 
 	/**
 	 * Get current position.
