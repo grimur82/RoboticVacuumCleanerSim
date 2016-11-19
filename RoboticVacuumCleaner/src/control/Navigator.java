@@ -80,6 +80,16 @@ class Navigator {
 			return;
 		}
 
+		// Random selection
+		Random r = new Random();
+		int n = r.nextInt(2);
+		if (n == 1) {
+			List<Obstacle> dirs = new ArrayList<>(free);
+			Collections.shuffle(dirs);
+			this.currentPos = Cell.adjacent(dirs.get(0), currentPos);
+			return;
+		}
+
 		// Check for the nearest dirty cell and head in that direction
 		searchDirtyCell(free);
 	}

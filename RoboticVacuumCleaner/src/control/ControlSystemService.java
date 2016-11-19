@@ -122,6 +122,8 @@ public class ControlSystemService {
 			int y = (int) currentPos.getY();
 			Cell cell = sensorService.getCell(x, y);
 			Debugger.log("Arrived at cell (" + x + ", " + y + ")");
+
+			/*
 			// Checks if Sweeper is out of power.
 			if(sweeper.checkPowerCapacity() <= 0){
 				Debugger.log("No base was found and no power left. Shutting down");
@@ -146,6 +148,7 @@ public class ControlSystemService {
                 sweeperServices.reCharge();
                 Debugger.log("Cleaning cycle done: "+ checkCleaningStat());
             }
+            */
 
             //gets surface type of current cell
             Debugger.log("Surface type: " + cell.getSurfaceType());
@@ -193,7 +196,7 @@ public class ControlSystemService {
 			Debugger.log("New power capacity will be: "+ checkPowerCapacity());
 
 			// Show map
-			//Visualizer.getInstance().print();
+			Visualizer.getInstance().print();
 
         } while (!checkCleaningStat());
         //cleaning cycle done when all surfaces are clean
@@ -210,7 +213,7 @@ public class ControlSystemService {
 	 * Document this and surrounding cells as clean or dirty.
 	 *
 	 * @param free Available directions.
-	 */
+
     
 	ArrayList<Coordinate> getNeighbors(Coordinate c){
     	int x = (int) c.getX();
@@ -251,7 +254,7 @@ public class ControlSystemService {
 		return neighbors;
 
     	
-    }
+    }*/
 
 	/**
 	 * Get current position.
