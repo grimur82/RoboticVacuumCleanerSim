@@ -3,7 +3,9 @@ package sensor;
 import floor.Cell;
 import floor.Coordinate;
 import floor.DoorStatus;
+import util.Debugger;
 
+import java.net.URISyntaxException;
 import java.util.HashMap;
 
 /**
@@ -22,12 +24,14 @@ public class FloorPlan {
 
 	// Current position
 	private Coordinate startPosition;
-
-	/**
-	 * Initialize.
-	 */
-	private FloorPlan() {
+	public void askuserforfile() throws URISyntaxException {
 		FloorPlanLoader loader = new FloorPlanLoader();
+		loader.askUserForFile();
+		loadFloorData(loader);
+	}
+	public void loadFloorData(FloorPlanLoader loader){
+		Debugger.log("Starting sensor simulator");
+		Debugger.log("Starting control system");
 		floorPlan = loader.getFloorPlan();
 		startPosition = loader.getStartPosition();
 		doorList = loader.getDoorList();
@@ -39,8 +43,9 @@ public class FloorPlan {
 	 * Singleton.
 	 *
 	 * @return Instance.
+	 * @throws URISyntaxException 
 	 */
-	public static FloorPlan getInstance() {
+	public static FloorPlan getInstance() throws URISyntaxException {
 		if (instance == null)
 			instance = new FloorPlan();
 		return instance;
@@ -60,7 +65,7 @@ public class FloorPlan {
 	 *
 	 * @return Door list.
 	 */
-	HashMap<Coordinate, DoorStatus> getDoorList() {
+	public HashMap<Coordinate, DoorStatus> getDoorList() {
 		return doorList;
 	}
 
@@ -69,7 +74,7 @@ public class FloorPlan {
 	 *
 	 * @return Current position.
 	 */
-	Coordinate getStartPosition() {
+	public Coordinate getStartPosition() {
 		return startPosition;
 	}
 
@@ -80,7 +85,7 @@ public class FloorPlan {
 	 * @param y Y coordinate.
 	 * @return Cell.
 	 */
-	Cell getCell(int x, int y) {
+	public Cell getCell(int x, int y) {
 		return (floorPlan.length <= x || floorPlan[0].length <= y)
 				? null : floorPlan[x][y];
 	}
@@ -98,6 +103,9 @@ public class FloorPlan {
 				doorStatus == DoorStatus.CLOSED ? DoorStatus.OPEN : DoorStatus.CLOSED
 		);
 
+	}
+	DoorStatus getDoorStatus(Coordinate coordinate) {
+		return doorList.get(coordinate);
 	}
 
 }

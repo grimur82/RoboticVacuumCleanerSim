@@ -3,11 +3,10 @@ package util;
 import control.ControlSystemService;
 import floor.Cell;
 import floor.Coordinate;
-import floor.DoorStatus;
 import floor.Obstacle;
 import sensor.FloorPlan;
 
-import java.util.HashMap;
+import java.net.URISyntaxException;
 
 public class Visualizer {
 
@@ -21,12 +20,12 @@ public class Visualizer {
 	private final static String ANSISTAIRS = "\u001B[35m";
 	private final static String ANSISEMIDIRTY = "\u001B[33m";
 
-	private Visualizer() {
+	private Visualizer() throws URISyntaxException {
 		floorPlan = FloorPlan.getInstance();
-		control = ControlSystemService.getInstance();
+		control = ControlSystemService.getServices();
 	}
 
-	public static Visualizer getInstance() {
+	public static Visualizer getInstance() throws URISyntaxException {
 		if (instance == null)
 			instance = new Visualizer();
 		return instance;

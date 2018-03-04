@@ -1,21 +1,24 @@
 package control;
 
+import controllers.UtilityController;
 import floor.Cell;
 import floor.Coordinate;
 import floor.DoorStatus;
 import floor.Obstacle;
-import sensor.SensorServices;
+import sensor.FloorPlan;
 import util.Debugger;
 
-
+import java.net.URISyntaxException;
 import java.util.*;
+
+import controllers.SensorController;
 
 class Navigator {
 
 	private Coordinate currentPos;
 	private Map<Coordinate, Cell> clean;
 	private Map<Coordinate, Cell> dirty;
-	private SensorServices sensorService;
+	private SensorController sensorService;
 
 	/**
 	 * Store current sweeper coordinate info.
@@ -23,53 +26,61 @@ class Navigator {
 	 * @param currentPos Current position.
 	 * @param clean Clean cells.
 	 * @param dirty Dirty cells.
+	 * @throws URISyntaxException 
 	 */
 	Navigator(Coordinate currentPos,
 			  Map<Coordinate, Cell> clean,
-			  Map<Coordinate, Cell> dirty) {
+			  Map<Coordinate, Cell> dirty) throws URISyntaxException {
 		this.currentPos = currentPos;
 		this.clean = clean;
 		this.dirty = dirty;
-		this.sensorService = SensorServices.getInstance();
+		this.sensorService = SensorController.getServices();
 
-		find();
+		findNextPosition();
 	}
 
-	private void find() {
+	private void findNextPosition() throws URISyntaxException {
 
 		// List of surrounding obstacles
-		Set<Obstacle> obstacles = detectObstacles(currentPos);
+		Set<Obstacle> obstacles = this.detectObstacles(currentPos);
 
-		// List of surrounding free cells
-		EnumSet<Obstacle> free = EnumSet.allOf(Obstacle.class);
-		free.removeAll(obstacles);
+		// List of surrounding freeCells cells
+		EnumSet<Obstacle> freeCells = EnumSet.allOf(Obstacle.class);
+		freeCells.removeAll(obstacles);
 
 		// Register cells
-		registerCells(free);
+		this.registerCells(freeCells);
 
 		// List of surrounding dirty cells
 		int x = (int) currentPos.getX();
 		int y = (int) currentPos.getY();
+		int xAxes = FloorPlan.getInstance().getFloorPlan().length;
+		int currentX = FloorPlan.getInstance().getFloorPlan()[x].length;
 		ArrayList<Coordinate> dirt = new ArrayList<>();
-		Coordinate coordinate;
-		for (Obstacle o : free) {
+		Coordinate coordinate = null;
+		for (Obstacle o : freeCells) {
 			switch (o) {
 				case TOP:
-					coordinate = new Coordinate(x + 1, y);
-					break;
+					if(UtilityController.getServices().checkInBounds(x,y-1, xAxes,currentX))
+						coordinate = new Coordinate(x, y-1);
+						if (dirty.containsKey(coordinate))
+							dirt.add(coordinate);
 				case BOTTOM:
-					coordinate = new Coordinate(x - 1, y);
-					break;
+					if(UtilityController.getServices().checkInBounds(x,y+1, xAxes,currentX))
+						coordinate = new Coordinate(x, y+1);
+						if (dirty.containsKey(coordinate))
+							dirt.add(coordinate);
 				case LEFT:
-					coordinate = new Coordinate(x, y - 1);
-					break;
+					if(UtilityController.getServices().checkInBounds(x-1,y, xAxes,currentX))
+						coordinate = new Coordinate(x-1, y);
+						if (dirty.containsKey(coordinate))
+							dirt.add(coordinate);
 				case RIGHT:
-				default:
-					coordinate = new Coordinate(x, y + 1);
-					break;
+					if(UtilityController.getServices().checkInBounds(x+1,y, xAxes,currentX))
+						coordinate = new Coordinate(x+1,y);
+						if (dirty.containsKey(coordinate))
+							dirt.add(coordinate);
 			}
-			if (dirty.containsKey(coordinate))
-				dirt.add(coordinate);
 		}
 
 		// Favor a clean cell
@@ -84,17 +95,17 @@ class Navigator {
 		Random r = new Random();
 		int n = r.nextInt(2);
 		if (n == 1) {
-			List<Obstacle> dirs = new ArrayList<>(free);
+			List<Obstacle> dirs = new ArrayList<>(freeCells);
 			Collections.shuffle(dirs);
 			this.currentPos = Cell.adjacent(dirs.get(0), currentPos);
 			return;
 		}
 
 		// Check for the nearest dirty cell and head in that direction
-		searchDirtyCell(free);
+		searchDirtyCell(freeCells);
 	}
 
-	private void searchDirtyCell(EnumSet<Obstacle> free) {
+	private void searchDirtyCell(EnumSet<Obstacle> free) throws URISyntaxException {
 		Coordinate c;
 
 		// Search setup
@@ -102,9 +113,11 @@ class Navigator {
 		Queue<Coordinate> queue = new LinkedList<>();
 		HashMap<Coordinate, Coordinate> origins = new HashMap<>();
 		for (Obstacle o: free) {
-			c = Cell.adjacent(o, currentPos);
-			queue.add(c);
-			origins.put(c, c);
+			if(Cell.adjacent(o,currentPos) != null){
+				c = Cell.adjacent(o, currentPos);
+				queue.add(c);
+				origins.put(c, c);
+			}
 		}
 
 		// Search for nearest dirty cell
@@ -114,7 +127,7 @@ class Navigator {
 
 			if (dirty.containsKey(c)) {
 				currentPos = origins.get(c);
-				return;
+				break;
 			}
 
 			EnumSet<Obstacle> directions = EnumSet.allOf(Obstacle.class);
@@ -162,36 +175,32 @@ class Navigator {
 	 *
 	 * @param currentPos Current position
 	 * @return List of obstacles.
+	 * @throws URISyntaxException 
 	 */
-	private Set<Obstacle> detectObstacles(Coordinate currentPos) {
+	private Set<Obstacle> detectObstacles(Coordinate currentPos) throws URISyntaxException {
 
-		SensorServices sensor = SensorServices.getInstance();
-		Map<Coordinate, DoorStatus> doorList = sensor.getDoorList();
+		Map<Coordinate, DoorStatus> doorList = SensorController.getServices().getDoorList();
 
 		double x = currentPos.getX();
 		double y = currentPos.getY();
 
-		Cell currentCell = sensor.getCell(currentPos);
-		Set<Obstacle> obstacles = currentCell.getObstacles();
+		Cell currentCell = SensorController.getServices().getCell(currentPos);
+		Set<Obstacle> obstacles = currentCell.getObstacles(); // Get enum some of top, right, left, bottom
 
 		// Checks for presence of stairs
-		EnumSet<Obstacle> free = EnumSet.allOf(Obstacle.class);
-		free.removeAll(obstacles);
-		for (Obstacle o : free) {
-
-			Coordinate c = Cell.adjacent(o, currentPos);
-
-			if (sensor.getCell(c).hasStairs()) {
-				Debugger.log("Stairs detected to the " + o);
-				obstacles.add(o);
+		EnumSet<Obstacle> enumCells = EnumSet.allOf(Obstacle.class);
+		enumCells.removeAll(obstacles);
+		for (Obstacle neighbourObstacle : enumCells) {
+			if(Cell.adjacent(neighbourObstacle, currentPos) != null){
+				if (SensorController.getServices().getCell(Cell.adjacent(neighbourObstacle, currentPos)).hasStairs()) {
+					Debugger.log("Stairs detected to the " + neighbourObstacle);
+					obstacles.add(neighbourObstacle);
+				}
 			}
 		}
-
 		// Checks each obstacle to see if it's still blocked by a door
 		for (Obstacle o : obstacles) {
-
 			switch (o) {
-
 				case TOP:
 					if (doorList.get(new Coordinate(x + 0.5, y + 0.5)) == DoorStatus.OPEN
 							|| doorList.get(new Coordinate(x + 0.5, y - 0.5)) == DoorStatus.OPEN)
@@ -217,7 +226,6 @@ class Navigator {
 
 			}
 		}
-
 		return obstacles;
 	}
 
@@ -225,13 +233,14 @@ class Navigator {
 	 * Record surrounding cells.
 	 *
 	 * @param free List of non-obstructed cell dirs.
+	 * @throws URISyntaxException 
 	 */
-	private void registerCells(EnumSet<Obstacle> free) {
+	private void registerCells(EnumSet<Obstacle> free) throws URISyntaxException {
 		// Register surrounding cells
 		for (Obstacle o : free) {
 			Coordinate coordinate = Cell.adjacent(o, currentPos);
 
-			if (!clean.containsKey(coordinate))
+			if (!clean.containsKey(coordinate) && coordinate != null)
 				dirty.put(coordinate, sensorService.getCell(coordinate));
 		}
 	}

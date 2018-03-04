@@ -2,9 +2,8 @@ package sensor;
 
 import java.io.File;
 import java.io.IOException;
+import java.net.URISyntaxException;
 import java.util.HashMap;
-import java.util.Scanner;
-
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
@@ -17,6 +16,7 @@ import org.w3c.dom.NodeList;
 import org.w3c.dom.Node;
 import org.xml.sax.SAXException;
 
+import controllers.UtilityController;
 import floor.Coordinate;
 import floor.Cell;
 import floor.SurfaceType;
@@ -32,57 +32,23 @@ public class FloorPlanLoader {
 
 	private Coordinate startPos = new Coordinate();
 
-	public FloorPlanLoader() {
-		try {
-			File newFile = getFile();
-			loadFloorPlan(newFile);
-		} catch (ParserConfigurationException | SAXException | IOException e) {
-			Debugger.log("Error loading floor plan");
-			e.printStackTrace();
-			System.exit(-1);
-		}
-	}
-
+	public void askUserForFile(){
+        try {
+            File newFile = UtilityController.getServices().askUserFloorPlan();
+            loadFloorPlan(newFile);
+        } catch (ParserConfigurationException | SAXException | IOException e) {
+            Debugger.log("Error loading floor plan");
+            e.printStackTrace();
+            System.exit(-1);
+        } catch (URISyntaxException e) {
+            e.printStackTrace();
+        }
+    }
+	
 	Cell[][] getFloorPlan() {
         return floorPlan;
     }
     
-    //getting file from user input
-	private File getFile() throws IOException {
-    	Scanner sc = new Scanner(System.in);
-    	boolean fileExists = false;
-    	File file = null;
-    	
-    	//prompts user until file is accepted
-    	while(!fileExists){
-    		System.out.print("Type in file path of floor plan: ");
-        	String filePath = sc.next();
-        	if(filePath.equals("Exit")){
-        		System.exit(-1);
-        	}
-    	
-        	file = new File(filePath);    	
-        	
-        	//checks if file path is valid or if file exists
-        	if(file.exists()){
-        		String ext = filePath.substring(filePath.lastIndexOf(".")+1);
-        		//checks file format
-        		if(ext.equals("xml")){
-        			Debugger.log("Loading floor plan");
-        			fileExists = true;
-        		}else{
-        			Debugger.log("Invalid file format.");
-        		}    
-        	} else{
-        		Debugger.log("File does not exist.");
-        	}  
-    	}	
-    	
-    	sc.close();
-    	return file;
-    }
-  
-
     private void loadFloorPlan(File file) throws ParserConfigurationException, SAXException, IOException {
         DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
         DocumentBuilder db = dbf.newDocumentBuilder();

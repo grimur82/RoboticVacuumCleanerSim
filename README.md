@@ -5,7 +5,7 @@
 In the `/RoboticVacuumCleaner` directory, run:
 
 ```
-ant compile
+ant
 ```
 
 To execute, go to the `/build` directory and run:

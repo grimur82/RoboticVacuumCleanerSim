@@ -1,10 +1,5 @@
 package floor;
 
-import java.util.ArrayList;
-
-import sensor.SensorServices;
-import util.Debugger;
-
 public class Coordinate {
 
     private double x;

@@ -1,0 +1,98 @@
+<floorplan>
+
+    <description>
+        Maps out the Sample Floor Plan from project document.
+    </description>
+
+    <dimensions x="3" y="3" />
+    <start x="0" y="0" />
+
+    <doors />
+
+    <cells>
+
+        <cell name="A">
+            <x>0</x>
+            <y>0</y>
+            <surface>BARE</surface>
+            <obstacles>
+                <obstacle>BOTTOM</obstacle>
+                <obstacle>LEFT</obstacle>
+            </obstacles>
+        </cell>
+
+        <cell name="A">
+            <x>1</x>
+            <y>0</y>
+            <surface>BARE</surface>
+            <obstacles>
+                <obstacle>BOTTOM</obstacle>
+            </obstacles>
+        </cell>
+
+        <cell name="A">
+            <x>2</x>
+            <y>0</y>
+            <surface>BARE</surface>
+            <obstacles>
+                <obstacle>BOTTOM</obstacle>
+                <obstacle>RIGHT</obstacle>
+            </obstacles>
+        </cell>
+
+        <cell name="A">
+            <x>0</x>
+            <y>1</y>
+            <surface>BARE</surface>
+            <obstacles>
+                <obstacle>LEFT</obstacle>
+            </obstacles>
+        </cell>
+
+        <cell name="A">
+            <x>1</x>
+            <y>1</y>
+            <surface>BARE</surface>
+        </cell>
+
+        <cell name="A">
+            <x>2</x>
+            <y>1</y>
+            <surface>BARE</surface>
+            <obstacles>
+                <obstacle>RIGHT</obstacle>
+            </obstacles>
+        </cell>
+
+        <cell name="A">
+            <x>0</x>
+            <y>2</y>
+            <surface>BARE</surface>
+            <obstacles>
+                <obstacle>LEFT</obstacle>
+                <obstacle>TOP</obstacle>
+            </obstacles>
+        </cell>
+
+        <cell name="A">
+            <x>1</x>
+            <y>2</y>
+            <surface>BARE</surface>
+            <obstacles>
+                <obstacle>TOP</obstacle>
+            </obstacles>
+        </cell>
+
+        <cell name="A">
+            <x>2</x>
+            <y>2</y>
+            <surface>BARE</surface>
+            <obstacles>
+                <obstacle>RIGHT</obstacle>
+                <obstacle>TOP</obstacle>
+            </obstacles>
+        </cell>
+
+    </cells>
+
+</floorplan>
