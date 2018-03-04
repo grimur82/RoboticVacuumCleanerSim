@@ -2,14 +2,17 @@ package floor;
 
 import util.Debugger;
 
+import java.net.URISyntaxException;
 import java.util.*;
+
+import controllers.UtilityController;
+import sensor.FloorPlan;
 
 /**
  * A cell object.
  */
 public class Cell {
 
-    private String name;
     private SurfaceType surfaceType;
     private EnumSet<Obstacle> obstacles;
 
@@ -40,7 +43,6 @@ public class Cell {
 	/**
 	 * Sets whether this cell has stairs.
 	 *
-	 * @param stairs Presence of stairs.
 	 */
     public void setChargingBase(){
     	this.chargingBase = true;
@@ -86,7 +88,6 @@ public class Cell {
     }
 
     public void setName(String name) {
-        this.name = name;
     }
 
     public void setObstacle(String obstacle) {
@@ -111,21 +112,29 @@ public class Cell {
 	 * @param o Direction/obstacle
 	 * @param c Coordinate
 	 * @return Coordinate in the direction of c
+	 * @throws URISyntaxException 
 	 */
-    public static Coordinate adjacent(Obstacle o, Coordinate c) {
+    public static Coordinate adjacent(Obstacle o, Coordinate c) throws URISyntaxException {
 
 		int x = (int) c.getX();
 		int y = (int) c.getY();
-
+		int xAxes = FloorPlan.getInstance().getFloorPlan().length;
+		int currentX = FloorPlan.getInstance().getFloorPlan()[x].length;
 		switch (o) {
 			case TOP:
-				return new Coordinate(x + 1, y);
+				if(UtilityController.getServices().checkInBounds(x,y-1, xAxes,currentX))
+					return new Coordinate(x, y-1);
 			case BOTTOM:
-				return new Coordinate(x - 1, y);
+				if(UtilityController.getServices().checkInBounds(x,y+1, xAxes,currentX))
+					return new Coordinate(x, y+1);
 			case LEFT:
-				return new Coordinate(x, y - 1);
+				if(UtilityController.getServices().checkInBounds(x-1,y, xAxes,currentX))
+					return new Coordinate(x-1, y);
+			case RIGHT:
+				if(UtilityController.getServices().checkInBounds(x+1,y, xAxes,currentX))
+					return new Coordinate(x+1,y);
 			default:
-				return new Coordinate(x, y + 1);
+				return null;
 		}
 	}
 }

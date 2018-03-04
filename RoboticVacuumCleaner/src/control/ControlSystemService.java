@@ -1,22 +1,23 @@
 package control;
 
+import controllers.SweeperController;
 import floor.Cell;
 import floor.Coordinate;
-import sensor.SensorServices;
 import util.Debugger;
 
 import java.io.IOException;
+import java.net.URISyntaxException;
 import java.util.*;
 
 import javax.xml.parsers.ParserConfigurationException;
 
 import org.xml.sax.SAXException;
 
-import util.Visualizer;
+import controllers.SensorController;
 
 public class ControlSystemService {
 
-	// Current position of the sweeper
+	// Current position of the sweeperController
     private Coordinate currentPos;
 
 	// Single instance
@@ -27,44 +28,19 @@ public class ControlSystemService {
 
 	// Dirty cells
     private Map<Coordinate, Cell> dirty = new HashMap<>();
-
-	// Sensor simulator to check data against
-    private SensorServices sensorService;
-    private Sweeper sweeper = Sweeper.getInstance();
-
-    // initialise Sweeper.class
-    // dirt capacity
-    // dirt space available
-    /**
-     * The control system.
-     */
-	private ControlSystemService() {
-        Debugger.log("Starting control system");
-    }
-
     /**
      * Singleton.
      *
      * @return instance
      */
-	public static ControlSystemService getInstance() {
+	public static ControlSystemService getServices() {
         if (controlSystemService == null)
             controlSystemService = new ControlSystemService();
 
         return controlSystemService;
     }
-
-	/**
-	 * Sets sensor.
-	 *
-	 * @param sL Sensor.
-	 */
-	public void setSensor(SensorServices sL) {
-		sensorService = sL;
-	}
-
     /**
-     * Set current position of sweeper.
+     * Set current position of sweeperController.
      *
      * @param currentPos Current position.
      */
@@ -86,97 +62,97 @@ public class ControlSystemService {
     
     // Decrease power capacity due to movement
     private void decreasePowerMove(double total){
-    	sweeper.decreasePowerCapacity(total);
+    	SweeperController.getServices().decreasePowerCapacity(total);
     }
 
     // Check power capacity
     private double checkPowerCapacity(){
-    	return sweeper.checkPowerCapacity();
+    	return SweeperController.getServices().checkPowerCapacity();
     }
 
     // Sets status of cleaning cycle
     private boolean setCleaningStat(boolean status){
-    	return sweeper.setCleaningCycleStatus(status);
+    	return SweeperController.getServices().setCleaningCycleStatus(status);
     }
     
     // Checking status of cleaning cycle
     private boolean checkCleaningStat(){
-    	return sweeper.checkCleaningCycle();
+    	return SweeperController.getServices().checkCleaningCycle();
     }
 
 	/**
 	 * Cleaning engine.
+	 * @throws URISyntaxException 
 	 */
-    public void clean() throws ParserConfigurationException, SAXException, IOException {
-        setPosition(sensorService.getStartPosition());
+    public void beginCleaning() throws ParserConfigurationException, SAXException, IOException, URISyntaxException {
+        ControlSystemService.getServices().setPosition(SensorController.getServices().getStartPosition());
         if (!dirty.isEmpty()) {
-        	setCleaningStat(false);
+        	ControlSystemService.getServices().setCleaningStat(false);
         }
-
         do {
-
-			// Current cell data
-			int x = (int) currentPos.getX();
-			int y = (int) currentPos.getY();
-			Cell cell = sensorService.getCell(x, y);
+			int x = (int) Math.round(currentPos.getX());
+			int y = (int) Math.round(currentPos.getY());
+			Cell cell = SensorController.getServices().getCell(x, y);
 			Debugger.log("Arrived at cell (" + x + ", " + y + ")");
 
             //gets surface type of current cell
             Debugger.log("Surface type: " + cell.getSurfaceType());
 
 			// If dirt is present
-			int oldDirt;
-			if ((oldDirt = cell.getDirt()) > 0) {
+			if (cell.getDirt() > 0) {
 				// Clean
 				cell.clean();
-				int currentDirt = cell.getDirt();
-				Debugger.log("Floor Dirty: cleaning, dirt level " + oldDirt + " -> " + currentDirt);
+				Debugger.log("Floor Dirty: cleaning, dirt level " + cell.getDirt());
 				// Mark if clean or dirty
-				if (currentDirt == 0) {
+				if (cell.getDirt() == 0) {
 					dirty.remove(currentPos);
 					clean.put(currentPos, cell);
 				}
-				// Decrease sweeper's dirt capacity
-				int oldCapacity = sweeper.checkDirtCapacity();
-				sweeper.decreaseDirtCapacity();
-				Debugger.log("Dirt capacity: " + oldCapacity + " -> " + sweeper.checkDirtCapacity());
+				// Decrease sweeperController's dirt capacity
+				SweeperController.getServices().decreaseDirtCapacity();
+				Debugger.log("Dirt capacity: " + SweeperController.getServices().checkDirtCapacity());
 
-				// Decrease sweeper's power capacity
-				double oldPower = sweeper.checkPowerCapacity();
-				int powerUsed = cell.getSurfaceType().getPowerUsed();
-				sweeper.decreasePowerCapacity(powerUsed);
-				Debugger.log("Power capacity: " + oldPower + " -> " + sweeper.checkPowerCapacity()
-						+ " (" + powerUsed + " used");
+				// Decrease sweeperController's power capacity
+				SweeperController.getServices().decreasePowerCapacity(cell.getSurfaceType().getPowerUsed());
+				Debugger.log("Power capacity: " + SweeperController.getServices().checkPowerCapacity()
+						+ " (" + cell.getSurfaceType().getPowerUsed() + " used");
 
 			} else {
 				// If dirt is not present
 				Debugger.log("Floor Clean: CleanSweeper moves on.");
 			}
-
-			// Navigator and update to next position
-			Navigator navigator = new Navigator(currentPos, clean, dirty);
-			clean = navigator.getClean();
-			dirty = navigator.getDirty();
-			Coordinate chosenCoord = navigator.getCurrentPos();
-			setPosition(chosenCoord);
-
-			//Decreases power capacity due to movement
-			Cell nextCell = sensorService.getCell(chosenCoord);
-            decreasePowerMove(movementCharge(cell, nextCell));
-            Debugger.log("Power for movement from current cell to next cell: " + movementCharge(cell, nextCell));
-			Debugger.log("New power capacity will be: "+ checkPowerCapacity());
-
-			// Show map
-			Visualizer.getInstance().print();
+			Coordinate nextPosition = moveToNextPosition();
+			decreasePowerMovement(nextPosition,cell);
+			ControlSystemService.getServices().setPosition(nextPosition);
+	//		// Show map
+		//	Visualizer.getServices().print();
 
         } while (!checkCleaningStat());
         //cleaning cycle done when all surfaces are clean
         setCleaningStat(true);
         Debugger.log("Cleaning done!");
-    }
 
+    }
+    public void decreasePowerMovement(Coordinate chosenCoord, Cell cell) throws URISyntaxException {
+		if(chosenCoord != null){
+			//Decreases power capacity due to movement
+			Cell nextCell = SensorController.getServices().getCell(chosenCoord);
+			decreasePowerMove(movementCharge(cell, nextCell));
+			Debugger.log("Power for movement from current cell to next cell: " + movementCharge(cell, nextCell));
+			Debugger.log("New power capacity will be: "+ checkPowerCapacity());
+		}
+	}
+	public Coordinate moveToNextPosition() throws URISyntaxException {
+		// Navigator and update to next position
+		Navigator navigator = new Navigator(currentPos, clean, dirty);
+		clean = navigator.getClean();
+		dirty = navigator.getDirty();
+		Coordinate chosenCoord = navigator.getCurrentPos();
+		ControlSystemService.getServices().setPosition(chosenCoord);
+		return navigator.getCurrentPos();
+	}
 	void shutDownSweeper(){
-    	System.out.println("Sweeper is full: Stopped");
+    	System.out.println("SweeperController is full: Stopped");
     	System.exit(1);
     }
 
