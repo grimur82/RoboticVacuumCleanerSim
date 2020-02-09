@@ -11,5 +11,5 @@ ant
 To execute, go to the `/build` directory and run:
 
 ```
-java Driver
+java driver.Driver
 ```
